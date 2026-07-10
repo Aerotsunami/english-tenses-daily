@@ -161,24 +161,126 @@ function q(text, answers, correct, explanation) {
   return { text, answers, correct, explanation };
 }
 
-const STORAGE_KEY = "tense-day-progress-v1";
-const DAY = 24 * 60 * 60 * 1000;
-let state = loadState();
-let session = null;
-
-const dashboard = document.querySelector("#dashboard");
-const lesson = document.querySelector("#lesson");
-const quiz = document.querySelector("#quiz");
-
-document.addEventListener("click", (event) => {
-  const trigger = event.target.closest("[data-action]");
-  if (!trigger) return;
-  const { action, key, index } = trigger.dataset;
-
-  if (action === "home") renderDashboard();
-  if (action === "start-daily") startDailySession();
-  if (action === "focus-tense") startFocusSession(key);
-  if (action === "open-tense") renderLesson(key);
+const TENSE_DETAILS = {
+  "present-simple": {
+    forms: {
+      affirmative: "I / you / we / they + V · he / she / it + V-s",
+      negative: "do not (don't) / does not (doesn't) + V",
+      question: "Do / Does + subject + V?",
+    },
+    useCases: ["привычки и регулярные действия", "факты и общие истины", "постоянные состояния", "расписания транспорта и событий"],
+    markers: ["always", "usually", "often", "sometimes", "rarely", "never", "every day", "on Mondays"],
+    mistake: { wrong: "He work here.", right: "He works here.", note: "В he/she/it добавляем -s. После does и doesn't снова ставим начальную форму: Does he work?" },
+    examples: [
+      ["I work from home most days.", "Я работаю из дома большую часть недели."],
+      ["She doesn't drink coffee.", "Она не пьёт кофе."],
+      ["Does the shop open at nine?", "Магазин открывается в девять?"],
+      ["The train leaves at 7:10.", "Поезд отправляется в 7:10."],
+    ],
+  },
+  "present-continuous": {
+    forms: {
+      affirmative: "am / is / are + V-ing",
+      negative: "am / is / are + not + V-ing",
+      question: "Am / Is / Are + subject + V-ing?",
+    },
+    useCases: ["действие прямо сейчас", "временная ситуация текущего периода", "твёрдая договорённость на ближайшее будущее", "раздражающая привычка с always"],
+    markers: ["now", "right now", "at the moment", "currently", "Look!", "Listen!", "today", "this week"],
+    mistake: { wrong: "I'm knowing him well.", right: "I know him well.", note: "Глаголы состояния know, want, like, believe обычно не ставятся в Continuous." },
+    examples: [
+      ["I'm working now.", "Я сейчас работаю."],
+      ["She isn't sleeping.", "Она не спит."],
+      ["Are you listening to me?", "Ты меня слушаешь?"],
+      ["I'm meeting Marta tomorrow at five.", "Завтра в пять я встречаюсь с Мартой."],
+    ],
+  },
+  "present-perfect": {
+    forms: {
+      affirmative: "have / has + V3",
+      negative: "have not (haven't) / has not (hasn't) + V3",
+      question: "Have / Has + subject + V3?",
+    },
+    useCases: ["прошлое действие с результатом сейчас", "жизненный опыт без точной даты", "состояние от прошлого до настоящего", "результат внутри ещё не закончившегося периода"],
+    markers: ["just", "already", "yet", "ever", "never", "since", "for", "recently", "lately", "so far"],
+    mistake: { wrong: "I have seen him yesterday.", right: "I saw him yesterday.", note: "Точное прошлое - yesterday, ago, last year, in 2020 - требует Past Simple." },
+    examples: [
+      ["I've lost my keys.", "Я потерял ключи, и сейчас их нет."],
+      ["She hasn't finished yet.", "Она ещё не закончила."],
+      ["Have you ever been to London?", "Ты когда-нибудь был в Лондоне?"],
+      ["I've read two books this week.", "На этой неделе я прочитал две книги."],
+    ],
+  },
+  "present-perfect-continuous": {
+    forms: {
+      affirmative: "have / has been + V-ing",
+      negative: "haven't / hasn't been + V-ing",
+      question: "Have / Has + subject + been + V-ing?",
+    },
+    useCases: ["действие началось раньше и всё ещё длится", "важна длительность процесса", "действие только закончилось и оставило видимый след", "ответ на how long"],
+    markers: ["for two hours", "since morning", "all day", "how long", "lately", "recently"],
+    mistake: { wrong: "I've been knowing him for years.", right: "I've known him for years.", note: "Глаголы состояния не идут в Continuous даже здесь. Используйте Present Perfect." },
+    examples: [
+      ["I've been waiting for two hours.", "Я жду уже два часа."],
+      ["She hasn't been sleeping well.", "В последнее время она плохо спит."],
+      ["How long have you been learning English?", "Как долго ты учишь английский?"],
+      ["I'm tired - I've been running.", "Я устал - я бегал."],
+    ],
+  },
+  "past-simple": {
+    forms: {
+      affirmative: "V2: V-ed или неправильная форма",
+      negative: "did not (didn't) + V",
+      question: "Did + subject + V?",
+    },
+    useCases: ["завершённое действие в известный момент прошлого", "цепочка событий в рассказе", "прошлые привычки", "завершённый период"],
+    markers: ["yesterday", "ago", "last week", "last year", "in 2020", "when?", "the other day"],
+    mistake: { wrong: "Did you saw it?", right: "Did you see it?", note: "После did и didn't ставим начальную форму: прошедшее уже выражено вспомогательным глаголом." },
+    examples: [
+      ["We moved here two years ago.", "Мы переехали сюда два года назад."],
+      ["He didn't call me.", "Он мне не позвонил."],
+      ["Did you see that film?", "Ты видел тот фильм?"],
+      ["She came home, ate and went to bed.", "Она пришла домой, поела и легла спать."],
+    ],
+  },
+  "past-continuous": {
+    forms: {
+      affirmative: "was / were + V-ing",
+      negative: "was not (wasn't) / were not (weren't) + V-ing",
+      question: "Was / Were + subject + V-ing?",
+    },
+    useCases: ["процесс в конкретный момент прошлого", "фон для короткого действия в Past Simple", "два параллельных процесса", "действие, тянувшееся в прошлом"],
+    markers: ["at 5 yesterday", "while", "when", "all evening", "all day"],
+    mistake: { wrong: "When you called, I cooked dinner.", right: "When you called, I was cooking dinner.", note: "Если действие уже было в процессе, нужен Continuous. Past Simple означал бы последовательность." },
+    examples: [
+      ["I was watching TV at eight.", "В восемь я смотрел телевизор."],
+      ["They weren't listening.", "Они не слушали."],
+      ["What were you doing at noon?", "Что ты делал в полдень?"],
+      ["While I was cooking, he was working.", "Пока я готовил, он работал."],
+    ],
+  },
+  "past-perfect": {
+    forms: {
+      affirmative: "had + V3",
+      negative: "had not (hadn't) + V3",
+      question: "Had + subject + V3?",
+    },
+    useCases: ["действие раньше другого прошлого действия", "результат уже существовал к моменту в прошлом", "объяснение порядка событий"],
+    markers: ["by the time", "before", "after", "already", "never before"],
+    mistake: { wrong: "Yesterday I had gone to the gym.", right: "Yesterday I went to the gym.", note: "Past Perfect нужен только при второй прошлой точке, относительно которой одно действие произошло раньше." },
+    examples: [
+      ["The train had left before we arrived.", "Поезд ушёл до нашего приезда."],
+      ["I hadn't seen it before.", "Я раньше этого не видел."],
+      ["Had she left when you came?", "Она уже ушла, когда ты пришёл?"],
+      ["By the time he called, we had eaten.", "К его звонку мы уже поели."],
+    ],
+  },
+  "past-perfect-continuous": {
+    forms: {
+      affirmative: "had been + V-ing",
+      negative: "hadn't been + V-ing",
+      question: "Had + subject + been + V-ing?",
+    },
+    useCases: ["длительный процесс до…3379 tokens truncated…de") renderGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -216,7 +318,7 @@ function saveState() {
 }
 
 function showOnly(page) {
-  [dashboard, lesson, quiz].forEach((section) => section.classList.add("hidden"));
+  [dashboard, lesson, guide, quiz].forEach((section) => section.classList.add("hidden"));
   page.classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -283,6 +385,15 @@ function renderDashboard() {
       <button class="secondary-button" type="button" data-action="focus-tense" data-key="${focus.key}">Потренировать это время</button>
     </section>
 
+    <section class="guide-banner">
+      <div>
+        <p class="eyebrow">Конструктор грамматики</p>
+        <h2>Как собирать времена, а не зубрить 12 таблиц</h2>
+        <p class="section-note">V, V-s, V-ing, V2 и V3; правила окончаний; вспомогательные глаголы; вопросы и отрицания.</p>
+      </div>
+      <button class="secondary-button" type="button" data-action="open-guide">Открыть правила</button>
+    </section>
+
     <div class="section-heading"><h2>Карта времён</h2><p class="section-note">Уровень 2 — можно редко повторять</p></div>
     <div class="progress-track" aria-label="Общий прогресс"><div class="progress-fill" style="width: ${progress}%"></div></div>
     <div class="tense-grid" style="margin-top: 14px">
@@ -310,15 +421,132 @@ function renderLesson(key) {
       <span class="lesson-tag">${tense.group} · уровень ${stat.level}</span>
       <h1>${tense.name}</h1>
       <p class="subtitle">${tense.use}</p>
-      <div class="formula">${tense.formula}</div>
-      <p class="example">${tense.example}</p>
+
+      <h3 class="lesson-section-title">Как образуется</h3>
+      <div class="formation-grid">
+        <div class="formation-row"><span class="form-sign plus">+</span><div><small>Утверждение</small><strong>${tense.forms.affirmative}</strong></div></div>
+        <div class="formation-row"><span class="form-sign minus">−</span><div><small>Отрицание</small><strong>${tense.forms.negative}</strong></div></div>
+        <div class="formation-row"><span class="form-sign question-sign">?</span><div><small>Вопрос</small><strong>${tense.forms.question}</strong></div></div>
+      </div>
+
+      <div class="lesson-columns">
+        <section>
+          <h3 class="lesson-section-title">Когда использовать</h3>
+          <ul class="rule-list">${tense.useCases.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </section>
+        <section>
+          <h3 class="lesson-section-title">Слова-подсказки</h3>
+          <div class="marker-chips">${tense.markers.map((item) => `<span>${item}</span>`).join("")}</div>
+        </section>
+      </div>
+
+      <h3 class="lesson-section-title">Примеры</h3>
+      <div class="example-list">
+        ${tense.examples.map(([en, ru]) => `<div class="example-row"><strong>${en}</strong><span>${ru}</span></div>`).join("")}
+      </div>
+
+      <aside class="mistake-box">
+        <p class="eyebrow">Частая ошибка</p>
+        <p><del>${tense.mistake.wrong}</del> <span aria-hidden="true">→</span> <strong>${tense.mistake.right}</strong></p>
+        <small>${tense.mistake.note}</small>
+      </aside>
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="focus-tense" data-key="${tense.key}">Три вопроса по теме</button>
+        <button class="primary-button" type="button" data-action="focus-tense" data-key="${tense.key}">Шесть вопросов по теме</button>
         <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
       </div>
     </article>
   `;
   showOnly(lesson);
+}
+
+function renderGuide() {
+  const verbForms = [
+    ["V", "начальная форма", "work / go", "Present и Future Simple"],
+    ["V-s", "форма для he/she/it", "works / goes", "Present Simple"],
+    ["V-ing", "форма процесса", "working / going", "все Continuous"],
+    ["V2", "прошедшая форма", "worked / went", "Past Simple"],
+    ["V3", "причастие", "worked / gone", "все Perfect"],
+  ];
+  const irregulars = [
+    ["be", "was/were", "been"], ["have", "had", "had"], ["do", "did", "done"], ["go", "went", "gone"],
+    ["get", "got", "got"], ["make", "made", "made"], ["say", "said", "said"], ["see", "saw", "seen"],
+    ["come", "came", "come"], ["take", "took", "taken"], ["know", "knew", "known"], ["give", "gave", "given"],
+    ["find", "found", "found"], ["think", "thought", "thought"], ["tell", "told", "told"], ["buy", "bought", "bought"],
+  ];
+
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page">
+      <span class="lesson-tag">Общая система</span>
+      <h1>Конструктор английских времён</h1>
+      <p class="subtitle">Сначала выбери, когда происходит действие: Past, Present или Future. Затем выбери характер: факт, процесс, результат к моменту или накопленная длительность.</p>
+
+      <div class="idea-grid">
+        <div><span>Simple</span><strong>факт и регулярность</strong></div>
+        <div><span>Continuous</span><strong>процесс в моменте</strong></div>
+        <div><span>Perfect</span><strong>результат к моменту</strong></div>
+        <div><span>Perfect Continuous</span><strong>длится уже N времени</strong></div>
+      </div>
+
+      <h2 class="guide-heading">Пять форм смыслового глагола</h2>
+      <div class="verb-table">
+        ${verbForms.map(([form, meaning, sample, use]) => `<div class="verb-row"><strong>${form}</strong><span>${meaning}</span><code>${sample}</code><small>${use}</small></div>`).join("")}
+      </div>
+
+      <div class="guide-rule-grid">
+        <section class="rule-card">
+          <h3>Как добавить -s</h3>
+          <ul class="rule-list">
+            <li>обычно: work → works</li>
+            <li>-s, -sh, -ch, -x, -o: watch → watches</li>
+            <li>согласная + y: study → studies</li>
+            <li>особая форма: have → has</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Как добавить -ing</h3>
+          <ul class="rule-list">
+            <li>обычно: work → working</li>
+            <li>немая -e отпадает: make → making</li>
+            <li>короткий ударный слог: run → running</li>
+            <li>-ie превращается в -y: lie → lying</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Как добавить -ed</h3>
+          <ul class="rule-list">
+            <li>обычно: work → worked</li>
+            <li>после -e только -d: live → lived</li>
+            <li>согласная + y: study → studied</li>
+            <li>короткий ударный слог: stop → stopped</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Вспомогательные «моторчики»</h3>
+          <ul class="rule-list">
+            <li>do / does / did — Simple</li>
+            <li>am / is / are / was / were — Continuous</li>
+            <li>have / has / had — Perfect</li>
+            <li>will — будущее</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="principle-box"><strong>Главный принцип:</strong> в вопросе вспомогательный глагол выходит перед подлежащим. В отрицании к нему добавляется not. После do, does и did смысловой глагол всегда возвращается в форму V.</aside>
+
+      <h2 class="guide-heading">Нужные неправильные глаголы</h2>
+      <div class="irregular-grid">
+        ${irregulars.map(([v, v2, v3]) => `<div><strong>${v}</strong><span>${v2}</span><span>${v3}</span></div>`).join("")}
+      </div>
+
+      <aside class="mistake-box">
+        <p class="eyebrow">Два важных исключения</p>
+        <p><strong>to be</strong> в Present Simple: I am, he is, we are; вопросы без do: Are you ready?</p>
+        <p><strong>to be</strong> в Past Simple: was/were; отрицание wasn't/weren't; вопрос Was/Were…?</p>
+      </aside>
+    </article>
+  `;
+  showOnly(guide);
 }
 
 function startDailySession() {
@@ -332,7 +560,7 @@ function startDailySession() {
     .map((tense) => ({ tense, score: focusScore(state.tenseStats[tense.key]) + Math.random() * 0.65 }))
     .sort((a, b) => b.score - a.score)
     .slice(0, 8)
-    .map(({ tense }) => ({ tense, question: questionFor(tense) }));
+    .map(({ tense }) => questionFor(tense));
   startSession("daily", "Ежедневная практика", shuffle(selected));
 }
 
