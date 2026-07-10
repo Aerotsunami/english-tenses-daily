@@ -280,7 +280,170 @@ const TENSE_DETAILS = {
       negative: "hadn't been + V-ing",
       question: "Had + subject + been + V-ing?",
     },
-    useCases: ["длительный процесс до…3379 tokens truncated…de") renderGuide();
+    useCases: ["длительный процесс до момента в прошлом", "сколько действие успело продлиться", "объяснение состояния или результата в прошлом"],
+    markers: ["for ... before", "by the time", "all day before", "how long"],
+    mistake: { wrong: "He was tired because he worked all day.", right: "He was tired because he had been working all day.", note: "Если процесс длился до прошлого результата и объясняет его, используйте had been + V-ing." },
+    examples: [
+      ["I had been working for hours.", "Я работал уже несколько часов."],
+      ["He hadn't been sleeping well.", "До этого он плохо спал."],
+      ["Had you been waiting long?", "Ты долго ждал?"],
+      ["His eyes were red - he had been crying.", "Глаза были красные - до этого он плакал."],
+    ],
+  },
+  "future-simple": {
+    forms: {
+      affirmative: "will + V",
+      negative: "will not (won't) + V",
+      question: "Will + subject + V?",
+    },
+    useCases: ["спонтанное решение", "обещание или предложение помощи", "предсказание-мнение", "нейтральный факт о будущем"],
+    markers: ["tomorrow", "soon", "next week", "in an hour", "probably", "I think", "maybe"],
+    mistake: { wrong: "When I will come home, I'll call you.", right: "When I come home, I'll call you.", note: "После when, if, as soon as, before и until будущее выражается Present Simple." },
+    examples: [
+      ["I'll help you.", "Я помогу тебе."],
+      ["It won't rain tomorrow.", "Завтра дождя не будет."],
+      ["Will you come with us?", "Ты пойдёшь с нами?"],
+      ["I think she will win.", "Думаю, она победит."],
+    ],
+  },
+  "future-continuous": {
+    forms: {
+      affirmative: "will be + V-ing",
+      negative: "won't be + V-ing",
+      question: "Will + subject + be + V-ing?",
+    },
+    useCases: ["процесс в конкретный момент будущего", "ожидаемый ход событий", "вежливый вопрос о планах"],
+    markers: ["this time tomorrow", "at 10 tomorrow", "all day tomorrow"],
+    mistake: { wrong: "Don't call at six, I'll work.", right: "Don't call at six, I'll be working.", note: "Если в этот момент действие будет в процессе, нужен will be + V-ing." },
+    examples: [
+      ["I'll be flying to Rome.", "Я буду лететь в Рим."],
+      ["I won't be working at six.", "В шесть я не буду работать."],
+      ["Will you be using the car?", "Ты будешь пользоваться машиной?"],
+      ["This time tomorrow, we'll be having lunch.", "Завтра в это время мы будем обедать."],
+    ],
+  },
+  "future-perfect": {
+    forms: {
+      affirmative: "will have + V3",
+      negative: "won't have + V3",
+      question: "Will + subject + have + V3?",
+    },
+    useCases: ["результат будет готов к будущему моменту", "действие завершится до дедлайна", "подведение будущего итога"],
+    markers: ["by Friday", "by 2030", "by the end of", "by the time you arrive"],
+    mistake: { wrong: "I will finish by the time you arrive.", right: "I will have finished by the time you arrive.", note: "Если подчёркивается уже готовый результат к будущей точке, используйте will have + V3." },
+    examples: [
+      ["I'll have finished by Friday.", "К пятнице я закончу."],
+      ["She won't have arrived by noon.", "К полудню она ещё не приедет."],
+      ["Will you have done it by Monday?", "Ты закончишь это к понедельнику?"],
+      ["We'll have eaten by the time you arrive.", "К твоему приходу мы уже поедим."],
+    ],
+  },
+  "future-perfect-continuous": {
+    forms: {
+      affirmative: "will have been + V-ing",
+      negative: "won't have been + V-ing",
+      question: "Will + subject + have been + V-ing?",
+    },
+    useCases: ["длительность процесса к будущему моменту", "ответ на вопрос сколько времени уже будет длиться действие"],
+    markers: ["by June ... for a year", "by 2030 ... for ten years", "how long ... by"],
+    mistake: { wrong: "By May I will live here for a year.", right: "By May I will have been living here for a year.", note: "Будущая точка + накопленная длительность требуют will have been + V-ing." },
+    examples: [
+      ["By May, I'll have been living here for a year.", "К маю будет год, как я здесь живу."],
+      ["He won't have been working here for long.", "К тому моменту он будет работать здесь недолго."],
+      ["Will you have been studying for a year by June?", "К июню будет год, как ты учишься?"],
+      ["By noon, they will have been driving for five hours.", "К полудню они будут ехать уже пять часов."],
+    ],
+  },
+};
+
+const EXTRA_QUESTIONS = {
+  "present-simple": [
+    q("My colleague usually ___ the first meeting.", ["leads", "is leading", "led", "has led"], 0, "usually показывает регулярность; colleague = he/she, поэтому leads."),
+    q("The museum ___ at ten on Sundays.", ["open", "opens", "is opening", "opened"], 1, "Расписание выражаем Present Simple: opens."),
+    q("He doesn't ___ meat.", ["eats", "eat", "eating", "ate"], 1, "После doesn't глагол возвращается в начальную форму: eat."),
+  ],
+  "present-continuous": [
+    q("Look! The bus ___.", ["comes", "is coming", "came", "has come"], 1, "Look! указывает на процесс прямо сейчас: is coming."),
+    q("I ___ from a coworking space today.", ["work", "am working", "worked", "have worked"], 1, "today здесь означает временную ситуацию: am working."),
+    q("She ___ the client tomorrow at four.", ["meets", "is meeting", "met", "has met"], 1, "Твёрдая договорённость на ближайшее будущее: is meeting."),
+  ],
+  "present-perfect": [
+    q("We ___ three tests so far.", ["run", "ran", "have run", "are running"], 2, "so far + накопленный результат: have run."),
+    q("He hasn't replied ___.", ["already", "yet", "yesterday", "ago"], 1, "yet ставится в конце отрицания Present Perfect."),
+    q("I ___ her since university.", ["know", "knew", "have known", "have been knowing"], 2, "since + состояние до сих пор; know не используется в Continuous: have known."),
+  ],
+  "present-perfect-continuous": [
+    q("It ___ since early morning.", ["rains", "has rained", "has been raining", "rained"], 2, "Процесс продолжается с утра: has been raining."),
+    q("How long ___ you ___ on this project?", ["do / work", "have / been working", "did / work", "are / work"], 1, "How long спрашивает о длительности до настоящего."),
+    q("Your hands are dirty. ___ you ___ the bike?", ["Did / repair", "Have / been repairing", "Are / repair", "Do / repair"], 1, "Видимый след недавнего процесса: Have you been repairing…?"),
+  ],
+  "past-simple": [
+    q("We ___ the prototype last Friday.", ["launch", "launched", "have launched", "were launching"], 1, "last Friday - точное завершённое прошлое: launched."),
+    q("She didn't ___ the message.", ["saw", "seen", "see", "seeing"], 2, "После didn't используем начальную форму: see."),
+    q("Where ___ you live in 2020?", ["do", "did", "have", "were"], 1, "in 2020 задаёт прошлый период: did you live?"),
+  ],
+  "past-continuous": [
+    q("While they ___, the lights went out.", ["talked", "were talking", "have talked", "had talked"], 1, "Длительный фон + короткое событие: were talking."),
+    q("At midnight, we ___.", ["still drove", "were still driving", "have driven", "drive"], 1, "Процесс в конкретный прошлый момент: were still driving."),
+    q("___ it ___ when you left?", ["Did / rain", "Was / raining", "Has / rained", "Is / raining"], 1, "Погода в процессе в момент ухода: Was it raining?"),
+  ],
+  "past-perfect": [
+    q("By the time I opened the app, the sale ___.", ["ended", "had ended", "has ended", "was ending"], 1, "Распродажа закончилась раньше другой прошлой точки: had ended."),
+    q("I couldn't pay because I ___ my wallet.", ["forgot", "had forgotten", "have forgotten", "was forgetting"], 1, "Забыл кошелёк до момента оплаты: had forgotten."),
+    q("Had you ever ___ Bilbao before that trip?", ["visit", "visited", "visiting", "visits"], 1, "После had нужна третья форма; у правильного глагола visited."),
+  ],
+  "past-perfect-continuous": [
+    q("She was exhausted because she ___ all night.", ["worked", "was working", "had been working", "has worked"], 2, "Длительный процесс объясняет прошлый результат: had been working."),
+    q("They ___ for long before the bus arrived.", ["didn't wait", "hadn't been waiting", "weren't wait", "haven't waited"], 1, "Длительность до события в прошлом: hadn't been waiting."),
+    q("How long ___ he ___ there before he moved?", ["did / live", "had / been living", "was / live", "has / lived"], 1, "How long до прошлой точки: had he been living?"),
+  ],
+  "future-simple": [
+    q("The phone is ringing. I ___ it.", ["answer", "will answer", "am answering yesterday", "have answered"], 1, "Спонтанное решение в момент речи: will answer."),
+    q("I think the test ___ useful.", ["is being", "will be", "was", "has been"], 1, "I think + прогноз-мнение: will be."),
+    q("When I ___ home, I'll text you.", ["will get", "get", "got", "will be getting"], 1, "После when будущее выражается Present Simple: get."),
+  ],
+  "future-continuous": [
+    q("This time tomorrow, I ___ over the Atlantic.", ["fly", "will fly", "will be flying", "will have flown"], 2, "Процесс в будущий момент: will be flying."),
+    q("Don't message at nine; we ___ the results.", ["discuss", "will discuss", "will be discussing", "have discussed"], 2, "В девять обсуждение будет в процессе: will be discussing."),
+    q("___ you ___ us for dinner?", ["Will / be joining", "Do / join", "Have / joined", "Did / join"], 0, "Вежливый вопрос о планах: Will you be joining…?"),
+  ],
+  "future-perfect": [
+    q("By next week, we ___ the analysis.", ["finish", "will finish", "will have finished", "are finishing"], 2, "Результат к будущему дедлайну: will have finished."),
+    q("She ___ by the time the meeting starts.", ["will arrive", "will have arrived", "arrived", "has arrived"], 1, "К началу встречи прибытие уже завершится: will have arrived."),
+    q("Will they ___ the migration by Friday?", ["complete", "have completed", "be completing", "completed"], 1, "Вопрос Future Perfect: Will + subject + have + V3."),
+  ],
+  "future-perfect-continuous": [
+    q("By December, I ___ here for two years.", ["will work", "will have worked", "will have been working", "am working"], 2, "Длительность к будущей точке: will have been working."),
+    q("Next month, she ___ English for a year.", ["studies", "will have been studying", "will study", "has studied"], 1, "К следующему месяцу накопится год процесса: will have been studying."),
+    q("How long ___ they ___ by the end of the project?", ["will / work", "will / have been working", "have / worked", "are / working"], 1, "Вопрос о длительности к будущей точке: will they have been working?"),
+  ],
+};
+
+TENSES.forEach((tense) => {
+  Object.assign(tense, TENSE_DETAILS[tense.key]);
+  tense.questions.push(...EXTRA_QUESTIONS[tense.key]);
+});
+
+const STORAGE_KEY = "tense-day-progress-v1";
+const DAY = 24 * 60 * 60 * 1000;
+let state = loadState();
+let session = null;
+
+const dashboard = document.querySelector("#dashboard");
+const lesson = document.querySelector("#lesson");
+const guide = document.querySelector("#guide");
+const quiz = document.querySelector("#quiz");
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-action]");
+  if (!trigger) return;
+  const { action, key, index } = trigger.dataset;
+
+  if (action === "home") renderDashboard();
+  if (action === "start-daily") startDailySession();
+  if (action === "focus-tense") startFocusSession(key);
+  if (action === "open-tense") renderLesson(key);
+  if (action === "open-guide") renderGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -723,4 +886,3 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
 }
 
 renderDashboard();
-
