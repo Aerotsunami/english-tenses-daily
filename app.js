@@ -424,6 +424,84 @@ TENSES.forEach((tense) => {
   tense.questions.push(...EXTRA_QUESTIONS[tense.key]);
 });
 
+const IDENTIFY_ITEMS = {
+  "present-simple": [
+    ["My team reviews the dashboard every Monday.", "every Monday показывает повторяющееся действие; reviews - форма Present Simple для he/she/it."],
+    ["Water boils at 100°C.", "Это общий факт, поэтому используется Present Simple."],
+    ["The store opens at eight tomorrow.", "Несмотря на tomorrow, речь о расписании - его выражают Present Simple."],
+  ],
+  "present-continuous": [
+    ["I'm reviewing the results right now.", "right now и am + V-ing прямо указывают на Present Continuous."],
+    ["She's working from Madrid this week.", "this week здесь описывает временную ситуацию; форма is working - Present Continuous."],
+    ["We're meeting the designer tomorrow at five.", "Present Continuous может выражать твёрдую договорённость на ближайшее будущее."],
+  ],
+  "present-perfect": [
+    ["I've just sent the report.", "just и результат к настоящему моменту; have sent - Present Perfect."],
+    ["She has visited London twice.", "Жизненный опыт без точной даты выражен через has + V3."],
+    ["We have known each other since school.", "since school и состояние, продолжающееся до сих пор; know не ставится в Continuous."],
+  ],
+  "present-perfect-continuous": [
+    ["I've been testing the app since morning.", "since morning подчёркивает длительность до настоящего; have been testing."],
+    ["It has been raining all day.", "Процесс продолжается весь день: has been + V-ing."],
+    ["How long have you been waiting?", "how long спрашивает о длительности процесса до настоящего момента."],
+  ],
+  "past-simple": [
+    ["They moved to Berlin last year.", "last year - завершённый прошлый период; moved - Past Simple."],
+    ["I saw him yesterday.", "yesterday - точное прошлое; saw - вторая форма глагола see."],
+    ["He came home, ate dinner and went to bed.", "Цепочка завершённых прошлых событий выражена Past Simple."],
+  ],
+  "past-continuous": [
+    ["At eight p.m. I was cooking dinner.", "В конкретный момент прошлого действие находилось в процессе: was cooking."],
+    ["We were walking when it started to rain.", "were walking - длительный фон; started - короткое событие."],
+    ["While she was reading, I was working.", "Два параллельных процесса в прошлом выражены was + V-ing."],
+  ],
+  "past-perfect": [
+    ["The train had left before we arrived.", "Поезд ушёл раньше другого прошлого действия; had left - Past Perfect."],
+    ["By the time I called, she had finished.", "К моменту звонка результат уже был готов: had + V3."],
+    ["He couldn't pay because he had forgotten his wallet.", "Сначала он забыл кошелёк, потом не смог заплатить - Past Perfect показывает более раннее действие."],
+  ],
+  "past-perfect-continuous": [
+    ["She had been waiting for two hours before the doctor saw her.", "Процесс длился два часа до другого момента в прошлом: had been waiting."],
+    ["His eyes were red because he had been crying.", "Длительный процесс до прошлого результата объясняет красные глаза."],
+    ["How long had they been living there before they moved?", "how long + длительность до прошлой точки: had been living."],
+  ],
+  "future-simple": [
+    ["I think he will win.", "I think показывает прогноз-мнение; will + V - Future Simple."],
+    ["The phone is ringing - I'll answer it.", "Решение принято прямо в момент речи, поэтому используется will."],
+    ["Don't worry, I won't forget.", "Обещание о будущем выражено через won't + V."],
+  ],
+  "future-continuous": [
+    ["This time tomorrow I'll be flying to Rome.", "this time tomorrow и will be + V-ing обозначают процесс в будущем моменте."],
+    ["At ten tomorrow we'll be presenting the roadmap.", "В десять презентация будет идти: will be presenting."],
+    ["Will you be using the car tonight?", "Вежливый вопрос о планах построен как Will + subject + be + V-ing."],
+  ],
+  "future-perfect": [
+    ["By Friday, I'll have finished the report.", "by Friday задаёт будущий дедлайн; результат будет готов к нему."],
+    ["They will have built the bridge by 2030.", "will have + V3 показывает завершённый результат к 2030 году."],
+    ["Will she have arrived by noon?", "Вопрос о результате к будущему моменту - Future Perfect."],
+  ],
+  "future-perfect-continuous": [
+    ["By May, I'll have been living here for a year.", "К будущей точке накопится год длительности: will have been living."],
+    ["At noon, they will have been driving for five hours.", "К полудню процесс будет длиться уже пять часов."],
+    ["How long will you have been working here by December?", "Вопрос о длительности к будущей точке построен в Future Perfect Continuous."],
+  ],
+};
+
+const IDENTIFY_DISTRACTORS = {
+  "present-simple": ["present-continuous", "present-perfect", "past-simple"],
+  "present-continuous": ["present-simple", "past-continuous", "present-perfect-continuous"],
+  "present-perfect": ["past-simple", "present-perfect-continuous", "past-perfect"],
+  "present-perfect-continuous": ["present-perfect", "present-continuous", "past-perfect-continuous"],
+  "past-simple": ["past-continuous", "present-perfect", "past-perfect"],
+  "past-continuous": ["past-simple", "present-continuous", "past-perfect-continuous"],
+  "past-perfect": ["past-simple", "present-perfect", "past-perfect-continuous"],
+  "past-perfect-continuous": ["past-continuous", "present-perfect-continuous", "past-perfect"],
+  "future-simple": ["future-continuous", "future-perfect", "present-simple"],
+  "future-continuous": ["future-simple", "future-perfect", "present-continuous"],
+  "future-perfect": ["future-simple", "future-continuous", "past-perfect"],
+  "future-perfect-continuous": ["future-continuous", "future-perfect", "present-perfect-continuous"],
+};
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -441,7 +519,9 @@ document.addEventListener("click", (event) => {
 
   if (action === "home") renderDashboard();
   if (action === "start-daily") startDailySession();
+  if (action === "start-identify") startIdentifySession();
   if (action === "focus-tense") startFocusSession(key);
+  if (action === "identify-tense") startIdentifyForTense(key);
   if (action === "open-tense") renderLesson(key);
   if (action === "open-guide") renderGuide();
   if (action === "answer") answerQuestion(Number(index));
@@ -521,7 +601,7 @@ function renderDashboard() {
   const planTitle = isFirstRun ? "Сначала — быстрая диагностика" : "Твой короткий урок на сегодня";
   const planText = isFirstRun
     ? "12 коротких вопросов: по одному на каждое время. Потом тренажёр сам будет чаще возвращать слабые темы."
-    : `8 вопросов, которые сейчас дадут максимум пользы. В фокусе — ${focus.name}.`;
+    : `8 вопросов: четыре на форму глагола и четыре на распознавание времени в тексте. В фокусе — ${focus.name}.`;
   const buttonText = isFirstRun ? "Пройти диагностику · 8 мин" : "Начать 8 вопросов · 6 мин";
   const accuracyText = state.totalAnswered ? `${overallAccuracy()}%` : "—";
   const progress = Math.round((learnedCount() / TENSES.length) * 100);
@@ -555,6 +635,16 @@ function renderDashboard() {
         <p class="section-note">V, V-s, V-ing, V2 и V3; правила окончаний; вспомогательные глаголы; вопросы и отрицания.</p>
       </div>
       <button class="secondary-button" type="button" data-action="open-guide">Открыть правила</button>
+    </section>
+
+    <section class="identify-banner">
+      <div class="identify-icon" aria-hidden="true">?</div>
+      <div>
+        <p class="eyebrow">Новый режим</p>
+        <h2>Определи время по готовому предложению</h2>
+        <p class="section-note">Никаких пропусков: прочитай контекст, выбери время и разберись, какой признак его выдаёт.</p>
+      </div>
+      <button class="primary-button" type="button" data-action="start-identify">Начать 10 заданий</button>
     </section>
 
     <div class="section-heading"><h2>Карта времён</h2><p class="section-note">Уровень 2 — можно редко повторять</p></div>
@@ -615,6 +705,7 @@ function renderLesson(key) {
       </aside>
       <div class="lesson-actions">
         <button class="primary-button" type="button" data-action="focus-tense" data-key="${tense.key}">Шесть вопросов по теме</button>
+        <button class="secondary-button" type="button" data-action="identify-tense" data-key="${tense.key}">Распознать в тексте</button>
         <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
       </div>
     </article>
@@ -723,20 +814,52 @@ function startDailySession() {
     .map((tense) => ({ tense, score: focusScore(state.tenseStats[tense.key]) + Math.random() * 0.65 }))
     .sort((a, b) => b.score - a.score)
     .slice(0, 8)
-    .map(({ tense }) => questionFor(tense));
+    .map(({ tense }, index) => index < 4 ? questionFor(tense) : identifyQuestionFor(tense));
   startSession("daily", "Ежедневная практика", shuffle(selected));
+}
+
+function startIdentifySession() {
+  const questions = [...TENSES]
+    .map((tense) => ({ tense, score: focusScore(state.tenseStats[tense.key]) + Math.random() * 0.65 }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10)
+    .map(({ tense }) => identifyQuestionFor(tense));
+  startSession("identify", "Определи время", shuffle(questions));
+}
+
+function startIdentifyForTense(key) {
+  const tense = TENSES.find((item) => item.key === key);
+  if (!tense) return;
+  const questions = IDENTIFY_ITEMS[key].map((_, index) => identifyQuestionFor(tense, index));
+  startSession("identify-focus", `Распознаём: ${tense.name}`, shuffle(questions));
 }
 
 function startFocusSession(key) {
   const tense = TENSES.find((item) => item.key === key);
   if (!tense) return;
-  const questions = shuffle(tense.questions.map((item) => ({ tense, ...item })));
+  const questions = shuffle(tense.questions.map((item) => ({ tense, type: "form", ...item })));
   startSession("focus", `Фокус: ${tense.name}`, questions);
 }
 
 function questionFor(tense, forcedIndex) {
   const index = Number.isInteger(forcedIndex) ? forcedIndex : Math.floor(Math.random() * tense.questions.length);
-  return { tense, ...tense.questions[index] };
+  return { tense, type: "form", ...tense.questions[index] };
+}
+
+function identifyQuestionFor(tense, forcedIndex) {
+  const items = IDENTIFY_ITEMS[tense.key];
+  const itemIndex = Number.isInteger(forcedIndex) ? forcedIndex : Math.floor(Math.random() * items.length);
+  const [text, explanation] = items[itemIndex];
+  const optionKeys = shuffle([tense.key, ...IDENTIFY_DISTRACTORS[tense.key]]);
+  const answers = optionKeys.map((key) => TENSES.find((item) => item.key === key).name);
+  return {
+    tense,
+    type: "identify",
+    text,
+    answers,
+    correct: optionKeys.indexOf(tense.key),
+    explanation,
+  };
 }
 
 function startSession(type, title, questions) {
@@ -749,6 +872,8 @@ function renderQuiz() {
   if (session.completed) return renderResult();
 
   const question = session.questions[session.index];
+  const taskText = question.type === "identify" ? "Какое время используется в предложении?" : "Выбери правильную форму";
+  const modeText = question.type === "identify" ? "Определи время" : question.tense.name;
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -766,7 +891,8 @@ function renderQuiz() {
       <div class="quiz-progress"><span>${session.title}</span><span>${session.index + 1} / ${session.questions.length}</span></div>
       <div class="progress-track"><div class="progress-fill" style="width: ${Math.round((session.index / session.questions.length) * 100)}%"></div></div>
       <article class="quiz-card" style="margin-top: 14px">
-        <span class="question-tense">${question.tense.name}</span>
+        <span class="question-tense ${question.type === "identify" ? "identify-mode" : ""}">${modeText}</span>
+        <p class="question-task">${taskText}</p>
         <h2 class="question">${question.text}</h2>
         <div class="answers">${answerButtons}</div>
         ${feedback}
