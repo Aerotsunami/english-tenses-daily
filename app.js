@@ -502,6 +502,43 @@ const IDENTIFY_DISTRACTORS = {
   "future-perfect-continuous": ["future-continuous", "future-perfect", "present-perfect-continuous"],
 };
 
+const GERUND_INFINITIVE_ITEMS = [
+  gi("I enjoy ___ from home.", ["working", "to work", "work", "worked"], 0, "I enjoy working from home.", "После enjoy используем герундий: enjoy doing something."),
+  gi("Try to avoid ___ your email every five minutes.", ["checking", "to check", "check", "checked"], 0, "Try to avoid checking your email every five minutes.", "После avoid ставим verb + ing."),
+  gi("She is very good at ___ complex ideas.", ["explaining", "to explain", "explain", "explained"], 0, "She is very good at explaining complex ideas.", "После предлога at нужен герундий: good at doing."),
+  gi("Read the message again before ___ it.", ["sending", "to send", "send", "sent"], 0, "Read the message again before sending it.", "После предлога before используется verb + ing."),
+  gi("He is interested in ___ more about AI.", ["learning", "to learn", "learn", "learned"], 0, "He is interested in learning more about AI.", "In — предлог, поэтому после него ставим герундий."),
+  gi("___ from home saves me a lot of time.", ["Working", "To working", "Work", "Worked"], 0, "Working from home saves me a lot of time.", "Когда действие является подлежащим предложения, обычно используем герундий."),
+  gi("She suggested ___ the experiment for another week.", ["running", "to run", "run", "ran"], 0, "She suggested running the experiment for another week.", "После suggest используем verb + ing, а не to + verb."),
+  gi("Would you mind ___ the window?", ["opening", "to open", "open", "opened"], 0, "Would you mind opening the window?", "После mind нужен герундий: mind doing."),
+  gi("We finished ___ the presentation at midnight.", ["preparing", "to prepare", "prepare", "prepared"], 0, "We finished preparing the presentation at midnight.", "После finish ставим verb + ing."),
+  gi("Keep ___ — your English is getting better.", ["practising", "to practise", "practise", "practised"], 0, "Keep practising — your English is getting better.", "После keep используем герундий: keep doing."),
+  gi("I want ___ my spoken English.", ["to improve", "improving", "improve", "improved"], 0, "I want to improve my spoken English.", "После want нужен инфинитив с to."),
+  gi("We decided ___ the launch until Monday.", ["to postpone", "postponing", "postpone", "postponed"], 0, "We decided to postpone the launch until Monday.", "После decide используем to + verb."),
+  gi("I need ___ this report today.", ["to finish", "finishing", "finish", "finished"], 0, "I need to finish this report today.", "После need обычно ставим инфинитив с to."),
+  gi("I'm happy ___ you with the analysis.", ["to help", "helping", "help", "helped"], 0, "I'm happy to help you with the analysis.", "После прилагательных, например happy, часто используется to + verb."),
+  gi("I opened the dashboard ___ the latest numbers.", ["to check", "checking", "check", "checked"], 0, "I opened the dashboard to check the latest numbers.", "Инфинитив выражает цель: открыл зачем? Чтобы проверить."),
+  gi("She promised ___ the file by Friday.", ["to send", "sending", "send", "sent"], 0, "She promised to send the file by Friday.", "После promise используем to + verb."),
+  gi("They refused ___ the scope.", ["to change", "changing", "change", "changed"], 0, "They refused to change the scope.", "После refuse нужен инфинитив с to."),
+  gi("I hope ___ Bilbao again next year.", ["to visit", "visiting", "visit", "visited"], 0, "I hope to visit Bilbao again next year.", "После hope используем to + verb."),
+  gi("You can't ___ here.", ["park", "to park", "parking", "parked"], 0, "You can't park here.", "После модального can используется инфинитив без to."),
+  gi("Let me ___ when you're ready.", ["know", "to know", "knowing", "knew"], 0, "Let me know when you're ready.", "После let ставим инфинитив без to."),
+  gi("The feedback made me ___ the whole proposal.", ["rewrite", "to rewrite", "rewriting", "rewrote"], 0, "The feedback made me rewrite the whole proposal.", "После make + object используется инфинитив без to."),
+  gi("Если хочешь проверить, поможет ли звонок: Try ___ him.", ["calling", "to call", "call", "called"], 0, "Try calling him — he may help you.", "Try doing = поэкспериментировать с методом и посмотреть, сработает ли он."),
+  gi("Если поднять тяжёлый чемодан будет трудно: Don't try ___ it alone.", ["to lift", "lifting", "lift", "lifted"], 0, "Don't try to lift it alone.", "Try to do = попытаться сделать что-то трудное, приложить усилие."),
+  gi("Не забудь оставить документ на столе: Remember ___ it there.", ["to leave", "leaving", "leave", "left"], 0, "Remember to leave the document on the table.", "Remember to do = не забыть выполнить действие в будущем."),
+  gi("Я помню нашу первую встречу: I remember ___ you on my first working day.", ["meeting", "to meet", "meet", "met"], 0, "I remember meeting you on my first working day.", "Remember doing = иметь воспоминание о действии, которое уже произошло."),
+  gi("Он бросил курить: He stopped ___.", ["smoking", "to smoke", "smoke", "smoked"], 0, "He stopped smoking.", "Stop doing = перестать выполнять действие."),
+  gi("Он остановился, чтобы ответить на звонок: He stopped ___ the call.", ["to answer", "answering", "answer", "answered"], 0, "He stopped to answer the call.", "Stop to do = остановить другое действие ради новой цели."),
+  gi("Try ___ late for the meeting.", ["not to be", "to not being", "not being", "not be"], 0, "Try not to be late for the meeting.", "Отрицание ставим перед инфинитивом: not to + verb."),
+  gi("I recommend ___ too much about one bad result.", ["not worrying", "not to worry", "to not worry", "not worry"], 0, "I recommend not worrying too much about one bad result.", "После recommend нужен герундий; not ставится перед ним: not doing."),
+  gi("She offered ___ the meeting notes.", ["to write", "writing", "write", "wrote"], 0, "She offered to write the meeting notes.", "После offer используем инфинитив с to."),
+];
+
+function gi(text, answers, correct, example, explanation) {
+  return { text, answers, correct, example, explanation };
+}
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -520,10 +557,12 @@ document.addEventListener("click", (event) => {
   if (action === "home") renderDashboard();
   if (action === "start-daily") startDailySession();
   if (action === "start-identify") startIdentifySession();
+  if (action === "start-gerund") startGerundSession();
   if (action === "focus-tense") startFocusSession(key);
   if (action === "identify-tense") startIdentifyForTense(key);
   if (action === "open-tense") renderLesson(key);
   if (action === "open-guide") renderGuide();
+  if (action === "open-gerund-guide") renderGerundGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -538,6 +577,9 @@ function defaultState() {
     streak: 0,
     lastStudyDate: null,
     tenseStats: Object.fromEntries(TENSES.map((tense) => [tense.key, { total: 0, correct: 0, level: 0, dueAt: 0 }])),
+    grammarStats: {
+      gerundInfinitive: { total: 0, correct: 0 },
+    },
   };
 }
 
@@ -550,6 +592,10 @@ function loadState() {
       ...fresh,
       ...saved,
       tenseStats: Object.fromEntries(TENSES.map((tense) => [tense.key, { ...fresh.tenseStats[tense.key], ...(saved.tenseStats?.[tense.key] || {}) }])),
+      grammarStats: {
+        ...fresh.grammarStats,
+        ...(saved.grammarStats || {}),
+      },
     };
   } catch {
     return defaultState();
@@ -605,6 +651,8 @@ function renderDashboard() {
   const buttonText = isFirstRun ? "Пройти диагностику · 8 мин" : "Начать 8 вопросов · 6 мин";
   const accuracyText = state.totalAnswered ? `${overallAccuracy()}%` : "—";
   const progress = Math.round((learnedCount() / TENSES.length) * 100);
+  const gerundStat = state.grammarStats.gerundInfinitive;
+  const gerundStatText = gerundStat.total ? `${accuracy(gerundStat)}% · ${gerundStat.total} ответов` : "Ещё не тренировались";
 
   dashboard.innerHTML = `
     <section class="hero">
@@ -645,6 +693,20 @@ function renderDashboard() {
         <p class="section-note">Никаких пропусков: прочитай контекст, выбери время и разберись, какой признак его выдаёт.</p>
       </div>
       <button class="primary-button" type="button" data-action="start-identify">Начать 10 заданий</button>
+    </section>
+
+    <section class="grammar-banner">
+      <div class="grammar-icon" aria-hidden="true">ing</div>
+      <div>
+        <p class="eyebrow">Gerund или infinitive</p>
+        <h2>Working, to work или просто work?</h2>
+        <p class="section-note">30 живых примеров: предлоги, глаголы-исключения, модальные глаголы и разница между try doing / try to do.</p>
+        <small class="banner-stat">${gerundStatText}</small>
+      </div>
+      <div class="banner-actions">
+        <button class="secondary-button" type="button" data-action="open-gerund-guide">Правила и примеры</button>
+        <button class="primary-button" type="button" data-action="start-gerund">Начать 12 заданий</button>
+      </div>
     </section>
 
     <div class="section-heading"><h2>Карта времён</h2><p class="section-note">Уровень 2 — можно редко повторять</p></div>
@@ -803,6 +865,62 @@ function renderGuide() {
   showOnly(guide);
 }
 
+function renderGerundGuide() {
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page gerund-guide">
+      <span class="lesson-tag">Gerund or infinitive</span>
+      <h1>Что ставить после глагола</h1>
+      <p class="subtitle">Смотри не только на перевод, а на слово перед вторым глаголом. Оно чаще всего и определяет форму.</p>
+
+      <div class="gerund-rule-grid">
+        <section class="gerund-rule-card gerund-card">
+          <span class="rule-form">verb + ing</span>
+          <h2>Герундий</h2>
+          <ul class="rule-list">
+            <li>после предлогов: <strong>good at explaining</strong></li>
+            <li>когда действие — подлежащее: <strong>Working helps</strong></li>
+            <li>после enjoy, avoid, mind, finish, keep, suggest, recommend</li>
+          </ul>
+        </section>
+        <section class="gerund-rule-card infinitive-card">
+          <span class="rule-form">to + verb</span>
+          <h2>Инфинитив</h2>
+          <ul class="rule-list">
+            <li>после прилагательных: <strong>happy to help</strong></li>
+            <li>для цели — «зачем?»: <strong>opened it to check</strong></li>
+            <li>после want, decide, hope, need, plan, promise, refuse, offer</li>
+          </ul>
+        </section>
+        <section class="gerund-rule-card bare-card">
+          <span class="rule-form">verb без to</span>
+          <h2>Чистый инфинитив</h2>
+          <ul class="rule-list">
+            <li>после модальных: <strong>can't park</strong></li>
+            <li>после let: <strong>let me know</strong></li>
+            <li>после make: <strong>made me rewrite</strong></li>
+          </ul>
+        </section>
+      </div>
+
+      <h2 class="guide-heading">Форма меняет смысл</h2>
+      <div class="meaning-pairs">
+        <div class="meaning-pair"><strong>Try calling him.</strong><span>Попробуй как метод — вдруг сработает.</span><strong>Try to call him.</strong><span>Попытайся дозвониться, приложи усилие.</span></div>
+        <div class="meaning-pair"><strong>Remember to leave it.</strong><span>Не забудь сделать это потом.</span><strong>I remember leaving it.</strong><span>Я помню уже произошедшее действие.</span></div>
+        <div class="meaning-pair"><strong>He stopped smoking.</strong><span>Он перестал курить.</span><strong>He stopped to smoke.</strong><span>Он остановился, чтобы покурить.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Отрицание:</strong> ставь not перед нужной формой — <em>try not to be late</em>, но <em>recommend not worrying</em>.</aside>
+
+      <div class="lesson-actions">
+        <button class="primary-button" type="button" data-action="start-gerund">Начать 12 заданий</button>
+        <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
+      </div>
+    </article>
+  `;
+  showOnly(guide);
+}
+
 function startDailySession() {
   if (!state.diagnosed) {
     const questions = shuffle(TENSES.map((tense) => questionFor(tense, 0)));
@@ -834,6 +952,13 @@ function startIdentifyForTense(key) {
   startSession("identify-focus", `Распознаём: ${tense.name}`, shuffle(questions));
 }
 
+function startGerundSession() {
+  const questions = shuffle(GERUND_INFINITIVE_ITEMS)
+    .slice(0, 12)
+    .map(gerundQuestionFor);
+  startSession("gerund-infinitive", "Gerund или infinitive", questions);
+}
+
 function startFocusSession(key) {
   const tense = TENSES.find((item) => item.key === key);
   if (!tense) return;
@@ -862,6 +987,19 @@ function identifyQuestionFor(tense, forcedIndex) {
   };
 }
 
+function gerundQuestionFor(item) {
+  const options = shuffle(item.answers.map((answer, index) => ({ answer, correct: index === item.correct })));
+  return {
+    type: "gerund",
+    topicKey: "gerundInfinitive",
+    text: item.text,
+    answers: options.map((option) => option.answer),
+    correct: options.findIndex((option) => option.correct),
+    example: item.example,
+    explanation: item.explanation,
+  };
+}
+
 function startSession(type, title, questions) {
   session = { type, title, questions, index: 0, correct: 0, answered: false, completed: false };
   renderQuiz();
@@ -872,8 +1010,15 @@ function renderQuiz() {
   if (session.completed) return renderResult();
 
   const question = session.questions[session.index];
-  const taskText = question.type === "identify" ? "Какое время используется в предложении?" : "Выбери правильную форму";
-  const modeText = question.type === "identify" ? "Определи время" : question.tense.name;
+  const isIdentify = question.type === "identify";
+  const isGerund = question.type === "gerund";
+  const taskText = isIdentify
+    ? "Какое время используется в предложении?"
+    : isGerund
+      ? "Выбери форму второго глагола"
+      : "Выбери правильную форму";
+  const modeText = isIdentify ? "Определи время" : isGerund ? "Gerund or infinitive" : question.tense.name;
+  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -881,7 +1026,7 @@ function renderQuiz() {
     return `<button class="answer ${stateClass}" type="button" data-action="answer" data-index="${index}" ${session.answered ? "disabled" : ""}>${answer}</button>`;
   }).join("");
   const feedback = session.answered
-    ? `<div class="feedback"><strong>${session.selected === question.correct ? "Верно." : "Почти — запомни этот паттерн."}</strong>${question.explanation}</div>
+    ? `<div class="feedback"><strong>${session.selected === question.correct ? "Верно." : "Почти — запомни этот паттерн."}</strong>${question.example ? `<span class="answer-example">${question.example}</span>` : ""}${question.explanation}</div>
        <div class="next-row"><button class="primary-button" type="button" data-action="next">${session.index === session.questions.length - 1 ? "Посмотреть результат" : "Следующий вопрос"}</button></div>`
     : "";
 
@@ -891,7 +1036,7 @@ function renderQuiz() {
       <div class="quiz-progress"><span>${session.title}</span><span>${session.index + 1} / ${session.questions.length}</span></div>
       <div class="progress-track"><div class="progress-fill" style="width: ${Math.round((session.index / session.questions.length) * 100)}%"></div></div>
       <article class="quiz-card" style="margin-top: 14px">
-        <span class="question-tense ${question.type === "identify" ? "identify-mode" : ""}">${modeText}</span>
+        <span class="question-tense ${modeClass}">${modeText}</span>
         <p class="question-task">${taskText}</p>
         <h2 class="question">${question.text}</h2>
         <div class="answers">${answerButtons}</div>
@@ -909,7 +1054,11 @@ function answerQuestion(index) {
   session.selected = index;
   session.answered = true;
   if (correct) session.correct += 1;
-  recordAnswer(question.tense.key, correct);
+  if (question.topicKey) {
+    recordGrammarAnswer(question.topicKey, correct);
+  } else {
+    recordAnswer(question.tense.key, correct);
+  }
   saveState();
   renderQuiz();
 }
@@ -942,6 +1091,17 @@ function recordAnswer(key, correct) {
   stat.dueAt = Date.now() + intervals[stat.level] * DAY;
 }
 
+function recordGrammarAnswer(key, correct) {
+  const stat = state.grammarStats[key];
+  if (!stat) return;
+  state.totalAnswered += 1;
+  stat.total += 1;
+  if (correct) {
+    state.totalCorrect += 1;
+    stat.correct += 1;
+  }
+}
+
 function finishSession() {
   state.sessions += 1;
   if (session.type === "diagnostic") state.diagnosed = true;
@@ -952,11 +1112,17 @@ function finishSession() {
 
 function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
-  const message = score >= 85
-    ? "Отлично. Завтра тренажёр вернёт вопросы чуть позже — закрепим, а не будем гонять их подряд."
-    : score >= 55
-      ? "Нормальный рабочий результат. Слабые времена уже поставлены в ближайшее повторение."
-      : "Хороший старт: ошибки — это карта того, что надо закрепить. Завтра будут короткие повторы.";
+  const message = session.type === "gerund-infinitive"
+    ? score >= 85
+      ? "Отлично: ты уверенно различаешь gerund, infinitive и форму без to. Повтори режим через пару дней для закрепления."
+      : score >= 55
+        ? "Хорошая база. Обрати внимание на глагол или предлог перед пропуском — именно он чаще всего определяет форму."
+        : "Вернись к памятке и пройди ещё один подход: сначала закрепи три базовых правила, затем смысловые пары try, remember и stop."
+    : score >= 85
+      ? "Отлично. Завтра тренажёр вернёт вопросы чуть позже — закрепим, а не будем гонять их подряд."
+      : score >= 55
+        ? "Нормальный рабочий результат. Слабые времена уже поставлены в ближайшее повторение."
+        : "Хороший старт: ошибки — это карта того, что надо закрепить. Завтра будут короткие повторы.";
   quiz.innerHTML = `
     <article class="result-card">
       <div class="result-mark">✓</div>
