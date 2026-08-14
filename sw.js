@@ -1,4 +1,4 @@
-const CACHE = "tense-day-v3";
+const CACHE = "tense-day-v4";
 const ASSETS = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {
