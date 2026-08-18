@@ -1816,6 +1816,669 @@ const ARTICLE_ITEMS = [
   }
 ];
 
+const AUXILIARY_ITEMS = [
+  {
+    "text": "I ___ two brothers.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "С I, you, we, they в настоящем времени используем have."
+  },
+  {
+    "text": "She ___ a new laptop.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "С he, she, it в настоящем времени используем has."
+  },
+  {
+    "text": "They ___ enough time.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "are"
+    ],
+    "correct": "have",
+    "explanation": "They требует форму have."
+  },
+  {
+    "text": "The app ___ a dark mode.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "The app = it, поэтому has."
+  },
+  {
+    "text": "Do you ___ any questions?",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После do смысловой глагол всегда возвращается в базовую форму have."
+  },
+  {
+    "text": "He doesn't ___ access to this report.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После doesn't ставим базовую форму: doesn't have, не doesn't has."
+  },
+  {
+    "text": "We ___ an old car when we lived in Madrid.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Had выражает наличие в прошлом для любого подлежащего."
+  },
+  {
+    "text": "She ___ no idea what had happened.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Состояние относится к прошлому, поэтому had."
+  },
+  {
+    "text": "Did they ___ enough money for the tickets?",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "Прошлое уже выражено did; после него нужна базовая форма have."
+  },
+  {
+    "text": "I didn't ___ time to call you.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После didn't используем have, а не had."
+  },
+  {
+    "text": "I ___ finished the report.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "Present Perfect: I + have + V3 finished."
+  },
+  {
+    "text": "She ___ sent the email.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "Present Perfect: she + has + V3 sent."
+  },
+  {
+    "text": "They ___ never seen this film.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "are"
+    ],
+    "correct": "have",
+    "explanation": "They + have + V3; never стоит между помощником и V3."
+  },
+  {
+    "text": "He ___ just arrived.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "He + has + V3; just показывает недавний результат."
+  },
+  {
+    "text": "___ you ever tried surfing?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Do"
+    ],
+    "correct": "Have",
+    "explanation": "Вопрос Present Perfect: Have + subject + V3."
+  },
+  {
+    "text": "___ she completed the task yet?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Does"
+    ],
+    "correct": "Has",
+    "explanation": "Вопрос Present Perfect с she начинается с Has."
+  },
+  {
+    "text": "We ___ not decided yet.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "do"
+    ],
+    "correct": "have",
+    "explanation": "Отрицание Present Perfect: have not + V3."
+  },
+  {
+    "text": "It ___ stopped raining.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "It требует has; stopped — третья форма глагола."
+  },
+  {
+    "text": "I ___ finished dinner before she called.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Past Perfect: более раннее прошлое действие выражается had + V3."
+  },
+  {
+    "text": "They ___ left by the time we arrived.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Сначала они ушли, потом мы приехали: had left."
+  },
+  {
+    "text": "___ she seen the place before that trip?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Did"
+    ],
+    "correct": "Had",
+    "explanation": "Вопрос Past Perfect: Had + subject + V3."
+  },
+  {
+    "text": "He ___ noticed the mistake before the launch.",
+    "answers": [
+      "hasn't",
+      "hadn't",
+      "didn't",
+      "wasn't"
+    ],
+    "correct": "hadn't",
+    "explanation": "Отрицание Past Perfect: had not + V3."
+  },
+  {
+    "text": "We ___ never met before that evening.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Оба события в прошлом; более раннее — had met."
+  },
+  {
+    "text": "By noon, the team ___ completed the migration.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Результат был готов к прошлому сроку by noon: had + V3."
+  },
+  {
+    "text": "I ___ this phone for three years.",
+    "answers": [
+      "have",
+      "have had",
+      "had",
+      "am having"
+    ],
+    "correct": "have had",
+    "explanation": "Have had — Present Perfect глагола have: I + have-помощник + had-V3."
+  },
+  {
+    "text": "She ___ a very busy week.",
+    "answers": [
+      "has",
+      "has had",
+      "had",
+      "is having"
+    ],
+    "correct": "has had",
+    "explanation": "Has had: has — помощник для she, had — третья форма смыслового have."
+  },
+  {
+    "text": "We ___ three meetings today.",
+    "answers": [
+      "have",
+      "have had",
+      "had",
+      "are having"
+    ],
+    "correct": "have had",
+    "explanation": "День ещё не закончен, важен накопленный результат: have had."
+  },
+  {
+    "text": "He ___ a headache since morning.",
+    "answers": [
+      "has",
+      "has had",
+      "had",
+      "is having"
+    ],
+    "correct": "has had",
+    "explanation": "Since morning связывает прошлое с настоящим: he has had."
+  },
+  {
+    "text": "I ___ breakfast before the call started.",
+    "answers": [
+      "have had",
+      "has had",
+      "had",
+      "had had"
+    ],
+    "correct": "had had",
+    "explanation": "Had had — Past Perfect глагола have: первое had — помощник, второе had — V3."
+  },
+  {
+    "text": "By then, they ___ two major delays.",
+    "answers": [
+      "have had",
+      "has had",
+      "had",
+      "had had"
+    ],
+    "correct": "had had",
+    "explanation": "К прошлому моменту уже было два события: had had."
+  },
+  {
+    "text": "___ you work from home?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Are"
+    ],
+    "correct": "Do",
+    "explanation": "Вопрос Present Simple с you: Do + subject + V."
+  },
+  {
+    "text": "___ she speak Spanish?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Is"
+    ],
+    "correct": "Does",
+    "explanation": "Вопрос Present Simple с she: Does + subject + V."
+  },
+  {
+    "text": "Where ___ they live?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "are"
+    ],
+    "correct": "do",
+    "explanation": "They в Present Simple требует do."
+  },
+  {
+    "text": "Why ___ he need access?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "is"
+    ],
+    "correct": "does",
+    "explanation": "He в Present Simple требует does; need остаётся в базовой форме."
+  },
+  {
+    "text": "___ you call him yesterday?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Have"
+    ],
+    "correct": "Did",
+    "explanation": "Yesterday указывает на Past Simple: Did + subject + V."
+  },
+  {
+    "text": "When ___ she arrive?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "has"
+    ],
+    "correct": "did",
+    "explanation": "Вопрос о завершённом прошлом: did + arrive."
+  },
+  {
+    "text": "I ___ not understand this rule.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "am"
+    ],
+    "correct": "do",
+    "explanation": "Отрицание Present Simple с I: do not + V."
+  },
+  {
+    "text": "He ___ not like coffee.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "is"
+    ],
+    "correct": "does",
+    "explanation": "He в Present Simple: does not + like."
+  },
+  {
+    "text": "They ___ not finish the task yesterday.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "were"
+    ],
+    "correct": "did",
+    "explanation": "Past Simple отрицание: did not + finish."
+  },
+  {
+    "text": "What ___ happen after the meeting?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "was"
+    ],
+    "correct": "did",
+    "explanation": "Вопрос о прошлом: did + базовая форма happen."
+  },
+  {
+    "text": "I ___ ready.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "am",
+    "explanation": "Форма be для I в настоящем времени — am."
+  },
+  {
+    "text": "She ___ at home.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "has"
+    ],
+    "correct": "is",
+    "explanation": "Форма be для he, she, it — is."
+  },
+  {
+    "text": "They ___ busy today.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "Форма be для you, we, they — are."
+  },
+  {
+    "text": "We ___ tired yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "are",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "В прошлом с we/you/they используем were."
+  },
+  {
+    "text": "He ___ late yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "is",
+      "had"
+    ],
+    "correct": "was",
+    "explanation": "В прошлом с I/he/she/it используем was."
+  },
+  {
+    "text": "___ you okay?",
+    "answers": [
+      "Am",
+      "Is",
+      "Are",
+      "Do"
+    ],
+    "correct": "Are",
+    "explanation": "Вопрос с be строится без do: Are you okay?"
+  },
+  {
+    "text": "___ she at the meeting yesterday?",
+    "answers": [
+      "Was",
+      "Were",
+      "Did",
+      "Has"
+    ],
+    "correct": "Was",
+    "explanation": "Состояние she в прошлом: Was she...?"
+  },
+  {
+    "text": "There ___ many reasons to wait.",
+    "answers": [
+      "is",
+      "are",
+      "has",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "После there форма be согласуется с reasons во множественном числе."
+  },
+  {
+    "text": "I ___ working right now.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "am",
+    "explanation": "Present Continuous: I am + V-ing."
+  },
+  {
+    "text": "She ___ reading the report.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "has"
+    ],
+    "correct": "is",
+    "explanation": "Present Continuous: she is + V-ing."
+  },
+  {
+    "text": "They ___ waiting outside.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "Present Continuous: they are + V-ing."
+  },
+  {
+    "text": "We ___ driving at eight yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "are",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "Past Continuous: we were + V-ing."
+  },
+  {
+    "text": "He ___ sleeping when I called.",
+    "answers": [
+      "was",
+      "were",
+      "is",
+      "had"
+    ],
+    "correct": "was",
+    "explanation": "Past Continuous: he was + V-ing."
+  },
+  {
+    "text": "What ___ you doing when it happened?",
+    "answers": [
+      "was",
+      "were",
+      "did",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "Вопрос Past Continuous: What were you doing...?"
+  },
+  {
+    "text": "I ___ call you tomorrow.",
+    "answers": [
+      "will",
+      "do",
+      "have",
+      "am"
+    ],
+    "correct": "will",
+    "explanation": "Future Simple: will + базовая форма call."
+  },
+  {
+    "text": "___ you help me with this?",
+    "answers": [
+      "Will",
+      "Do",
+      "Have",
+      "Are"
+    ],
+    "correct": "Will",
+    "explanation": "Will перед подлежащим образует вопрос о будущем или просьбу."
+  },
+  {
+    "text": "I think it ___ be useful.",
+    "answers": [
+      "will",
+      "does",
+      "has",
+      "is"
+    ],
+    "correct": "will",
+    "explanation": "Прогноз с I think: will + be."
+  },
+  {
+    "text": "I ___ to leave now.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "Have to в настоящем времени с I/you/we/they выражает необходимость."
+  },
+  {
+    "text": "She ___ to leave early every Friday.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "Has to с she выражает регулярную необходимость."
+  },
+  {
+    "text": "We ___ to cancel the meeting yesterday.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "did"
+    ],
+    "correct": "had",
+    "explanation": "Had to выражает необходимость в прошлом для любого подлежащего."
+  }
+];
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -1837,6 +2500,7 @@ document.addEventListener("click", (event) => {
   if (action === "start-gerund") startGerundSession();
   if (action === "start-phrases") startPhraseSession();
   if (action === "start-articles") startArticleSession();
+  if (action === "start-auxiliaries") startAuxiliarySession();
   if (action === "focus-tense") startFocusSession(key);
   if (action === "identify-tense") startIdentifyForTense(key);
   if (action === "open-tense") renderLesson(key);
@@ -1844,6 +2508,7 @@ document.addEventListener("click", (event) => {
   if (action === "open-gerund-guide") renderGerundGuide();
   if (action === "open-phrases") renderPhraseGuide();
   if (action === "open-articles") renderArticleGuide();
+  if (action === "open-auxiliaries") renderAuxiliaryGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -1862,6 +2527,7 @@ function defaultState() {
       gerundInfinitive: { total: 0, correct: 0 },
       speechPatterns: { total: 0, correct: 0 },
       articles: { total: 0, correct: 0 },
+      auxiliaries: { total: 0, correct: 0 },
     },
   };
 }
@@ -1940,6 +2606,8 @@ function renderDashboard() {
   const phraseStatText = phraseStat.total ? `${accuracy(phraseStat)}% · ${phraseStat.total} ответов` : "Ещё не тренировались";
   const articleStat = state.grammarStats.articles;
   const articleStatText = articleStat.total ? `${accuracy(articleStat)}% · ${articleStat.total} ответов` : "Ещё не тренировались";
+  const auxiliaryStat = state.grammarStats.auxiliaries;
+  const auxiliaryStatText = auxiliaryStat.total ? `${accuracy(auxiliaryStat)}% · ${auxiliaryStat.total} ответов` : "Ещё не тренировались";
 
   dashboard.innerHTML = `
     <section class="hero">
@@ -2002,6 +2670,14 @@ function renderDashboard() {
           <p>Первое упоминание, конкретный предмет, уникальные объекты и случаи без артикля.</p>
           <div class="mode-card-meta">${articleStatText}</div>
           <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-articles">Правила</button><button class="primary-button" type="button" data-action="start-articles">12 заданий</button></div>
+        </article>
+
+        <article class="mode-card mode-green">
+          <span class="mode-kicker">Глаголы-помощники</span>
+          <h3>Have, has, had и остальные</h3>
+          <p>Have had, had had, do/does/did, формы be, will и have to без зубрёжки.</p>
+          <div class="mode-card-meta">${auxiliaryStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">12 заданий</button></div>
         </article>
       </div>
     </section>
@@ -2338,6 +3014,48 @@ function renderArticleGuide() {
   showOnly(guide);
 }
 
+function renderAuxiliaryGuide() {
+  const helpers = [
+    ["have / has", "настоящее", "I/you/we/they have · he/she/it has", "наличие или помощник Present Perfect"],
+    ["had", "прошлое", "все лица: had", "наличие в прошлом или помощник Past Perfect"],
+    ["do / does", "Present Simple", "do: I/you/we/they · does: he/she/it", "вопросы и отрицания"],
+    ["did", "Past Simple", "все лица: did + V", "вопросы и отрицания в прошлом"],
+    ["am / is / are", "настоящее be", "I am · he/she/it is · you/we/they are", "состояние или Continuous"],
+    ["was / were", "прошлое be", "I/he/she/it was · you/we/they were", "состояние или Past Continuous"],
+    ["will", "будущее", "все лица: will + V", "решение, обещание или прогноз"],
+    ["have / has / had to", "необходимость", "have to сейчас · had to раньше", "что приходится или пришлось делать"],
+  ];
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page auxiliary-guide">
+      <span class="lesson-tag">Auxiliary verbs</span>
+      <h1>Have, has, had — и кто кому помогает</h1>
+      <p class="subtitle">Один и тот же глагол может означать «иметь» или быть частью грамматической формулы. Сначала найди время и подлежащее, затем смотри, есть ли после помощника V3, V-ing или to + V.</p>
+
+      <div class="aux-rule-grid">
+        ${helpers.map(([form,time,pattern,use]) => `<section class="aux-rule-card">
+          <span>${time}</span><h2>${form}</h2><strong>${pattern}</strong><p>${use}</p>
+        </section>`).join("")}
+      </div>
+
+      <h2 class="guide-heading">Почему два had подряд — это нормально</h2>
+      <div class="aux-chain-list">
+        <div><strong>I have had this phone for three years.</strong><span><b>have</b> — помощник Present Perfect; <b>had</b> — V3 глагола have.</span></div>
+        <div><strong>She has had a busy week.</strong><span><b>has</b> — помощник для she; <b>had</b> — «имела» в третьей форме.</span></div>
+        <div><strong>I had had breakfast before the call.</strong><span>первое <b>had</b> — помощник Past Perfect; второе <b>had</b> — V3. Завтрак был раньше звонка.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Главная проверка:</strong> после do, does, did и will всегда ставь базовую форму: <em>Does she have...?</em>, <em>Did he go...?</em>, <em>will be</em>. После have/has/had во временах Perfect ставь V3: <em>has gone</em>, <em>had finished</em>.</aside>
+
+      <div class="lesson-actions">
+        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 12 заданий</button>
+        <button class="secondary-button" type="button" data-action="home">К каталогу</button>
+      </div>
+    </article>
+  `;
+  showOnly(guide);
+}
+
 function startDailySession() {
   if (!state.diagnosed) {
     const questions = shuffle(TENSES.map((tense) => questionFor(tense, 0)));
@@ -2445,6 +3163,28 @@ function startArticleSession() {
   startSession("articles", "Артикли: a, an, the или Ø", questions);
 }
 
+function auxiliaryComplete(item) {
+  return item.text.replace("___", item.correct);
+}
+
+function auxiliaryQuestionFor(item) {
+  const options = shuffle(item.answers);
+  return {
+    type: "auxiliary",
+    topicKey: "auxiliaries",
+    text: item.text,
+    answers: options,
+    correct: options.indexOf(item.correct),
+    example: auxiliaryComplete(item),
+    explanation: `<span class="aux-explanation">${item.explanation}</span>`,
+  };
+}
+
+function startAuxiliarySession() {
+  const questions = shuffle(AUXILIARY_ITEMS).slice(0, 12).map(auxiliaryQuestionFor);
+  startSession("auxiliaries", "Have, has, had и помощники", questions);
+}
+
 function startFocusSession(key) {
   const tense = TENSES.find((item) => item.key === key);
   if (!tense) return;
@@ -2501,6 +3241,7 @@ function renderQuiz() {
   const isPhrase = question.type === "phrase";
   const isPhraseTense = question.type === "phrase-tense";
   const isArticle = question.type === "article";
+  const isAuxiliary = question.type === "auxiliary";
   const taskText = isIdentify
     ? "Какое время используется в предложении?"
     : isGerund
@@ -2511,7 +3252,9 @@ function renderQuiz() {
           ? "Определи время готового предложения"
           : isArticle
             ? "Выбери артикль или вариант без него"
-            : "Выбери правильную форму";
+            : isAuxiliary
+              ? "Выбери подходящий глагол-помощник"
+              : "Выбери правильную форму";
   const modeText = isIdentify
     ? "Определи время"
     : isGerund
@@ -2520,8 +3263,10 @@ function renderQuiz() {
         ? "Речевые обороты"
         : isArticle
           ? "Articles"
-          : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : "";
+          : isAuxiliary
+            ? "Auxiliary verbs"
+            : question.tense.name;
+  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary ? "auxiliary-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -2614,7 +3359,13 @@ function finishSession() {
 
 function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
-  const message = session.type === "articles"
+  const message = session.type === "auxiliaries"
+    ? score >= 85
+      ? "Отлично: ты уверенно различаешь помощник и смысловой глагол. Следующий шаг — замечать эти формулы в обычном тексте."
+      : score >= 55
+        ? "Хорошая база. Перед ответом определяй время, затем подлежащее, и только потом выбирай have/has, do/does или форму be."
+        : "Вернись к памятке и проговори три цепочки: have had, has had и had had. Затем повтори правила do/does/did и be."
+    : session.type === "articles"
     ? score >= 85
       ? "Отлично: ты уверенно различаешь новый предмет, конкретный предмет и общее понятие. Повтори тему через пару дней."
       : score >= 55
