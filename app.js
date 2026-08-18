@@ -2479,6 +2479,405 @@ const AUXILIARY_ITEMS = [
   }
 ];
 
+const MODAL_ITEMS = [
+  {
+    "prompt": "Исправь ошибку: You should to eat more vegetables.",
+    "answers": [
+      "You should eat more vegetables.",
+      "You should to eat more vegetables.",
+      "You should eats more vegetables.",
+      "You do should eat more vegetables."
+    ],
+    "correct": "You should eat more vegetables.",
+    "explanation": "После should ставим базовую форму без to и без окончания -s."
+  },
+  {
+    "prompt": "Исправь ошибку: He musts arrive early.",
+    "answers": [
+      "He must arrive early.",
+      "He musts arrive early.",
+      "He must to arrive early.",
+      "He does must arrive early."
+    ],
+    "correct": "He must arrive early.",
+    "explanation": "Must не изменяется после he/she/it; после него сразу идёт базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: He have to goes to the store.",
+    "answers": [
+      "He has to go to the store.",
+      "He have to goes to the store.",
+      "He has go to the store.",
+      "He musts go to the store."
+    ],
+    "correct": "He has to go to the store.",
+    "explanation": "С he используем has to, а после to — базовую форму go."
+  },
+  {
+    "prompt": "Как правильно сказать: «Тебе нужно отправить отчёт до полудня»?",
+    "answers": [
+      "You have to send your report by noon.",
+      "You have send your report by noon.",
+      "You must to send your report by noon.",
+      "You has to send your report by noon."
+    ],
+    "correct": "You have to send your report by noon.",
+    "explanation": "Have to + V выражает необходимость; с you используем have to."
+  },
+  {
+    "prompt": "Исправь ошибку: Elizabeth musts answer immediately.",
+    "answers": [
+      "Elizabeth must answer immediately.",
+      "Elizabeth musts answer immediately.",
+      "Elizabeth must to answer immediately.",
+      "Elizabeth has answer immediately."
+    ],
+    "correct": "Elizabeth must answer immediately.",
+    "explanation": "После must всегда базовая форма; окончания -s у must не бывает."
+  },
+  {
+    "prompt": "Исправь ошибку: Kevin shoulds arrive at ten.",
+    "answers": [
+      "Kevin should arrive at ten.",
+      "Kevin shoulds arrive at ten.",
+      "Kevin should to arrive at ten.",
+      "Kevin does should arrive at ten."
+    ],
+    "correct": "Kevin should arrive at ten.",
+    "explanation": "Should одинаков для всех лиц и требует базовую форму."
+  },
+  {
+    "prompt": "Исправь ошибку: Mark have to come tomorrow.",
+    "answers": [
+      "Mark has to come tomorrow.",
+      "Mark have to come tomorrow.",
+      "Mark has to comes tomorrow.",
+      "Mark musts come tomorrow."
+    ],
+    "correct": "Mark has to come tomorrow.",
+    "explanation": "Mark = he, поэтому has to; после to ставим come."
+  },
+  {
+    "prompt": "Исправь ошибку: I should to buy a new phone.",
+    "answers": [
+      "I should buy a new phone.",
+      "I should to buy a new phone.",
+      "I should buying a new phone.",
+      "I do should buy a new phone."
+    ],
+    "correct": "I should buy a new phone.",
+    "explanation": "Should + базовая форма buy, без to."
+  },
+  {
+    "prompt": "Как правильно сказать о прошлой необходимости?",
+    "answers": [
+      "I had to leave early yesterday.",
+      "I have to leave early yesterday.",
+      "I musted leave early yesterday.",
+      "I had leave early yesterday."
+    ],
+    "correct": "I had to leave early yesterday.",
+    "explanation": "В прошлом have to превращается в had to для всех лиц; формы musted не существует."
+  },
+  {
+    "prompt": "Как правильно сказать о будущей необходимости?",
+    "answers": [
+      "We will have to work tomorrow.",
+      "We will must work tomorrow.",
+      "We have to worked tomorrow.",
+      "We will have work tomorrow."
+    ],
+    "correct": "We will have to work tomorrow.",
+    "explanation": "Будущее необходимости: will have to + базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: She doesn't should be so rude.",
+    "answers": [
+      "She shouldn't be so rude.",
+      "She doesn't should be so rude.",
+      "She shouldn't to be so rude.",
+      "She not should be so rude."
+    ],
+    "correct": "She shouldn't be so rude.",
+    "explanation": "Отрицание should строится без do: should not / shouldn't + V."
+  },
+  {
+    "prompt": "Как правильно выразить запрет?",
+    "answers": [
+      "They mustn't enter this room.",
+      "They don't have to enter this room.",
+      "They shouldn't to enter this room.",
+      "They mustn't to enter this room."
+    ],
+    "correct": "They mustn't enter this room.",
+    "explanation": "Mustn't означает строгий запрет: нельзя входить."
+  },
+  {
+    "prompt": "Исправь ошибку: She don't have to study tonight.",
+    "answers": [
+      "She doesn't have to study tonight.",
+      "She don't have to study tonight.",
+      "She hasn't to study tonight.",
+      "She doesn't has to study tonight."
+    ],
+    "correct": "She doesn't have to study tonight.",
+    "explanation": "С she используем doesn't; после него базовая форма have."
+  },
+  {
+    "prompt": "Как сказать, что приходить необязательно?",
+    "answers": [
+      "You don't have to come tomorrow.",
+      "You mustn't come tomorrow.",
+      "You shouldn't to come tomorrow.",
+      "You haven't to come tomorrow."
+    ],
+    "correct": "You don't have to come tomorrow.",
+    "explanation": "Don't have to означает отсутствие необходимости: можно не приходить."
+  },
+  {
+    "prompt": "Исправь ошибку: I hadn't to cook because we ordered pizza.",
+    "answers": [
+      "I didn't have to cook because we ordered pizza.",
+      "I hadn't to cook because we ordered pizza.",
+      "I mustn't cook because we ordered pizza.",
+      "I didn't had to cook because we ordered pizza."
+    ],
+    "correct": "I didn't have to cook because we ordered pizza.",
+    "explanation": "Прошлое отсутствие необходимости: didn't have to + V."
+  },
+  {
+    "prompt": "На табличке написано No swimming. Что сказать?",
+    "answers": [
+      "People mustn't swim here.",
+      "People don't have to swim here.",
+      "People shouldn't to swim here.",
+      "People mustn't to swim here."
+    ],
+    "correct": "People mustn't swim here.",
+    "explanation": "Это запрет, поэтому mustn't, а не don't have to."
+  },
+  {
+    "prompt": "Исправь ошибку: You don't should drive so fast.",
+    "answers": [
+      "You shouldn't drive so fast.",
+      "You don't should drive so fast.",
+      "You shouldn't to drive so fast.",
+      "You doesn't should drive so fast."
+    ],
+    "correct": "You shouldn't drive so fast.",
+    "explanation": "Совет в отрицании: shouldn't + базовая форма."
+  },
+  {
+    "prompt": "Как сказать, что платить в будущем не придётся?",
+    "answers": [
+      "We won't have to pay next time.",
+      "We won't must pay next time.",
+      "We don't have to paid next time.",
+      "We will haven't to pay next time."
+    ],
+    "correct": "We won't have to pay next time.",
+    "explanation": "Будущее отсутствие необходимости: won't have to + V."
+  },
+  {
+    "prompt": "Исправь ошибку: He don't have to work today.",
+    "answers": [
+      "He doesn't have to work today.",
+      "He don't have to work today.",
+      "He hasn't to work today.",
+      "He doesn't has to work today."
+    ],
+    "correct": "He doesn't have to work today.",
+    "explanation": "He требует doesn't; после doesn't — have."
+  },
+  {
+    "prompt": "Как правильно выразить строгий запрет трогать оборудование?",
+    "answers": [
+      "You must not touch the equipment.",
+      "You do not must touch the equipment.",
+      "You must not to touch the equipment.",
+      "You don't have to touch the equipment."
+    ],
+    "correct": "You must not touch the equipment.",
+    "explanation": "Must not + V выражает запрет; do не используется."
+  },
+  {
+    "prompt": "Исправь вопрос: Should he goes to the beach?",
+    "answers": [
+      "Should he go to the beach?",
+      "Should he goes to the beach?",
+      "Does he should go to the beach?",
+      "Should he to go to the beach?"
+    ],
+    "correct": "Should he go to the beach?",
+    "explanation": "Вопрос с should: Should + subject + базовая форма?"
+  },
+  {
+    "prompt": "Исправь вопрос: Does he must finish today?",
+    "answers": [
+      "Must he finish today?",
+      "Does he must finish today?",
+      "Must he finishes today?",
+      "Does he must to finish today?"
+    ],
+    "correct": "Must he finish today?",
+    "explanation": "Must сам выходит перед подлежащим; does не нужен."
+  },
+  {
+    "prompt": "Исправь вопрос: Have they to pay now?",
+    "answers": [
+      "Do they have to pay now?",
+      "Have they to pay now?",
+      "Do they has to pay now?",
+      "Must they to pay now?"
+    ],
+    "correct": "Do they have to pay now?",
+    "explanation": "Вопрос с have to в Present Simple строится через do."
+  },
+  {
+    "prompt": "Исправь вопрос: Has she to leave early?",
+    "answers": [
+      "Does she have to leave early?",
+      "Has she to leave early?",
+      "Does she has to leave early?",
+      "Is she have to leave early?"
+    ],
+    "correct": "Does she have to leave early?",
+    "explanation": "С she: Does + subject + have to + V."
+  },
+  {
+    "prompt": "Как спросить о прошлой необходимости?",
+    "answers": [
+      "Did you have to wait long?",
+      "Had you to wait long?",
+      "Did you had to wait long?",
+      "Were you have to wait long?"
+    ],
+    "correct": "Did you have to wait long?",
+    "explanation": "Вопрос в прошлом: Did + subject + have to + V."
+  },
+  {
+    "prompt": "Как попросить совет: «Мне позвонить ему?»",
+    "answers": [
+      "Should I call him?",
+      "Do I should call him?",
+      "Should I to call him?",
+      "Must I calling him?"
+    ],
+    "correct": "Should I call him?",
+    "explanation": "Should I...? используется, когда спрашиваем совет."
+  },
+  {
+    "prompt": "Исправь вопрос: Do we must wear a uniform?",
+    "answers": [
+      "Must we wear a uniform?",
+      "Do we must wear a uniform?",
+      "Must we to wear a uniform?",
+      "Must we wears a uniform?"
+    ],
+    "correct": "Must we wear a uniform?",
+    "explanation": "Вопрос с must строится без do и без to."
+  },
+  {
+    "prompt": "Как спросить о будущей необходимости?",
+    "answers": [
+      "Will he have to travel next week?",
+      "Will he must travel next week?",
+      "Does he will have to travel next week?",
+      "Will he has to travel next week?"
+    ],
+    "correct": "Will he have to travel next week?",
+    "explanation": "Будущий вопрос: Will + subject + have to + V?"
+  },
+  {
+    "prompt": "Исправь вопрос: Why she has to leave?",
+    "answers": [
+      "Why does she have to leave?",
+      "Why she has to leave?",
+      "Why does she has to leave?",
+      "Why has she to leave?"
+    ],
+    "correct": "Why does she have to leave?",
+    "explanation": "Present Simple: Why + does + subject + have to + V?"
+  },
+  {
+    "prompt": "Исправь вопрос: When did they had to leave?",
+    "answers": [
+      "When did they have to leave?",
+      "When did they had to leave?",
+      "When had they to leave?",
+      "When did they have leave?"
+    ],
+    "correct": "When did they have to leave?",
+    "explanation": "После did используем базовую форму have, не had."
+  },
+  {
+    "prompt": "Галстук необязателен. Как сказать?",
+    "answers": [
+      "You don't have to wear a tie.",
+      "You mustn't wear a tie.",
+      "You shouldn't wear a tie.",
+      "You must wear a tie."
+    ],
+    "correct": "You don't have to wear a tie.",
+    "explanation": "Don't have to = нет необходимости, но можно сделать."
+  },
+  {
+    "prompt": "Парковка запрещена. Как сказать?",
+    "answers": [
+      "You mustn't park here.",
+      "You don't have to park here.",
+      "You shouldn't to park here.",
+      "You haven't to park here."
+    ],
+    "correct": "You mustn't park here.",
+    "explanation": "Mustn't = нельзя, строгий запрет."
+  },
+  {
+    "prompt": "Вчера пришлось вызвать врача. Как сказать?",
+    "answers": [
+      "I had to call a doctor yesterday.",
+      "I must call a doctor yesterday.",
+      "I have to called a doctor yesterday.",
+      "I did have to called a doctor yesterday."
+    ],
+    "correct": "I had to call a doctor yesterday.",
+    "explanation": "Прошлая необходимость выражается had to + V."
+  },
+  {
+    "prompt": "Это моё сильное личное решение: не забыть. Как сказать?",
+    "answers": [
+      "I must remember this.",
+      "I have remember this.",
+      "I must to remember this.",
+      "I shoulds remember this."
+    ],
+    "correct": "I must remember this.",
+    "explanation": "Must часто выражает сильную необходимость, которую ощущает сам говорящий."
+  },
+  {
+    "prompt": "Это совет обратиться к врачу. Как сказать?",
+    "answers": [
+      "You should see a doctor.",
+      "You must to see a doctor.",
+      "You should to see a doctor.",
+      "You have see a doctor."
+    ],
+    "correct": "You should see a doctor.",
+    "explanation": "Should выражает совет, а не строгую обязанность."
+  },
+  {
+    "prompt": "Как уточнить внешнее требование про паспорт?",
+    "answers": [
+      "Do I have to bring my passport?",
+      "Must I to bring my passport?",
+      "Have I to bring my passport?",
+      "Do I has to bring my passport?"
+    ],
+    "correct": "Do I have to bring my passport?",
+    "explanation": "Have to удобно использовать для правил и внешних требований; вопрос строится через do."
+  }
+];
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -2674,8 +3073,8 @@ function renderDashboard() {
 
         <article class="mode-card mode-green">
           <span class="mode-kicker">Глаголы-помощники</span>
-          <h3>Have, has, had и остальные</h3>
-          <p>Have had, had had, do/does/did, формы be, will и have to без зубрёжки.</p>
+          <h3>Помощники и модальные</h3>
+          <p>Have had, do/does/did, формы be, must, should и have to — плюс порядок слов.</p>
           <div class="mode-card-meta">${auxiliaryStatText}</div>
           <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">12 заданий</button></div>
         </article>
@@ -3028,34 +3427,47 @@ function renderAuxiliaryGuide() {
   guide.innerHTML = `
     <button class="back-button" type="button" data-action="home">← К тренировке</button>
     <article class="lesson-card guide-page auxiliary-guide">
-      <span class="lesson-tag">Auxiliary verbs</span>
-      <h1>Have, has, had — и кто кому помогает</h1>
-      <p class="subtitle">Один и тот же глагол может означать «иметь» или быть частью грамматической формулы. Сначала найди время и подлежащее, затем смотри, есть ли после помощника V3, V-ing или to + V.</p>
+      <span class="lesson-tag">Auxiliary & modal verbs</span>
+      <h1>Как собрать предложение с помощником</h1>
+      <p class="subtitle">Сначала выбери смысл: факт, вопрос, совет, обязанность или запрет. Затем поставь помощник перед базовой формой глагола — и не добавляй лишние to или -s.</p>
 
+      <h2 class="guide-heading">Карта помощников</h2>
       <div class="aux-rule-grid">
         ${helpers.map(([form,time,pattern,use]) => `<section class="aux-rule-card">
           <span>${time}</span><h2>${form}</h2><strong>${pattern}</strong><p>${use}</p>
         </section>`).join("")}
       </div>
 
+      <h2 class="guide-heading">Must, should и have to: три конструкции</h2>
+      <div class="modal-structure-grid">
+        <section class="modal-structure-card"><span>Утверждение</span><strong>Subject + must/should + V</strong><p>You should wear a jacket.<br>He must arrive early.</p></section>
+        <section class="modal-structure-card"><span>Отрицание</span><strong>Subject + shouldn't/mustn't + V</strong><p>You shouldn't worry.<br>You mustn't park here.</p></section>
+        <section class="modal-structure-card"><span>Вопрос</span><strong>Should/Must + subject + V?</strong><p>Should I call him?<br>Must we pay now?</p></section>
+        <section class="modal-structure-card"><span>Have to</span><strong>do/does/did + subject + have to + V?</strong><p>Does she have to go?<br>Did you have to wait?</p></section>
+      </div>
+
+      <div class="modal-contrast">
+        <section><strong>You mustn't swim here.</strong><span>Строгий запрет: плавать нельзя.</span></section>
+        <section><strong>You don't have to swim.</strong><span>Нет необходимости: можно не плавать, но запрета нет.</span></section>
+      </div>
+
       <h2 class="guide-heading">Почему два had подряд — это нормально</h2>
       <div class="aux-chain-list">
         <div><strong>I have had this phone for three years.</strong><span><b>have</b> — помощник Present Perfect; <b>had</b> — V3 глагола have.</span></div>
-        <div><strong>She has had a busy week.</strong><span><b>has</b> — помощник для she; <b>had</b> — «имела» в третьей форме.</span></div>
+        <div><strong>She has had a busy week.</strong><span><b>has</b> — помощник для she; <b>had</b> — третья форма смыслового have.</span></div>
         <div><strong>I had had breakfast before the call.</strong><span>первое <b>had</b> — помощник Past Perfect; второе <b>had</b> — V3. Завтрак был раньше звонка.</span></div>
       </div>
 
-      <aside class="principle-box"><strong>Главная проверка:</strong> после do, does, did и will всегда ставь базовую форму: <em>Does she have...?</em>, <em>Did he go...?</em>, <em>will be</em>. После have/has/had во временах Perfect ставь V3: <em>has gone</em>, <em>had finished</em>.</aside>
+      <aside class="principle-box"><strong>Главная проверка:</strong> после must, should, do, does, did и will всегда базовая форма без to и без -s: <em>She should go</em>, <em>Does he have to work?</em>, <em>He must arrive</em>.</aside>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 12 заданий</button>
+        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 14 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К каталогу</button>
       </div>
     </article>
   `;
   showOnly(guide);
 }
-
 function startDailySession() {
   if (!state.diagnosed) {
     const questions = shuffle(TENSES.map((tense) => questionFor(tense, 0)));
@@ -3180,9 +3592,23 @@ function auxiliaryQuestionFor(item) {
   };
 }
 
+function modalQuestionFor(item) {
+  const options = shuffle(item.answers);
+  return {
+    type: "modal-build",
+    topicKey: "auxiliaries",
+    text: item.prompt,
+    answers: options,
+    correct: options.indexOf(item.correct),
+    example: item.correct,
+    explanation: `<span class="aux-explanation">${item.explanation}</span>`,
+  };
+}
+
 function startAuxiliarySession() {
-  const questions = shuffle(AUXILIARY_ITEMS).slice(0, 12).map(auxiliaryQuestionFor);
-  startSession("auxiliaries", "Have, has, had и помощники", questions);
+  const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 7).map(auxiliaryQuestionFor);
+  const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 7).map(modalQuestionFor);
+  startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions]));
 }
 
 function startFocusSession(key) {
@@ -3242,6 +3668,7 @@ function renderQuiz() {
   const isPhraseTense = question.type === "phrase-tense";
   const isArticle = question.type === "article";
   const isAuxiliary = question.type === "auxiliary";
+  const isModalBuild = question.type === "modal-build";
   const taskText = isIdentify
     ? "Какое время используется в предложении?"
     : isGerund
@@ -3252,9 +3679,11 @@ function renderQuiz() {
           ? "Определи время готового предложения"
           : isArticle
             ? "Выбери артикль или вариант без него"
-            : isAuxiliary
-              ? "Выбери подходящий глагол-помощник"
-              : "Выбери правильную форму";
+            : isModalBuild
+              ? "Выбери правильно построенное предложение"
+              : isAuxiliary
+                ? "Выбери подходящий глагол-помощник"
+                : "Выбери правильную форму";
   const modeText = isIdentify
     ? "Определи время"
     : isGerund
@@ -3263,10 +3692,10 @@ function renderQuiz() {
         ? "Речевые обороты"
         : isArticle
           ? "Articles"
-          : isAuxiliary
-            ? "Auxiliary verbs"
+          : isAuxiliary || isModalBuild
+            ? "Auxiliary & modal verbs"
             : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary ? "auxiliary-mode" : "";
+  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
