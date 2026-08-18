@@ -1453,6 +1453,369 @@ const PHRASE_TENSE_CLUES = {
   "future-perfect-continuous": "длительность накопится к будущему моменту; will have been + V-ing"
 };
 
+const ARTICLE_ITEMS = [
+  {
+    "text": "She works as ___ engineer.",
+    "answer": "an",
+    "ruleKey": "job",
+    "explanation": "После профессии ставим a/an; engineer начинается с гласного звука."
+  },
+  {
+    "text": "He wants to buy ___ new laptop.",
+    "answer": "a",
+    "ruleKey": "first",
+    "explanation": "Предмет упоминается впервые и является одним из многих."
+  },
+  {
+    "text": "What ___ useful idea!",
+    "answer": "a",
+    "ruleKey": "exclamation",
+    "explanation": "В конструкции What a... нужен неопределённый артикль; useful начинается со звука /j/."
+  },
+  {
+    "text": "I practise English twice ___ week.",
+    "answer": "a",
+    "ruleKey": "frequency",
+    "explanation": "В выражениях частоты используем a: once a day, twice a week."
+  },
+  {
+    "text": "We waited for ___ hour.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "Hour начинается с гласного звука: буква h не произносится."
+  },
+  {
+    "text": "She studies at ___ university in Madrid.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "University начинается с согласного звука /j/, поэтому a, а не an."
+  },
+  {
+    "text": "He gave me ___ honest answer.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "В honest буква h не произносится, поэтому первый звук гласный."
+  },
+  {
+    "text": "Take ___ umbrella; it's raining.",
+    "answer": "an",
+    "ruleKey": "first",
+    "explanation": "Umbrella — исчисляемый предмет в единственном числе, упоминается впервые."
+  },
+  {
+    "text": "They adopted ___ cat from a shelter.",
+    "answer": "a",
+    "ruleKey": "first",
+    "explanation": "Один неопределённый кот упоминается впервые."
+  },
+  {
+    "text": "She works as ___ UX designer.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "UX произносится с начальным звуком /j/: a UX designer."
+  },
+  {
+    "text": "We watched ___ European film.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "European начинается со звука /j/, поэтому используем a."
+  },
+  {
+    "text": "He ate ___ apple after lunch.",
+    "answer": "an",
+    "ruleKey": "first",
+    "explanation": "Apple начинается с гласного звука и упоминается впервые."
+  },
+  {
+    "text": "It was ___ one-time offer.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "One начинается со звука /w/, поэтому a one-time offer."
+  },
+  {
+    "text": "I had ___ unusual experience yesterday.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "Unusual начинается с гласного звука."
+  },
+  {
+    "text": "My brother is ___ doctor.",
+    "answer": "a",
+    "ruleKey": "job",
+    "explanation": "С профессией в единственном числе используем a/an."
+  },
+  {
+    "text": "I bought a book yesterday. ___ book is already on my desk.",
+    "answer": "the",
+    "ruleKey": "mentioned",
+    "explanation": "Book уже упоминалась, поэтому при повторе используем the."
+  },
+  {
+    "text": "Please close ___ door.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Из ситуации понятно, о какой двери идёт речь."
+  },
+  {
+    "text": "___ sun is shining today.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "С уникальными объектами используем the."
+  },
+  {
+    "text": "This is ___ best restaurant in the area.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед превосходной степенью нужен the."
+  },
+  {
+    "text": "It was ___ first time I had visited London.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед порядковыми числительными используем the."
+  },
+  {
+    "text": "We went to ___ cinema last night.",
+    "answer": "the",
+    "ruleKey": "place",
+    "explanation": "Cinema, theatre и подобные городские места часто используются с the."
+  },
+  {
+    "text": "I'll meet you at ___ airport.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Речь о конкретном аэропорте, понятном из контекста."
+  },
+  {
+    "text": "They arrived on ___ same day.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "В устойчивом сочетании the same всегда нужен the."
+  },
+  {
+    "text": "She is ___ only person who knows the password.",
+    "answer": "the",
+    "ruleKey": "only",
+    "explanation": "Перед only, когда выделяем единственный объект, ставим the."
+  },
+  {
+    "text": "I found the answer on ___ internet.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "Устойчивое выражение: on the internet."
+  },
+  {
+    "text": "___ moon looks bright tonight.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "Луна рассматривается как уникальный объект."
+  },
+  {
+    "text": "They moved to ___ Netherlands.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Названия стран во множественном числе употребляются с the."
+  },
+  {
+    "text": "He has never been to ___ United States.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Названия государств со словами States, Kingdom, Republic требуют the."
+  },
+  {
+    "text": "They sailed across ___ Pacific Ocean.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед океанами и морями ставим the."
+  },
+  {
+    "text": "We went skiing in ___ Alps.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед горными цепями во множественном числе ставим the."
+  },
+  {
+    "text": "London stands on ___ Thames.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед названиями рек используем the."
+  },
+  {
+    "text": "She can play ___ piano.",
+    "answer": "the",
+    "ruleKey": "instrument",
+    "explanation": "Перед музыкальными инструментами после play обычно ставим the."
+  },
+  {
+    "text": "The policy will affect ___ elderly.",
+    "answer": "the",
+    "ruleKey": "groups",
+    "explanation": "The + adjective может обозначать группу людей."
+  },
+  {
+    "text": "I usually exercise in ___ morning.",
+    "answer": "the",
+    "ruleKey": "timePhrase",
+    "explanation": "Устойчивые выражения: in the morning, in the afternoon, in the evening."
+  },
+  {
+    "text": "Read ___ last page carefully.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед last и first в последовательности обычно ставим the."
+  },
+  {
+    "text": "___ Water is essential for life.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Неисчисляемое существительное используется в общем смысле."
+  },
+  {
+    "text": "___ Dogs need daily exercise.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Множественное число в общем смысле употребляется без артикля."
+  },
+  {
+    "text": "I usually go to ___ work by bus.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Home, work, school и church без артикля, когда речь об их обычной функции."
+  },
+  {
+    "text": "She is at ___ home today.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Устойчивое выражение at home используется без артикля."
+  },
+  {
+    "text": "The children go to ___ school at eight.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Без артикля, когда дети идут в школу учиться."
+  },
+  {
+    "text": "We had ___ breakfast at seven.",
+    "answer": "Без артикля",
+    "ruleKey": "meal",
+    "explanation": "Названия приёмов пищи обычно употребляются без артикля."
+  },
+  {
+    "text": "She speaks ___ English fluently.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед названиями языков артикль не нужен."
+  },
+  {
+    "text": "They play ___ football every Sunday.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед видами спорта артикль не нужен."
+  },
+  {
+    "text": "He studied ___ history at university.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед учебными дисциплинами артикль обычно не ставится."
+  },
+  {
+    "text": "We live in ___ Spain.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Большинство стран и городов употребляются без артикля."
+  },
+  {
+    "text": "I moved to ___ Bilbao last year.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед названиями городов артикль обычно не ставится."
+  },
+  {
+    "text": "They climbed ___ Mount Etna.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед отдельными горами с Mount артикль не нужен."
+  },
+  {
+    "text": "We stayed near ___ Lake Como.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед озёрами со словом Lake артикль не нужен."
+  },
+  {
+    "text": "The shop is on ___ Oxford Street.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед названиями улиц артикль обычно не ставится."
+  },
+  {
+    "text": "We travelled there by ___ bus.",
+    "answer": "Без артикля",
+    "ruleKey": "transport",
+    "explanation": "В конструкции by + транспорт артикль не используется."
+  },
+  {
+    "text": "The children are in ___ bed.",
+    "answer": "Без артикля",
+    "ruleKey": "fixed",
+    "explanation": "Устойчивое выражение in bed используется без артикля."
+  },
+  {
+    "text": "They go to ___ church every Sunday.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Без артикля, когда речь о посещении церкви по назначению."
+  },
+  {
+    "text": "___ Money doesn't grow on trees.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Money — неисчисляемое существительное в общем смысле."
+  },
+  {
+    "text": "___ Life can be unpredictable.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Абстрактное существительное life используется в общем смысле."
+  },
+  {
+    "text": "___ Children need enough sleep.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Множественное число в общем значении не требует артикля."
+  },
+  {
+    "text": "I went to ___ school to speak to my son's teacher.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Здесь school — конкретное здание, а не обычная функция ученика."
+  },
+  {
+    "text": "She plays ___ guitar in a band.",
+    "answer": "the",
+    "ruleKey": "instrument",
+    "explanation": "Перед музыкальным инструментом после play используем the."
+  },
+  {
+    "text": "I left my laptop at ___ office.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Речь о конкретном офисе говорящего."
+  },
+  {
+    "text": "They elected her ___ president.",
+    "answer": "Без артикля",
+    "ruleKey": "title",
+    "explanation": "После elect, appoint и make перед должностью артикль часто не ставится."
+  },
+  {
+    "text": "Let's meet ___ next Monday.",
+    "answer": "Без артикля",
+    "ruleKey": "nextLast",
+    "explanation": "Перед next/last + день или период артикль не используется."
+  }
+];
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -1473,12 +1836,14 @@ document.addEventListener("click", (event) => {
   if (action === "start-identify") startIdentifySession();
   if (action === "start-gerund") startGerundSession();
   if (action === "start-phrases") startPhraseSession();
+  if (action === "start-articles") startArticleSession();
   if (action === "focus-tense") startFocusSession(key);
   if (action === "identify-tense") startIdentifyForTense(key);
   if (action === "open-tense") renderLesson(key);
   if (action === "open-guide") renderGuide();
   if (action === "open-gerund-guide") renderGerundGuide();
   if (action === "open-phrases") renderPhraseGuide();
+  if (action === "open-articles") renderArticleGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -1496,6 +1861,7 @@ function defaultState() {
     grammarStats: {
       gerundInfinitive: { total: 0, correct: 0 },
       speechPatterns: { total: 0, correct: 0 },
+      articles: { total: 0, correct: 0 },
     },
   };
 }
@@ -1572,6 +1938,8 @@ function renderDashboard() {
   const gerundStatText = gerundStat.total ? `${accuracy(gerundStat)}% · ${gerundStat.total} ответов` : "Ещё не тренировались";
   const phraseStat = state.grammarStats.speechPatterns;
   const phraseStatText = phraseStat.total ? `${accuracy(phraseStat)}% · ${phraseStat.total} ответов` : "Ещё не тренировались";
+  const articleStat = state.grammarStats.articles;
+  const articleStatText = articleStat.total ? `${accuracy(articleStat)}% · ${articleStat.total} ответов` : "Ещё не тренировались";
 
   dashboard.innerHTML = `
     <section class="hero">
@@ -1595,51 +1963,46 @@ function renderDashboard() {
       <button class="secondary-button" type="button" data-action="focus-tense" data-key="${focus.key}">Потренировать это время</button>
     </section>
 
-    <section class="guide-banner">
-      <div>
-        <p class="eyebrow">Конструктор грамматики</p>
-        <h2>Как собирать времена, а не зубрить 12 таблиц</h2>
-        <p class="section-note">V, V-s, V-ing, V2 и V3; правила окончаний; вспомогательные глаголы; вопросы и отрицания.</p>
-      </div>
-      <button class="secondary-button" type="button" data-action="open-guide">Открыть правила</button>
-    </section>
 
-    <section class="identify-banner">
-      <div class="identify-icon" aria-hidden="true">?</div>
-      <div>
-        <p class="eyebrow">Новый режим</p>
-        <h2>Определи время по готовому предложению</h2>
-        <p class="section-note">Никаких пропусков: прочитай контекст, выбери время и разберись, какой признак его выдаёт.</p>
+    <section class="mode-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Каталог</p><h2>Тренировки по темам</h2></div>
+        <p class="section-note">Выбирай одну тему — прогресс сохраняется отдельно</p>
       </div>
-      <button class="primary-button" type="button" data-action="start-identify">Начать 10 заданий</button>
-    </section>
-
-    <section class="grammar-banner">
-      <div class="grammar-icon" aria-hidden="true">ing</div>
-      <div>
-        <p class="eyebrow">Gerund или infinitive</p>
-        <h2>Working, to work или просто work?</h2>
-        <p class="section-note">30 живых примеров: предлоги, глаголы-исключения, модальные глаголы и разница между try doing / try to do.</p>
-        <small class="banner-stat">${gerundStatText}</small>
-      </div>
-      <div class="banner-actions">
-        <button class="secondary-button" type="button" data-action="open-gerund-guide">Правила и примеры</button>
-        <button class="primary-button" type="button" data-action="start-gerund">Начать 12 заданий</button>
-      </div>
-    </section>
-
-
-    <section class="phrase-banner">
-      <div class="phrase-icon" aria-hidden="true">↗</div>
-      <div>
-        <p class="eyebrow">Речевые обороты</p>
-        <h2>Понимай фразу и сразу определяй её время</h2>
-        <p class="section-note">${PHRASE_ITEMS.length} контекстных примеров: быт, путешествия, работа, общение, планы, отношения и покупки.</p>
-        <small class="banner-stat">${phraseStatText}</small>
-      </div>
-      <div class="banner-actions">
-        <button class="secondary-button" type="button" data-action="open-phrases">Открыть библиотеку</button>
-        <button class="primary-button" type="button" data-action="start-phrases">Начать 14 заданий</button>
+      <div class="mode-grid">
+        <article class="mode-card mode-violet">
+          <span class="mode-kicker">Система времён</span>
+          <h3>Конструктор грамматики</h3>
+          <p>Формулы V, V-ing, V2 и V3, вопросы, отрицания и неправильные глаголы.</p>
+          <div class="mode-card-footer"><small>Общая памятка</small><button class="secondary-button" type="button" data-action="open-guide">Открыть</button></div>
+        </article>
+        <article class="mode-card mode-forest">
+          <span class="mode-kicker">Контекст</span>
+          <h3>Определи время</h3>
+          <p>Готовые предложения без пропусков: найди форму и признак времени.</p>
+          <div class="mode-card-footer"><small>36 примеров</small><button class="primary-button" type="button" data-action="start-identify">10 заданий</button></div>
+        </article>
+        <article class="mode-card mode-blue">
+          <span class="mode-kicker">Форма глагола</span>
+          <h3>Gerund или infinitive</h3>
+          <p>Working, to work или work; включая try, remember и stop.</p>
+          <div class="mode-card-meta">${gerundStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-gerund-guide">Правила</button><button class="primary-button" type="button" data-action="start-gerund">12 заданий</button></div>
+        </article>
+        <article class="mode-card mode-coral">
+          <span class="mode-kicker">Лексика + времена</span>
+          <h3>Речевые обороты</h3>
+          <p>${PHRASE_ITEMS.length} контекстных примеров по семи жизненным темам.</p>
+          <div class="mode-card-meta">${phraseStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-phrases">Библиотека</button><button class="primary-button" type="button" data-action="start-phrases">14 заданий</button></div>
+        </article>
+        <article class="mode-card mode-yellow">
+          <span class="mode-kicker">Новая тема</span>
+          <h3>Артикли: a, an, the или Ø</h3>
+          <p>Первое упоминание, конкретный предмет, уникальные объекты и случаи без артикля.</p>
+          <div class="mode-card-meta">${articleStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-articles">Правила</button><button class="primary-button" type="button" data-action="start-articles">12 заданий</button></div>
+        </article>
       </div>
     </section>
 
@@ -1896,6 +2259,85 @@ function renderPhraseGuide() {
   showOnly(guide);
 }
 
+function renderArticleGuide() {
+  const groups = [
+    {
+      token: "a / an",
+      title: "Один из многих",
+      rules: [
+        "только с исчисляемым существительным в единственном числе",
+        "профессия или описание: She is an engineer",
+        "первое упоминание: I bought a book",
+        "восклицание What a... и частота twice a week",
+        "a/an выбирается по звуку: an hour, но a university",
+      ],
+      examples: ["a useful device", "an honest answer", "a UX designer"],
+    },
+    {
+      token: "the",
+      title: "Тот самый",
+      rules: [
+        "предмет уже упоминался или понятен из контекста",
+        "уникальный объект: the sun, the internet",
+        "превосходная степень, first, last, only и same",
+        "реки, моря, океаны, горные цепи и некоторые страны",
+        "the cinema; play the guitar; in the morning",
+      ],
+      examples: ["the book I bought", "the best result", "the United States"],
+    },
+    {
+      token: "Ø",
+      title: "Без артикля",
+      rules: [
+        "множественное число и неисчисляемые слова в общем смысле",
+        "home, work, school, church — когда важна их функция",
+        "приёмы пищи, языки, спорт и учебные предметы",
+        "большинство стран, городов, улиц, озёр и отдельных гор",
+        "by bus, in bed, next Monday",
+      ],
+      examples: ["Money matters", "go to work", "speak English"],
+    },
+  ];
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page article-guide">
+      <span class="lesson-tag">Articles</span>
+      <h1>A, an, the или ничего?</h1>
+      <p class="subtitle">Артикль показывает, как собеседник должен воспринимать существительное: это один новый предмет, конкретный знакомый предмет или понятие вообще.</p>
+
+      <div class="article-decision">
+        <strong>Быстрый алгоритм</strong>
+        <ol>
+          <li>Существительное исчисляемое и в единственном числе? Тогда чаще нужен a/an или the.</li>
+          <li>Собеседник уже знает, о чём речь? Выбирай the.</li>
+          <li>Это один новый предмет? Выбирай a/an по первому звуку.</li>
+          <li>Это общее понятие, имя или устойчивое выражение? Проверь вариант без артикля.</li>
+        </ol>
+      </div>
+
+      <div class="article-rule-grid">
+        ${groups.map((group) => `<section class="article-rule-card">
+          <span class="article-token">${group.token}</span>
+          <h2>${group.title}</h2>
+          <ul class="rule-list">${group.rules.map((rule) => `<li>${rule}</li>`).join("")}</ul>
+          <div class="article-examples">${group.examples.map((example) => `<span>${example}</span>`).join("")}</div>
+        </section>`).join("")}
+      </div>
+
+      <aside class="mistake-box">
+        <p class="eyebrow">Смотри на звук, не на букву</p>
+        <p><strong>an hour</strong>, <strong>an honest answer</strong>, но <strong>a university</strong>, <strong>a European city</strong>, <strong>a one-time offer</strong>.</p>
+      </aside>
+
+      <div class="lesson-actions">
+        <button class="primary-button" type="button" data-action="start-articles">Начать 12 заданий</button>
+        <button class="secondary-button" type="button" data-action="home">К каталогу</button>
+      </div>
+    </article>
+  `;
+  showOnly(guide);
+}
+
 function startDailySession() {
   if (!state.diagnosed) {
     const questions = shuffle(TENSES.map((tense) => questionFor(tense, 0)));
@@ -1981,6 +2423,28 @@ function startPhraseSession() {
   startSession("speech-patterns", "Речевые обороты + времена", shuffle(questions));
 }
 
+function articleComplete(item) {
+  return item.answer === "Без артикля" ? item.text.replace("___ ", "") : item.text.replace("___", item.answer);
+}
+
+function articleQuestionFor(item) {
+  const options = shuffle(["a", "an", "the", "Без артикля"]);
+  return {
+    type: "article",
+    topicKey: "articles",
+    text: item.text,
+    answers: options,
+    correct: options.indexOf(item.answer),
+    example: articleComplete(item),
+    explanation: `<span class="article-explanation"><b>${item.answer === "Без артикля" ? "Без артикля (Ø)" : item.answer}</b>: ${item.explanation}</span>`,
+  };
+}
+
+function startArticleSession() {
+  const questions = shuffle(ARTICLE_ITEMS).slice(0, 12).map(articleQuestionFor);
+  startSession("articles", "Артикли: a, an, the или Ø", questions);
+}
+
 function startFocusSession(key) {
   const tense = TENSES.find((item) => item.key === key);
   if (!tense) return;
@@ -2036,6 +2500,7 @@ function renderQuiz() {
   const isGerund = question.type === "gerund";
   const isPhrase = question.type === "phrase";
   const isPhraseTense = question.type === "phrase-tense";
+  const isArticle = question.type === "article";
   const taskText = isIdentify
     ? "Какое время используется в предложении?"
     : isGerund
@@ -2044,15 +2509,19 @@ function renderQuiz() {
         ? "Выбери оборот в форме, подходящей контексту"
         : isPhraseTense
           ? "Определи время готового предложения"
-          : "Выбери правильную форму";
+          : isArticle
+            ? "Выбери артикль или вариант без него"
+            : "Выбери правильную форму";
   const modeText = isIdentify
     ? "Определи время"
     : isGerund
       ? "Gerund or infinitive"
       : isPhrase || isPhraseTense
         ? "Речевые обороты"
-        : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : "";
+        : isArticle
+          ? "Articles"
+          : question.tense.name;
+  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -2145,7 +2614,13 @@ function finishSession() {
 
 function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
-  const message = session.type === "speech-patterns"
+  const message = session.type === "articles"
+    ? score >= 85
+      ? "Отлично: ты уверенно различаешь новый предмет, конкретный предмет и общее понятие. Повтори тему через пару дней."
+      : score >= 55
+        ? "Хорошая база. Перед выбором артикля сначала решай: собеседник уже знает этот предмет или слышит о нём впервые?"
+        : "Вернись к быстрому алгоритму и пройди ещё один подход. Отдельно повтори выбор a/an по звуку и случаи без артикля."
+    : session.type === "speech-patterns"
     ? score >= 85
       ? "Отлично: ты распознаёшь и смысл оборота, и время, в котором он используется. Возвращайся к режиму через пару дней для закрепления."
       : score >= 55
