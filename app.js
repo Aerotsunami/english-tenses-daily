@@ -3076,7 +3076,7 @@ function renderDashboard() {
           <h3>Помощники и модальные</h3>
           <p>Have had, do/does/did, формы be, must, should и have to — плюс порядок слов.</p>
           <div class="mode-card-meta">${auxiliaryStatText}</div>
-          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">12 заданий</button></div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">14 заданий</button></div>
         </article>
       </div>
     </section>
