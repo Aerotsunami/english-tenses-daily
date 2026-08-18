@@ -539,6 +539,920 @@ function gi(text, answers, correct, example, explanation) {
   return { text, answers, correct, example, explanation };
 }
 
+const PHRASE_ITEMS = [
+  {
+    "category": "Быт",
+    "base": "wake up",
+    "meaning": "просыпаться",
+    "text": "I usually ___ at seven on weekdays.",
+    "form": "wake up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "get up",
+    "meaning": "вставать с кровати",
+    "text": "We ___ late yesterday.",
+    "form": "got up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "turn on",
+    "meaning": "включать",
+    "text": "She always ___ the lights before sunset.",
+    "form": "turns on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "turn off",
+    "meaning": "выключать",
+    "text": "I ___ the oven before I left home.",
+    "form": "turned off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "clean up",
+    "meaning": "убираться, приводить в порядок",
+    "text": "We ___ the kitchen right now.",
+    "form": "are cleaning up",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "run out of",
+    "meaning": "исчерпать запас, остаться без",
+    "text": "We ___ gas on the motorway.",
+    "form": "ran out of",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "pick up",
+    "meaning": "забрать, подобрать",
+    "text": "I ___ you up from the airport when you arrive.",
+    "form": "will pick up",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "drop off",
+    "meaning": "подвезти и высадить",
+    "text": "He usually ___ the children at school.",
+    "form": "drops off",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "look after",
+    "meaning": "присматривать за",
+    "text": "Marta ___ my cat this week.",
+    "form": "is looking after",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "find out",
+    "meaning": "выяснить, узнать",
+    "text": "We ___ why the app was crashing.",
+    "form": "have found out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "give up",
+    "meaning": "сдаться, бросить занятие",
+    "text": "She ___ on the course yet.",
+    "form": "hasn't given up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "calm down",
+    "meaning": "успокоиться",
+    "text": "He ___ after we explained the problem.",
+    "form": "calmed down",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "put on",
+    "meaning": "надевать",
+    "text": "I ___ my coat when the phone rang.",
+    "form": "was putting on",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "take off",
+    "meaning": "снимать одежду",
+    "text": "He always ___ his shoes at the door.",
+    "form": "takes off",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "try on",
+    "meaning": "примерять",
+    "text": "She ___ three jackets so far.",
+    "form": "has tried on",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "throw away",
+    "meaning": "выбрасывать",
+    "text": "I ___ these old papers tomorrow.",
+    "form": "will throw away",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "set off",
+    "meaning": "отправиться в путь",
+    "text": "They ___ early in the morning.",
+    "form": "set off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "check in",
+    "meaning": "регистрироваться в отеле или аэропорту",
+    "text": "We ___ at the hotel right now.",
+    "form": "are checking in",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "check out",
+    "meaning": "выписаться из отеля",
+    "text": "We ___ before eleven tomorrow.",
+    "form": "will check out",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get in",
+    "meaning": "сесть в машину или такси",
+    "text": "She ___ the taxi and gave the driver the address.",
+    "form": "got in",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get on",
+    "meaning": "сесть в автобус, поезд или самолёт",
+    "text": "We ___ the wrong bus yesterday.",
+    "form": "got on",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get off",
+    "meaning": "выйти из транспорта",
+    "text": "I ___ at the next stop.",
+    "form": "will get off",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "board",
+    "meaning": "сесть на борт",
+    "text": "The passengers ___ the plane on time.",
+    "form": "boarded",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "take off",
+    "meaning": "взлетать",
+    "text": "The plane ___ when the storm began.",
+    "form": "was taking off",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "land",
+    "meaning": "приземляться",
+    "text": "Our flight ___ in Bilbao at six.",
+    "form": "will land",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "reach",
+    "meaning": "достичь места",
+    "text": "We ___ our destination at last.",
+    "form": "have reached",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "arrive at",
+    "meaning": "прибыть в конкретное место",
+    "text": "They ___ the hotel before the rain started.",
+    "form": "had arrived at",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "head for",
+    "meaning": "направляться к",
+    "text": "We ___ the city centre now.",
+    "form": "are heading for",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "stop over",
+    "meaning": "сделать промежуточную остановку",
+    "text": "This time tomorrow, we ___ in Lisbon.",
+    "form": "will be stopping over",
+    "tenseKey": "future-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "see off",
+    "meaning": "проводить уезжающего",
+    "text": "We ___ our friends at the station.",
+    "form": "saw off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "break down",
+    "meaning": "сломаться",
+    "text": "The bus ___ before the replacement arrived.",
+    "form": "had broken down",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "miss",
+    "meaning": "опоздать на транспорт, пропустить",
+    "text": "I ___ the last train.",
+    "form": "have missed",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "carry out",
+    "meaning": "проводить, выполнять",
+    "text": "We ___ a user study this week.",
+    "form": "are carrying out",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "come up with",
+    "meaning": "придумать",
+    "text": "She ___ a much simpler solution.",
+    "form": "has come up with",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "figure out",
+    "meaning": "разобраться, найти решение",
+    "text": "I finally ___ what caused the error.",
+    "form": "figured out",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "follow up on",
+    "meaning": "вернуться к вопросу, проверить продолжение",
+    "text": "I ___ the open tasks tomorrow.",
+    "form": "will follow up on",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "look into",
+    "meaning": "изучить проблему",
+    "text": "The analyst ___ the drop in conversion now.",
+    "form": "is looking into",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "point out",
+    "meaning": "указать, обратить внимание",
+    "text": "He ___ a risk we had missed.",
+    "form": "pointed out",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "set up",
+    "meaning": "настроить, организовать",
+    "text": "We ___ a new dashboard for the team.",
+    "form": "have set up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "take over",
+    "meaning": "принять ответственность, руководство",
+    "text": "Marta ___ the project next month.",
+    "form": "will take over",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "hand in",
+    "meaning": "сдать работу или документ",
+    "text": "I ___ the report yesterday.",
+    "form": "handed in",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "go over",
+    "meaning": "просмотреть, разобрать",
+    "text": "We ___ the latest results at the moment.",
+    "form": "are going over",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "deal with",
+    "meaning": "заниматься проблемой",
+    "text": "Our support team ___ these requests every day.",
+    "form": "deals with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "work out",
+    "meaning": "разработать решение, получиться",
+    "text": "The team ___ a realistic plan.",
+    "form": "has worked out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "put off",
+    "meaning": "отложить",
+    "text": "They ___ the launch before the new issue appeared.",
+    "form": "had put off",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "bring up",
+    "meaning": "поднять тему",
+    "text": "She ___ the budget during the meeting.",
+    "form": "brought up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "wrap up",
+    "meaning": "заканчивать",
+    "text": "At six, we ___ the workshop.",
+    "form": "will be wrapping up",
+    "tenseKey": "future-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "fall behind",
+    "meaning": "отставать от плана",
+    "text": "The project ___ for several weeks.",
+    "form": "has been falling behind",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "get back to",
+    "meaning": "ответить позже, вернуться с ответом",
+    "text": "I ___ you after I check the numbers.",
+    "form": "will get back to",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "reach out to",
+    "meaning": "связаться по собственной инициативе",
+    "text": "We ___ three potential partners.",
+    "form": "have reached out to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "speak up",
+    "meaning": "говорить громче или открыто высказаться",
+    "text": "She ___ when nobody else challenged the decision.",
+    "form": "spoke up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "cut off",
+    "meaning": "оборвать связь или перебить",
+    "text": "The connection ___ during the call.",
+    "form": "cut us off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "go on",
+    "meaning": "происходить, продолжаться",
+    "text": "What ___ in the next room?",
+    "form": "is going on",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "get across",
+    "meaning": "донести мысль",
+    "text": "She finally ___ during the presentation.",
+    "form": "got her point across",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "fill in",
+    "meaning": "ввести в курс дела",
+    "text": "He always ___ after the weekly meeting.",
+    "form": "fills me in",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "talk over",
+    "meaning": "подробно обсудить",
+    "text": "We ___ the options tonight.",
+    "form": "will talk over",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "call back",
+    "meaning": "перезвонить",
+    "text": "The client ___ already.",
+    "form": "has called back",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "hear from",
+    "meaning": "получить известие от",
+    "text": "I ___ them since Monday.",
+    "form": "haven't heard from",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "keep in touch",
+    "meaning": "поддерживать связь",
+    "text": "We still ___ after all these years.",
+    "form": "keep in touch",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "catch up with",
+    "meaning": "пообщаться после перерыва",
+    "text": "I ___ an old colleague over lunch today.",
+    "form": "am catching up with",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "hang up",
+    "meaning": "положить трубку",
+    "text": "He ___ before I could answer.",
+    "form": "hung up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "get through to",
+    "meaning": "дозвониться, связаться",
+    "text": "I finally ___ support.",
+    "form": "have got through to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "put through",
+    "meaning": "соединить по телефону",
+    "text": "The receptionist ___ to the manager.",
+    "form": "put me through",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "sum up",
+    "meaning": "подвести итог",
+    "text": "She always ___ the main decisions at the end.",
+    "form": "sums up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "plan ahead",
+    "meaning": "планировать заранее",
+    "text": "He always ___ before a busy week.",
+    "form": "plans ahead",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "set aside",
+    "meaning": "отложить время или деньги",
+    "text": "I ___ two hours for deep work.",
+    "form": "have set aside",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "make time for",
+    "meaning": "находить время для",
+    "text": "I ___ English practice tomorrow.",
+    "form": "will make time for",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "run late",
+    "meaning": "опаздывать",
+    "text": "The meeting ___, so I'll be home later.",
+    "form": "is running late",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "be about to",
+    "meaning": "собираться сделать прямо сейчас",
+    "text": "The train ___ leave.",
+    "form": "is about to",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "be supposed to",
+    "meaning": "должен по договорённости или правилу",
+    "text": "We ___ send the draft today.",
+    "form": "are supposed to",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "end up",
+    "meaning": "в итоге оказаться или сделать",
+    "text": "We ___ taking a taxi instead of the bus.",
+    "form": "ended up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "get around to",
+    "meaning": "наконец найти время сделать",
+    "text": "I ___ reading that report yet.",
+    "form": "haven't got around to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "keep up with",
+    "meaning": "успевать за темпом",
+    "text": "I ___ all the new releases this month.",
+    "form": "am keeping up with",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "catch up on",
+    "meaning": "наверстать накопившееся",
+    "text": "By Friday, I ___ all my emails.",
+    "form": "will have caught up on",
+    "tenseKey": "future-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "look forward to",
+    "meaning": "с нетерпением ждать",
+    "text": "I ___ seeing you next week.",
+    "form": "am looking forward to",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "put together",
+    "meaning": "собрать, подготовить из частей",
+    "text": "She ___ a clear action plan.",
+    "form": "has put together",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "sort out",
+    "meaning": "разобраться, уладить",
+    "text": "By tomorrow, we ___ the access problem.",
+    "form": "will have sorted out",
+    "tenseKey": "future-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "stick to",
+    "meaning": "придерживаться",
+    "text": "He ___ his study plan for a month.",
+    "form": "has been sticking to",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "go ahead",
+    "meaning": "продолжить, дать ход",
+    "text": "We ___ with the test next week.",
+    "form": "will go ahead",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "come up",
+    "meaning": "возникать",
+    "text": "This issue often ___ in customer interviews.",
+    "form": "comes up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "get along with",
+    "meaning": "ладить с",
+    "text": "She ___ everyone on the team.",
+    "form": "gets along with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "fall out with",
+    "meaning": "поссориться с",
+    "text": "I ___ my neighbour last week.",
+    "form": "fell out with",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "make up",
+    "meaning": "помириться",
+    "text": "They ___ after the argument.",
+    "form": "have made up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "count on",
+    "meaning": "рассчитывать на",
+    "text": "I always ___ her in difficult situations.",
+    "form": "count on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "care about",
+    "meaning": "заботиться, считать важным",
+    "text": "He really ___ the quality of his work.",
+    "form": "cares about",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "cheer up",
+    "meaning": "взбодриться или подбодрить",
+    "text": "The good news ___ everyone.",
+    "form": "cheered up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "let down",
+    "meaning": "подвести",
+    "text": "She ___ me.",
+    "form": "has never let down",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "stand by",
+    "meaning": "поддержать в трудной ситуации",
+    "text": "I ___ you whatever happens.",
+    "form": "will stand by",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "look up to",
+    "meaning": "уважать, брать пример",
+    "text": "I ___ my first manager.",
+    "form": "looked up to",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "put up with",
+    "meaning": "терпеть",
+    "text": "We ___ this noise for months.",
+    "form": "have been putting up with",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "open up",
+    "meaning": "начать говорить откровенно",
+    "text": "He ___ more these days.",
+    "form": "is opening up",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "grow apart",
+    "meaning": "постепенно отдаляться",
+    "text": "They ___ for years before they separated.",
+    "form": "had been growing apart",
+    "tenseKey": "past-perfect-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "settle down",
+    "meaning": "остепениться, устроиться",
+    "text": "They ___ after they move to Bilbao.",
+    "form": "will settle down",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "turn down",
+    "meaning": "отклонить предложение",
+    "text": "She ___ the job offer.",
+    "form": "turned down",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "get over",
+    "meaning": "оправиться, пережить",
+    "text": "He ___ the disappointment at last.",
+    "form": "has got over",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "take after",
+    "meaning": "быть похожим на родственника",
+    "text": "Marta ___ her mother.",
+    "form": "takes after",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pay back",
+    "meaning": "вернуть долг",
+    "text": "I ___ you on Friday.",
+    "form": "will pay back",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "save up",
+    "meaning": "копить",
+    "text": "We ___ for a new laptop since January.",
+    "form": "have been saving up",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "cut back on",
+    "meaning": "сокращать расходы или потребление",
+    "text": "We ___ unnecessary subscriptions this month.",
+    "form": "are cutting back on",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "shop around",
+    "meaning": "сравнивать предложения",
+    "text": "We ___ when we found a better deal.",
+    "form": "were shopping around",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "sell out",
+    "meaning": "полностью распродаться",
+    "text": "The cheaper model ___ already.",
+    "form": "has sold out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "cost a fortune",
+    "meaning": "стоить целое состояние",
+    "text": "That last-minute flight ___ .",
+    "form": "cost a fortune",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "be worth",
+    "meaning": "стоить своих денег или усилий",
+    "text": "This course ___ the price.",
+    "form": "is worth",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "take back",
+    "meaning": "вернуть товар в магазин",
+    "text": "I ___ these shoes tomorrow.",
+    "form": "will take back",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "ask for",
+    "meaning": "просить, запрашивать",
+    "text": "She ___ a refund when the manager arrived.",
+    "form": "was asking for",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pick out",
+    "meaning": "выбрать из нескольких",
+    "text": "We ___ a gift for Marta.",
+    "form": "have picked out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "go with",
+    "meaning": "подходить, сочетаться",
+    "text": "This jacket ___ your shoes.",
+    "form": "goes with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "come to",
+    "meaning": "составить сумму",
+    "text": "The final bill ___ eighty euros.",
+    "form": "came to",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pay for",
+    "meaning": "заплатить за",
+    "text": "We ___ the hotel already.",
+    "form": "have paid for",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "waste money on",
+    "meaning": "тратить деньги впустую на",
+    "text": "He often ___ apps he never uses.",
+    "form": "wastes money on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "live on",
+    "meaning": "жить на определённую сумму",
+    "text": "They ___ a very small budget before the move.",
+    "form": "had been living on",
+    "tenseKey": "past-perfect-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "get by",
+    "meaning": "справляться с имеющимися деньгами",
+    "text": "We ___ without a car for now.",
+    "form": "are getting by",
+    "tenseKey": "present-continuous"
+  }
+];
+
+const PHRASE_TENSE_CLUES = {
+  "present-simple": "регулярность, привычка, факт или устойчивое состояние; форма V / V-s",
+  "present-continuous": "действие идёт сейчас или является временной ситуацией; am/is/are + V-ing",
+  "present-perfect": "есть результат или связь с настоящим, а точное законченное время не названо; have/has + V3",
+  "present-perfect-continuous": "важна длительность процесса до настоящего; have/has been + V-ing",
+  "past-simple": "завершённое событие в прошлом; V2 или форма с -ed",
+  "past-continuous": "действие было в процессе в конкретный прошлый момент; was/were + V-ing",
+  "past-perfect": "одно действие завершилось раньше другого прошлого события; had + V3",
+  "past-perfect-continuous": "процесс длился до другого момента в прошлом; had been + V-ing",
+  "future-simple": "решение, обещание или нейтральное будущее; will + V",
+  "future-continuous": "действие будет в процессе в определённый будущий момент; will be + V-ing",
+  "future-perfect": "результат будет готов к будущему сроку; will have + V3",
+  "future-perfect-continuous": "длительность накопится к будущему моменту; will have been + V-ing"
+};
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -558,11 +1472,13 @@ document.addEventListener("click", (event) => {
   if (action === "start-daily") startDailySession();
   if (action === "start-identify") startIdentifySession();
   if (action === "start-gerund") startGerundSession();
+  if (action === "start-phrases") startPhraseSession();
   if (action === "focus-tense") startFocusSession(key);
   if (action === "identify-tense") startIdentifyForTense(key);
   if (action === "open-tense") renderLesson(key);
   if (action === "open-guide") renderGuide();
   if (action === "open-gerund-guide") renderGerundGuide();
+  if (action === "open-phrases") renderPhraseGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
   if (action === "reset") resetProgress();
@@ -579,6 +1495,7 @@ function defaultState() {
     tenseStats: Object.fromEntries(TENSES.map((tense) => [tense.key, { total: 0, correct: 0, level: 0, dueAt: 0 }])),
     grammarStats: {
       gerundInfinitive: { total: 0, correct: 0 },
+      speechPatterns: { total: 0, correct: 0 },
     },
   };
 }
@@ -653,6 +1570,8 @@ function renderDashboard() {
   const progress = Math.round((learnedCount() / TENSES.length) * 100);
   const gerundStat = state.grammarStats.gerundInfinitive;
   const gerundStatText = gerundStat.total ? `${accuracy(gerundStat)}% · ${gerundStat.total} ответов` : "Ещё не тренировались";
+  const phraseStat = state.grammarStats.speechPatterns;
+  const phraseStatText = phraseStat.total ? `${accuracy(phraseStat)}% · ${phraseStat.total} ответов` : "Ещё не тренировались";
 
   dashboard.innerHTML = `
     <section class="hero">
@@ -706,6 +1625,21 @@ function renderDashboard() {
       <div class="banner-actions">
         <button class="secondary-button" type="button" data-action="open-gerund-guide">Правила и примеры</button>
         <button class="primary-button" type="button" data-action="start-gerund">Начать 12 заданий</button>
+      </div>
+    </section>
+
+
+    <section class="phrase-banner">
+      <div class="phrase-icon" aria-hidden="true">↗</div>
+      <div>
+        <p class="eyebrow">Речевые обороты</p>
+        <h2>Понимай фразу и сразу определяй её время</h2>
+        <p class="section-note">${PHRASE_ITEMS.length} контекстных примеров: быт, путешествия, работа, общение, планы, отношения и покупки.</p>
+        <small class="banner-stat">${phraseStatText}</small>
+      </div>
+      <div class="banner-actions">
+        <button class="secondary-button" type="button" data-action="open-phrases">Открыть библиотеку</button>
+        <button class="primary-button" type="button" data-action="start-phrases">Начать 14 заданий</button>
       </div>
     </section>
 
@@ -921,6 +1855,47 @@ function renderGerundGuide() {
   showOnly(guide);
 }
 
+function renderPhraseGuide() {
+  const categories = [...new Set(PHRASE_ITEMS.map((item) => item.category))];
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page phrase-guide">
+      <span class="lesson-tag">Phrasal verbs & expressions</span>
+      <h1>Библиотека речевых оборотов</h1>
+      <p class="subtitle">${PHRASE_ITEMS.length} примеров из повседневной речи. Запоминай оборот целиком, но форму первого глагола меняй по времени предложения.</p>
+
+      <aside class="principle-box">
+        <strong>Алгоритм:</strong> 1) пойми смысл ситуации; 2) найди маркер времени или порядок событий; 3) выбери время; 4) измени только глагольную часть оборота: <em>run out → ran out → have run out</em>. Частицы <em>up, out, off, after</em> не меняются.
+      </aside>
+
+      <div class="phrase-category-list">
+        ${categories.map((category, categoryIndex) => {
+          const categoryItems = PHRASE_ITEMS.filter((item) => item.category === category);
+          return `<details class="phrase-category" ${categoryIndex === 0 ? "open" : ""}>
+            <summary><span>${category}</span><small>${categoryItems.length} примеров</small></summary>
+            <div class="phrase-grid">
+              ${categoryItems.map((item) => {
+                const tense = TENSES.find((entry) => entry.key === item.tenseKey);
+                return `<article class="phrase-card">
+                  <div><strong>${item.base}</strong><span>${item.meaning}</span></div>
+                  <p>${phraseComplete(item)}</p>
+                  <small>${tense.name}</small>
+                </article>`;
+              }).join("")}
+            </div>
+          </details>`;
+        }).join("")}
+      </div>
+
+      <div class="lesson-actions">
+        <button class="primary-button" type="button" data-action="start-phrases">Начать 14 заданий</button>
+        <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
+      </div>
+    </article>
+  `;
+  showOnly(guide);
+}
+
 function startDailySession() {
   if (!state.diagnosed) {
     const questions = shuffle(TENSES.map((tense) => questionFor(tense, 0)));
@@ -957,6 +1932,53 @@ function startGerundSession() {
     .slice(0, 12)
     .map(gerundQuestionFor);
   startSession("gerund-infinitive", "Gerund или infinitive", questions);
+}
+
+function phraseComplete(item) {
+  return item.text.replace("___", item.form);
+}
+
+function phraseRule(item) {
+  const tense = TENSES.find((entry) => entry.key === item.tenseKey);
+  return `<span class="phrase-explanation"><b>${item.base}</b> — ${item.meaning}.<br><b>${tense.name}:</b> ${PHRASE_TENSE_CLUES[item.tenseKey]}.<br><b>Форма оборота:</b> ${item.base} → ${item.form}.</span>`;
+}
+
+function phraseQuestionFor(item) {
+  const distractors = shuffle(PHRASE_ITEMS.filter((entry) => entry.category === item.category && entry !== item))
+    .filter((entry, index, all) => all.findIndex((candidate) => candidate.form === entry.form) === index)
+    .slice(0, 3);
+  const options = shuffle([
+    { answer: item.form, correct: true },
+    ...distractors.map((entry) => ({ answer: entry.form, correct: false })),
+  ]);
+  return {
+    type: "phrase",
+    topicKey: "speechPatterns",
+    text: item.text,
+    answers: options.map((option) => option.answer),
+    correct: options.findIndex((option) => option.correct),
+    example: phraseComplete(item),
+    explanation: phraseRule(item),
+  };
+}
+
+function phraseTenseQuestionFor(item) {
+  const tense = TENSES.find((entry) => entry.key === item.tenseKey);
+  const optionKeys = shuffle([item.tenseKey, ...IDENTIFY_DISTRACTORS[item.tenseKey]]);
+  return {
+    type: "phrase-tense",
+    topicKey: "speechPatterns",
+    text: phraseComplete(item),
+    answers: optionKeys.map((key) => TENSES.find((entry) => entry.key === key).name),
+    correct: optionKeys.indexOf(tense.key),
+    explanation: phraseRule(item),
+  };
+}
+
+function startPhraseSession() {
+  const selected = shuffle(PHRASE_ITEMS).slice(0, 14);
+  const questions = selected.map((item, index) => index < 7 ? phraseQuestionFor(item) : phraseTenseQuestionFor(item));
+  startSession("speech-patterns", "Речевые обороты + времена", shuffle(questions));
 }
 
 function startFocusSession(key) {
@@ -1012,13 +2034,25 @@ function renderQuiz() {
   const question = session.questions[session.index];
   const isIdentify = question.type === "identify";
   const isGerund = question.type === "gerund";
+  const isPhrase = question.type === "phrase";
+  const isPhraseTense = question.type === "phrase-tense";
   const taskText = isIdentify
     ? "Какое время используется в предложении?"
     : isGerund
       ? "Выбери форму второго глагола"
-      : "Выбери правильную форму";
-  const modeText = isIdentify ? "Определи время" : isGerund ? "Gerund or infinitive" : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : "";
+      : isPhrase
+        ? "Выбери оборот в форме, подходящей контексту"
+        : isPhraseTense
+          ? "Определи время готового предложения"
+          : "Выбери правильную форму";
+  const modeText = isIdentify
+    ? "Определи время"
+    : isGerund
+      ? "Gerund or infinitive"
+      : isPhrase || isPhraseTense
+        ? "Речевые обороты"
+        : question.tense.name;
+  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -1046,7 +2080,6 @@ function renderQuiz() {
   `;
   showOnly(quiz);
 }
-
 function answerQuestion(index) {
   if (!session || session.answered) return;
   const question = session.questions[session.index];
@@ -1112,7 +2145,13 @@ function finishSession() {
 
 function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
-  const message = session.type === "gerund-infinitive"
+  const message = session.type === "speech-patterns"
+    ? score >= 85
+      ? "Отлично: ты распознаёшь и смысл оборота, и время, в котором он используется. Возвращайся к режиму через пару дней для закрепления."
+      : score >= 55
+        ? "Хорошая база. Сначала определяй время по контексту, затем изменяй только глагольную часть оборота — частица остаётся на месте."
+        : "Открой библиотеку и повтори примеры по одной категории. В следующем подходе проговаривай вслух базовую форму, готовое предложение и правило времени."
+    : session.type === "gerund-infinitive"
     ? score >= 85
       ? "Отлично: ты уверенно различаешь gerund, infinitive и форму без to. Повтори режим через пару дней для закрепления."
       : score >= 55
