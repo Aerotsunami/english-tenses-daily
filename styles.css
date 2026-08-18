@@ -151,6 +151,7 @@ h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.02em; }
 .mode-card.mode-blue::before { background: #31bde9; }
 .mode-card.mode-coral::before { background: var(--coral); }
 .mode-card.mode-yellow::before { background: var(--yellow); }
+.mode-card.mode-green::before { background: #5bbd77; }
 .mode-kicker { display: block; margin: 5px 0 14px; color: var(--muted); font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .mode-card h3 { color: var(--forest); font-size: 22px; line-height: 1.05; }
 .mode-card p { min-height: 62px; margin-bottom: 14px; color: var(--muted); line-height: 1.4; }
@@ -269,6 +270,19 @@ h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.02em; }
 .article-explanation { display: block; line-height: 1.5; }
 .article-explanation b { color: var(--forest); }
 
+.aux-rule-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 26px; }
+.aux-rule-card { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #fbfcfa; }
+.aux-rule-card span { color: var(--green); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.aux-rule-card h2 { margin: 9px 0; font-size: 23px; }
+.aux-rule-card strong { display: block; color: var(--forest); line-height: 1.35; }
+.aux-rule-card p { margin: 9px 0 0; color: var(--muted); line-height: 1.4; }
+.aux-chain-list { display: grid; gap: 9px; }
+.aux-chain-list div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 18px; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: #fbfcfa; }
+.aux-chain-list strong { color: var(--forest); }
+.aux-chain-list span { color: var(--muted); line-height: 1.42; }
+.aux-explanation { display: block; line-height: 1.5; }
+
+
 
 
 .quiz-wrap { max-width: 690px; margin: 0 auto; }
@@ -279,6 +293,7 @@ h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.02em; }
 .question-tense.grammar-mode { color: #075d77; background: #dff6fc; }
 .question-tense.phrase-mode { color: #8b3427; background: #fff0ed; }
 .question-tense.article-mode { color: #745800; background: #fff5cf; }
+.question-tense.auxiliary-mode { color: #24613a; background: #e7f6ea; }
 .question-task { margin-bottom: 10px; color: var(--muted); font-size: 13px; font-weight: 750; }
 .question { margin-bottom: 24px; color: var(--forest); font-size: clamp(26px, 4vw, 35px); line-height: 1.08; letter-spacing: -.045em; }
 .answers { display: grid; gap: 10px; }
@@ -331,6 +346,8 @@ h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.02em; }
   .phrase-card div { align-items: start; flex-direction: column; gap: 3px; }
   .phrase-card div span { text-align: left; }
   .article-rule-grid { grid-template-columns: 1fr; }
+  .aux-rule-grid { grid-template-columns: 1fr; }
+  .aux-chain-list div { grid-template-columns: 1fr; gap: 6px; }
   .irregular-grid { grid-template-columns: repeat(2, 1fr); }
   .irregular-grid div:nth-child(2n) { border-right: 0; }
   .irregular-grid div:nth-child(4n) { border-right: 0; }
