@@ -592,8 +592,8 @@ const PHRASE_ITEMS = [
     "category": "Быт",
     "base": "pick up",
     "meaning": "забрать, подобрать",
-    "text": "I ___ you up from the airport when you arrive.",
-    "form": "will pick up",
+    "text": "I ___ from the airport when you arrive.",
+    "form": "will pick you up",
     "tenseKey": "future-simple"
   },
   {
@@ -774,7 +774,7 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Путешествия",
-    "base": "see off",
+    "base": "see someone off",
     "meaning": "проводить уезжающего",
     "text": "We ___ our friends at the station.",
     "form": "saw off",
@@ -966,7 +966,7 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Общение",
-    "base": "get across",
+    "base": "get a point across",
     "meaning": "донести мысль",
     "text": "She finally ___ during the presentation.",
     "form": "got her point across",
@@ -974,7 +974,7 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Общение",
-    "base": "fill in",
+    "base": "fill someone in",
     "meaning": "ввести в курс дела",
     "text": "He always ___ after the weekly meeting.",
     "form": "fills me in",
@@ -1038,7 +1038,7 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Общение",
-    "base": "put through",
+    "base": "put someone through",
     "meaning": "соединить по телефону",
     "text": "The receptionist ___ to the manager.",
     "form": "put me through",
@@ -1222,7 +1222,7 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Люди и эмоции",
-    "base": "cheer up",
+    "base": "cheer someone up",
     "meaning": "взбодриться или подбодрить",
     "text": "The good news ___ everyone.",
     "form": "cheered up",
@@ -1230,10 +1230,10 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Люди и эмоции",
-    "base": "let down",
+    "base": "let someone down",
     "meaning": "подвести",
-    "text": "She ___ me.",
-    "form": "has never let down",
+    "text": "She ___.",
+    "form": "has never let me down",
     "tenseKey": "present-perfect"
   },
   {
@@ -1310,10 +1310,10 @@ const PHRASE_ITEMS = [
   },
   {
     "category": "Деньги и покупки",
-    "base": "pay back",
+    "base": "pay someone back",
     "meaning": "вернуть долг",
-    "text": "I ___ you on Friday.",
-    "form": "will pay back",
+    "text": "I ___ on Friday.",
+    "form": "will pay you back",
     "tenseKey": "future-simple"
   },
   {
@@ -1352,7 +1352,7 @@ const PHRASE_ITEMS = [
     "category": "Деньги и покупки",
     "base": "cost a fortune",
     "meaning": "стоить целое состояние",
-    "text": "That last-minute flight ___ .",
+    "text": "That last-minute flight ___.",
     "form": "cost a fortune",
     "tenseKey": "past-simple"
   },
