@@ -2878,6 +2878,406 @@ const MODAL_ITEMS = [
   }
 ];
 
+const ABILITY_ITEMS = [
+  {
+    "prompt": "Can you read this for me? I ___ see without my glasses.",
+    "answers": [
+      "can't",
+      "haven't been able to",
+      "couldn't",
+      "am not able"
+    ],
+    "correct": "can't",
+    "explanation": "Речь о способности сейчас: can’t + базовая форма see."
+  },
+  {
+    "prompt": "I've never ___ speak Spanish as well as my brother.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "После have/has нужна форма been able to: у can нет Present Perfect."
+  },
+  {
+    "prompt": "After two years in China, I ___ speak quite fluently now.",
+    "answers": [
+      "can",
+      "could",
+      "have able to",
+      "am can"
+    ],
+    "correct": "can",
+    "explanation": "Now и способность в настоящем: can + speak."
+  },
+  {
+    "prompt": "I haven't ___ understand my French neighbours yet.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "able to"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: haven’t been able to + V."
+  },
+  {
+    "prompt": "When he was 10, he ___ speak three languages.",
+    "answers": [
+      "could",
+      "was able",
+      "can",
+      "has been able to"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом: could + базовая форма."
+  },
+  {
+    "prompt": "The door was locked, but we ___ open it in the end.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "have been able"
+    ],
+    "correct": "were able to",
+    "explanation": "Один конкретный успешный результат в прошлом: were able to."
+  },
+  {
+    "prompt": "When I was five, I ___ swim.",
+    "answers": [
+      "couldn't",
+      "wasn't can",
+      "haven't been able to",
+      "can't"
+    ],
+    "correct": "couldn't",
+    "explanation": "Общая неспособность в прошлом: couldn’t + V."
+  },
+  {
+    "prompt": "After the course, you ___ use the new system.",
+    "answers": [
+      "will be able to",
+      "will can",
+      "can will",
+      "will able to"
+    ],
+    "correct": "will be able to",
+    "explanation": "У can нет будущей формы с will: will be able to + V."
+  },
+  {
+    "prompt": "I ___ join the meeting tomorrow because I'll be travelling.",
+    "answers": [
+      "won't be able to",
+      "won't can",
+      "couldn't",
+      "don't can"
+    ],
+    "correct": "won't be able to",
+    "explanation": "Будущая неспособность: won’t be able to + V."
+  },
+  {
+    "prompt": "Marta ___ help us later, but she isn't sure yet.",
+    "answers": [
+      "might be able to",
+      "might can",
+      "can might",
+      "might able to"
+    ],
+    "correct": "might be able to",
+    "explanation": "После might используем be able to: два модальных подряд ставить нельзя."
+  },
+  {
+    "prompt": "I want ___ speak confidently at work.",
+    "answers": [
+      "to be able to",
+      "to can",
+      "being can",
+      "can to"
+    ],
+    "correct": "to be able to",
+    "explanation": "После want нужен инфинитив: want to be able to + V."
+  },
+  {
+    "prompt": "You need ___ explain the problem clearly.",
+    "answers": [
+      "to be able to",
+      "can to",
+      "to can",
+      "being able"
+    ],
+    "correct": "to be able to",
+    "explanation": "После need используем to be able to; форма to can невозможна."
+  },
+  {
+    "prompt": "___ you see the screen from there?",
+    "answers": [
+      "Can",
+      "Are able",
+      "Do can",
+      "Could to"
+    ],
+    "correct": "Can",
+    "explanation": "Вопрос о способности сейчас: Can + subject + V?"
+  },
+  {
+    "prompt": "___ she able to finish the report yesterday?",
+    "answers": [
+      "Was",
+      "Could",
+      "Did",
+      "Has"
+    ],
+    "correct": "Was",
+    "explanation": "С able to используется глагол be: Was she able to…?"
+  },
+  {
+    "prompt": "___ you help me with this bag, please?",
+    "answers": [
+      "Could",
+      "Do could",
+      "Are able",
+      "Could to"
+    ],
+    "correct": "Could",
+    "explanation": "Could + V — вежливая просьба; to после could не ставится."
+  },
+  {
+    "prompt": "Too much stress ___ affect your sleep.",
+    "answers": [
+      "can",
+      "can to",
+      "is able",
+      "cans"
+    ],
+    "correct": "can",
+    "explanation": "Can также выражает общую возможность: такое иногда может происходить."
+  },
+  {
+    "prompt": "Take an umbrella — it ___ rain later.",
+    "answers": [
+      "could",
+      "is able to",
+      "could to",
+      "cans"
+    ],
+    "correct": "could",
+    "explanation": "Could выражает возможное, но не уверенное событие."
+  },
+  {
+    "prompt": "That ___ be true — I saw him in Bilbao today.",
+    "answers": [
+      "can't",
+      "isn't able to",
+      "doesn't can",
+      "couldn't to"
+    ],
+    "correct": "can't",
+    "explanation": "Can’t be выражает уверенность, что это невозможно."
+  },
+  {
+    "prompt": "Since the operation, she hasn't ___ walk without help.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "Since + период до настоящего: hasn’t been able to."
+  },
+  {
+    "prompt": "By next month, we'll ___ work without supervision.",
+    "answers": [
+      "be able to",
+      "can",
+      "able to",
+      "been able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После will ставим be able to, а затем базовый глагол."
+  },
+  {
+    "prompt": "___ you able to fix the server last night?",
+    "answers": [
+      "Were",
+      "Could",
+      "Did",
+      "Have"
+    ],
+    "correct": "Were",
+    "explanation": "Спрашиваем о результате конкретной попытки: Were you able to…?"
+  },
+  {
+    "prompt": "When you were younger, ___ you run ten kilometres?",
+    "answers": [
+      "could",
+      "were able",
+      "did can",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом: Could you + V?"
+  },
+  {
+    "prompt": "Despite the smoke, the firefighters ___ rescue everyone.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "had can"
+    ],
+    "correct": "were able to",
+    "explanation": "Конкретное успешное действие: were able to rescue."
+  },
+  {
+    "prompt": "I looked everywhere but I ___ find my keys.",
+    "answers": [
+      "couldn't",
+      "wasn't can",
+      "haven't able to",
+      "don't could"
+    ],
+    "correct": "couldn't",
+    "explanation": "Couldn’t нормально описывает неудавшееся действие в прошлом."
+  },
+  {
+    "prompt": "She ___ solve complex problems without help.",
+    "answers": [
+      "is able to",
+      "is can",
+      "can to",
+      "does able to"
+    ],
+    "correct": "is able to",
+    "explanation": "Be able to согласуется с подлежащим: she is able to + V."
+  },
+  {
+    "prompt": "___ he drive at night without glasses?",
+    "answers": [
+      "Can",
+      "Does can",
+      "Is can",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Can сам строит вопрос и не требует do: Can he drive?"
+  },
+  {
+    "prompt": "At school, ___ he understand spoken English?",
+    "answers": [
+      "could",
+      "did could",
+      "was can",
+      "could to"
+    ],
+    "correct": "could",
+    "explanation": "Вопрос об общей способности в прошлом: Could he understand…?"
+  },
+  {
+    "prompt": "___ she been able to contact the client?",
+    "answers": [
+      "Has",
+      "Can",
+      "Did",
+      "Was"
+    ],
+    "correct": "Has",
+    "explanation": "Present Perfect: Has she been able to + V?"
+  },
+  {
+    "prompt": "Before the battery died, we ___ send our location.",
+    "answers": [
+      "had been able to",
+      "had could",
+      "could have to",
+      "were can"
+    ],
+    "correct": "had been able to",
+    "explanation": "Результат был достигнут до другого прошлого события: had been able to."
+  },
+  {
+    "prompt": "With more practice, you ___ do this much faster.",
+    "answers": [
+      "should be able to",
+      "should can",
+      "can should",
+      "should able to"
+    ],
+    "correct": "should be able to",
+    "explanation": "После should нельзя ставить can; используем should be able to."
+  },
+  {
+    "prompt": "A pilot must ___ react quickly in an emergency.",
+    "answers": [
+      "be able to",
+      "can",
+      "to be able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После must нужна базовая форма be: must be able to + V."
+  },
+  {
+    "prompt": "With a better laptop, I ___ edit these videos at home.",
+    "answers": [
+      "would be able to",
+      "would can",
+      "could to",
+      "would able to"
+    ],
+    "correct": "would be able to",
+    "explanation": "В условной ситуации используем would be able to."
+  },
+  {
+    "prompt": "Исправь ошибку: He cans speak Japanese.",
+    "answers": [
+      "He can speak Japanese.",
+      "He cans speak Japanese.",
+      "He can to speak Japanese.",
+      "He does can speak Japanese."
+    ],
+    "correct": "He can speak Japanese.",
+    "explanation": "Can не получает окончание -s; после него идёт базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: I will can call you tomorrow.",
+    "answers": [
+      "I will be able to call you tomorrow.",
+      "I will can call you tomorrow.",
+      "I can will call you tomorrow.",
+      "I will able call you tomorrow."
+    ],
+    "correct": "I will be able to call you tomorrow.",
+    "explanation": "Форма will can невозможна: будущее строится как will be able to."
+  },
+  {
+    "prompt": "I was ill, so I ___ attend yesterday's workshop.",
+    "answers": [
+      "wasn't able to",
+      "won't be able to",
+      "can't",
+      "am not able to"
+    ],
+    "correct": "wasn't able to",
+    "explanation": "Конкретная невозможность в прошлом: wasn’t able to attend."
+  },
+  {
+    "prompt": "How long have you ___ work without an interpreter?",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "После have в вопросе используем been able to: How long have you been able to…?"
+  }
+];
+
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -3074,9 +3474,9 @@ function renderDashboard() {
         <article class="mode-card mode-green">
           <span class="mode-kicker">Глаголы-помощники</span>
           <h3>Помощники и модальные</h3>
-          <p>Have had, do/does/did, формы be, must, should и have to — плюс порядок слов.</p>
+          <p>Have had, must, should, have to, can, could и be able to — плюс порядок слов.</p>
           <div class="mode-card-meta">${auxiliaryStatText}</div>
-          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">14 заданий</button></div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">15 заданий</button></div>
         </article>
       </div>
     </section>
@@ -3451,6 +3851,23 @@ function renderAuxiliaryGuide() {
         <section><strong>You don't have to swim.</strong><span>Нет необходимости: можно не плавать, но запрета нет.</span></section>
       </div>
 
+      <h2 class="guide-heading">Can, could или be able to?</h2>
+      <div class="modal-structure-grid">
+        <section class="modal-structure-card"><span>Сейчас / вообще</span><strong>can + V</strong><p>I can work from home.<br>She can’t see without glasses.</p></section>
+        <section class="modal-structure-card"><span>Общая способность раньше</span><strong>could + V</strong><p>He could read at five.<br>Could you swim then?</p></section>
+        <section class="modal-structure-card"><span>Конкретно смог</span><strong>was/were able to + V</strong><p>We were able to open the door.<br>Was she able to finish?</p></section>
+        <section class="modal-structure-card"><span>Другие формы</span><strong>be able to + V</strong><p>I’ve been able to practise.<br>I’ll be able to come.</p></section>
+      </div>
+
+      <div class="aux-chain-list">
+        <div><strong>can / could + V</strong><span>Без <b>to</b> и без окончания <b>-s</b>: <em>She can drive</em>, не <em>cans</em> и не <em>can to drive</em>.</span></div>
+        <div><strong>have/has been able to + V</strong><span>Для Present Perfect: <em>I’ve never been able to speak fluently</em>.</span></div>
+        <div><strong>will / might / should be able to + V</strong><span>Два модальных подряд нельзя: <em>will can</em> → <em>will be able to</em>.</span></div>
+        <div><strong>could или was able to?</strong><span><em>Could</em> — умел вообще; <em>was/were able to</em> — смог в одной конкретной ситуации.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Быстрый выбор:</strong> сейчас — <em>can</em>; вообще умел раньше — <em>could</em>; один раз смог — <em>was/were able to</em>; после have, will, might, should или want — нужная форма <em>be able to</em>.</aside>
+
       <h2 class="guide-heading">Почему два had подряд — это нормально</h2>
       <div class="aux-chain-list">
         <div><strong>I have had this phone for three years.</strong><span><b>have</b> — помощник Present Perfect; <b>had</b> — V3 глагола have.</span></div>
@@ -3458,7 +3875,7 @@ function renderAuxiliaryGuide() {
         <div><strong>I had had breakfast before the call.</strong><span>первое <b>had</b> — помощник Past Perfect; второе <b>had</b> — V3. Завтрак был раньше звонка.</span></div>
       </div>
 
-      <aside class="principle-box"><strong>Главная проверка:</strong> после must, should, do, does, did и will всегда базовая форма без to и без -s: <em>She should go</em>, <em>Does he have to work?</em>, <em>He must arrive</em>.</aside>
+      <aside class="principle-box"><strong>Главная проверка:</strong> после must, should, can, could, do, does и did всегда базовая форма без лишнего to и без -s: <em>She should go</em>, <em>He can drive</em>, <em>Does he have to work?</em>.</aside>
 
       <div class="lesson-actions">
         <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 14 заданий</button>
@@ -3606,9 +4023,10 @@ function modalQuestionFor(item) {
 }
 
 function startAuxiliarySession() {
-  const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 7).map(auxiliaryQuestionFor);
-  const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 7).map(modalQuestionFor);
-  startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions]));
+  const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 5).map(auxiliaryQuestionFor);
+  const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 5).map(modalQuestionFor);
+  const abilityQuestions = shuffle(ABILITY_ITEMS).slice(0, 5).map(modalQuestionFor);
+  startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions, ...abilityQuestions]));
 }
 
 function startFocusSession(key) {
@@ -3790,10 +4208,10 @@ function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
   const message = session.type === "auxiliaries"
     ? score >= 85
-      ? "Отлично: ты уверенно различаешь помощник и смысловой глагол. Следующий шаг — замечать эти формулы в обычном тексте."
+      ? "Отлично: ты уверенно строишь предложения с помощниками и модальными глаголами, включая can, could и be able to."
       : score >= 55
-        ? "Хорошая база. Перед ответом определяй время, затем подлежащее, и только потом выбирай have/has, do/does или форму be."
-        : "Вернись к памятке и проговори три цепочки: have had, has had и had had. Затем повтори правила do/does/did и be."
+        ? "Хорошая база. Сначала определяй время и смысл: способность вообще, конкретный результат, совет, обязанность или запрет."
+        : "Вернись к памятке и повтори формулы: modal + V, have to + V и be able to + V. Затем пройди ещё один смешанный подход."
     : session.type === "articles"
     ? score >= 85
       ? "Отлично: ты уверенно различаешь новый предмет, конкретный предмет и общее понятие. Повтори тему через пару дней."
