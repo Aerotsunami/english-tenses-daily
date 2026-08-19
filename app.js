@@ -3770,6 +3770,230 @@ const ABILITY_NUANCE_ITEMS = [
 ];
 
 
+const ABILITY_FORM_ITEMS = [
+  {
+    "prompt": "I haven't ___ move house since 2010.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "could",
+      "be able to"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: have/has + been able to + V. Since 2010 связывает прошлое с настоящим."
+  },
+  {
+    "prompt": "She ___ believe how fast time had flown by.",
+    "answers": [
+      "couldn't",
+      "can't",
+      "wasn't able",
+      "hasn't been able to"
+    ],
+    "correct": "couldn't",
+    "explanation": "Couldn’t believe — естественная форма для реакции и понимания в прошлом."
+  },
+  {
+    "prompt": "He was finally ___ finish the project after working on it for weeks.",
+    "answers": [
+      "able to",
+      "been able to",
+      "being able to",
+      "could"
+    ],
+    "correct": "able to",
+    "explanation": "Was уже стоит в предложении, поэтому добавляем able to + V: was finally able to finish."
+  },
+  {
+    "prompt": "If the weather improved, we ___ go for a walk.",
+    "answers": [
+      "could",
+      "can",
+      "will be able to",
+      "were able to"
+    ],
+    "correct": "could",
+    "explanation": "Воображаемая или маловероятная ситуация: If + Past Simple, could + V."
+  },
+  {
+    "prompt": "___ you speak Spanish?",
+    "answers": [
+      "Can",
+      "Are able",
+      "Do can",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Вопрос о способности сейчас: Can + subject + базовая форма?"
+  },
+  {
+    "prompt": "He hated not ___ talk to his girlfriend regularly.",
+    "answers": [
+      "being able to",
+      "been able to",
+      "be able to",
+      "could"
+    ],
+    "correct": "being able to",
+    "explanation": "После hate возможно -ing; отрицание: hated not being able to + V."
+  },
+  {
+    "prompt": "We've sent you an invitation. Will you ___ attend the conference?",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После will используем be able to: Will you be able to attend?"
+  },
+  {
+    "prompt": "I enjoy ___ work from different countries.",
+    "answers": [
+      "being able to",
+      "to be able to",
+      "been able to",
+      "can"
+    ],
+    "correct": "being able to",
+    "explanation": "После enjoy нужен gerund: enjoy being able to + V."
+  },
+  {
+    "prompt": "She left without ___ explain what had happened.",
+    "answers": [
+      "being able to",
+      "to be able to",
+      "been able to",
+      "could"
+    ],
+    "correct": "being able to",
+    "explanation": "После предлога without используем -ing: without being able to explain."
+  },
+  {
+    "prompt": "I want ___ understand films without subtitles.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "to can"
+    ],
+    "correct": "to be able to",
+    "explanation": "После want нужен инфинитив: want to be able to + V."
+  },
+  {
+    "prompt": "She would like ___ drive before starting her new job.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "can to"
+    ],
+    "correct": "to be able to",
+    "explanation": "Would like + to-infinitive: would like to be able to drive."
+  },
+  {
+    "prompt": "We hope ___ offer the feature next month.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "can"
+    ],
+    "correct": "to be able to",
+    "explanation": "Hope to + V: hope to be able to offer."
+  },
+  {
+    "prompt": "With a little more time, I may ___ solve the issue.",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "Два модальных подряд нельзя: may be able to, не may can."
+  },
+  {
+    "prompt": "After this lesson, you should ___ explain the difference.",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После should используем базовую форму be: should be able to + V."
+  },
+  {
+    "prompt": "She has ___ work independently for several months.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "be able to",
+      "could"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: has been able to + V."
+  },
+  {
+    "prompt": "Before the accident, he had ___ walk without pain.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "be able to",
+      "could to"
+    ],
+    "correct": "been able to",
+    "explanation": "Past Perfect: had been able to + V."
+  },
+  {
+    "prompt": "I ___ answer calls during tomorrow's flight.",
+    "answers": [
+      "won't be able to",
+      "won't can",
+      "haven't been able to",
+      "couldn't"
+    ],
+    "correct": "won't be able to",
+    "explanation": "Будущая невозможность: won’t be able to + V."
+  },
+  {
+    "prompt": "With a quieter room, I ___ concentrate much better.",
+    "answers": [
+      "would be able to",
+      "would can",
+      "could to",
+      "was able to"
+    ],
+    "correct": "would be able to",
+    "explanation": "Условный результат: would be able to + V."
+  },
+  {
+    "prompt": "Исправь ошибку: I will can help tomorrow.",
+    "answers": [
+      "I will be able to help tomorrow.",
+      "I will can help tomorrow.",
+      "I will able to help tomorrow.",
+      "I can will help tomorrow."
+    ],
+    "correct": "I will be able to help tomorrow.",
+    "explanation": "У can нет формы с will: используем will be able to."
+  },
+  {
+    "prompt": "Исправь ошибку: He hated not be able to call her.",
+    "answers": [
+      "He hated not being able to call her.",
+      "He hated not be able to call her.",
+      "He hated not been able to call her.",
+      "He hated not could call her."
+    ],
+    "correct": "He hated not being able to call her.",
+    "explanation": "После hate в этом контексте используется gerund: not being able to."
+  }
+];
+
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -4360,6 +4584,22 @@ function renderAuxiliaryGuide() {
 
       <aside class="principle-box"><strong>Быстрый выбор:</strong> сейчас — <em>can</em>; вообще умел раньше — <em>could</em>; один раз смог — <em>was/were able to</em>; после have, will, might, should или want — нужная форма <em>be able to</em>.</aside>
 
+      <h2 class="guide-heading">Все формы be able to</h2>
+      <div class="modal-structure-grid">
+        <section class="modal-structure-card"><span>Обычная форма</span><strong>am/is/are/was/were able to + V</strong><p>She is able to help.<br>We were able to finish.</p></section>
+        <section class="modal-structure-card"><span>Perfect</span><strong>have/has/had been able to + V</strong><p>I haven’t been able to sleep.<br>He had been able to walk.</p></section>
+        <section class="modal-structure-card"><span>Инфинитив</span><strong>to be able to + V</strong><p>I want to be able to drive.<br>We hope to be able to come.</p></section>
+        <section class="modal-structure-card"><span>Gerund</span><strong>being able to + V</strong><p>I enjoy being able to travel.<br>He hated not being able to call.</p></section>
+      </div>
+
+      <div class="aux-chain-list">
+        <div><strong>После will, may, might, should</strong><span>Используем базовую форму <em>be able to</em>: <em>Will you be able to attend?</em>, <em>She might be able to help</em>.</span></div>
+        <div><strong>Условие</strong><span><em>If the weather improved, we could go</em>. Для результата с would: <em>I would be able to work faster</em>.</span></div>
+        <div><strong>Запомни цепочку</strong><span><em>be → am/is/are · was/were · been · being</em>. Именно первая часть меняется, а <em>able to + V</em> остаётся.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Быстрый тест:</strong> если перед пропуском стоит have/has/had — выбирай <em>been able to</em>; после предлога или enjoy/hate — <em>being able to</em>; после want/hope — <em>to be able to</em>; после will/may/should — <em>be able to</em>.</aside>
+
       <h2 class="guide-heading">Тонкости: просьбы, косвенная речь и результат</h2>
       <div class="modal-structure-grid">
         <section class="modal-structure-card"><span>Просьба / разрешение</span><strong>Can/Could + subject + V?</strong><p>Can you help me?<br>Could I leave early?</p><p><b>Could</b> здесь не прошлое — оно просто вежливее.</p></section>
@@ -4550,8 +4790,9 @@ function startAuxiliarySession() {
   const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 4).map(auxiliaryQuestionFor);
   const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 4).map(modalQuestionFor);
   const abilityQuestions = shuffle([
-    ...shuffle(ABILITY_ITEMS).slice(0, 2),
-    ...shuffle(ABILITY_NUANCE_ITEMS).slice(0, 2),
+    ...shuffle(ABILITY_ITEMS).slice(0, 1),
+    ...shuffle(ABILITY_NUANCE_ITEMS).slice(0, 1),
+    ...shuffle(ABILITY_FORM_ITEMS).slice(0, 2),
   ]).map(modalQuestionFor);
   const managedQuestions = shuffle(MANAGED_TO_ITEMS).slice(0, 4).map(modalQuestionFor);
   startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions, ...abilityQuestions, ...managedQuestions]));
