@@ -3546,6 +3546,230 @@ const MANAGED_TO_ITEMS = [
 ];
 
 
+const ABILITY_NUANCE_ITEMS = [
+  {
+    "prompt": "Выбери более вежливую просьбу.",
+    "answers": [
+      "Could you open the window, please?",
+      "Can you to open the window, please?",
+      "Do you could open the window, please?",
+      "Are you able open the window, please?"
+    ],
+    "correct": "Could you open the window, please?",
+    "explanation": "И can, и could употребляются в просьбах, но could звучит мягче и вежливее."
+  },
+  {
+    "prompt": "Как неформально попросить разрешения взять ручку?",
+    "answers": [
+      "Can I borrow your pen?",
+      "Do I can borrow your pen?",
+      "Can I to borrow your pen?",
+      "Am I can borrow your pen?"
+    ],
+    "correct": "Can I borrow your pen?",
+    "explanation": "Can I…? — обычная нейтральная просьба о разрешении. После can сразу идёт базовая форма."
+  },
+  {
+    "prompt": "Как более вежливо попросить разрешения уйти раньше?",
+    "answers": [
+      "Could I leave early?",
+      "Could I to leave early?",
+      "Did I could leave early?",
+      "Am I able leave early?"
+    ],
+    "correct": "Could I leave early?",
+    "explanation": "Could I…? звучит вежливее, чем Can I…? Здесь could не означает прошлое."
+  },
+  {
+    "prompt": "___ you pass me the salt, please?",
+    "answers": [
+      "Can",
+      "Do can",
+      "Are able",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Can you…? может быть обычной просьбой, а не вопросом о физической способности."
+  },
+  {
+    "prompt": "I haven't ___ sleep very well lately.",
+    "answers": [
+      "been able to",
+      "able to",
+      "could",
+      "can"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect требует причастия been: haven’t been able to + V."
+  },
+  {
+    "prompt": "She says that she ___ speak five languages fluently.",
+    "answers": [
+      "can",
+      "could",
+      "has can",
+      "is can"
+    ],
+    "correct": "can",
+    "explanation": "Says стоит в настоящем, и способность актуальна сейчас: she says she can."
+  },
+  {
+    "prompt": "She said that she ___ speak five languages fluently.",
+    "answers": [
+      "could",
+      "can",
+      "was can",
+      "has been able"
+    ],
+    "correct": "could",
+    "explanation": "После said обычно происходит согласование времён: can переходит в could."
+  },
+  {
+    "prompt": "We tried, but we ___ stop the fire.",
+    "answers": [
+      "couldn't",
+      "can't",
+      "weren't able",
+      "didn't could"
+    ],
+    "correct": "couldn't",
+    "explanation": "Для конкретной неудачи в прошлом можно использовать couldn’t. Weren’t able to тоже было бы возможно, но требует to."
+  },
+  {
+    "prompt": "He didn't want to come, but finally we ___ persuade him.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "were able"
+    ],
+    "correct": "were able to",
+    "explanation": "Положительный результат в одной конкретной ситуации: were able to или managed to, обычно не could."
+  },
+  {
+    "prompt": "After an hour of discussion, we finally ___ persuade him.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "managed"
+    ],
+    "correct": "managed to",
+    "explanation": "Finally и длительное усилие: managed to подчёркивает, что это всё-таки удалось."
+  },
+  {
+    "prompt": "The connection was terrible, so we ___ hear the speaker clearly.",
+    "answers": [
+      "weren't able to",
+      "aren't able to",
+      "could to not",
+      "didn't able to"
+    ],
+    "correct": "weren't able to",
+    "explanation": "Конкретная неспособность в прошлом: weren’t able to. Couldn’t hear также было бы правильно."
+  },
+  {
+    "prompt": "When my grandfather was young, he ___ run twenty kilometres.",
+    "answers": [
+      "could",
+      "was able",
+      "managed to",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом, не отдельный случай: could + V."
+  },
+  {
+    "prompt": "She ___ speak English and Spanish, so she can help us now.",
+    "answers": [
+      "can",
+      "could",
+      "has can",
+      "is can"
+    ],
+    "correct": "can",
+    "explanation": "Актуальная способность сейчас: can. Is able to тоже возможно, но can естественнее и короче."
+  },
+  {
+    "prompt": "The lift broke, but the engineers ___ free everyone.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "were able"
+    ],
+    "correct": "were able to",
+    "explanation": "Одно завершённое успешное действие в прошлом: were able to free."
+  },
+  {
+    "prompt": "From our hotel room, we ___ see the sea.",
+    "answers": [
+      "could",
+      "managed to",
+      "were able",
+      "can yesterday"
+    ],
+    "correct": "could",
+    "explanation": "С глаголами восприятия see, hear, feel, understand could возможно даже в конкретной прошлой ситуации."
+  },
+  {
+    "prompt": "Although the music was loud, I ___ hear what she said.",
+    "answers": [
+      "could",
+      "managed to hearing",
+      "was able hear",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Hear — глагол восприятия, поэтому could hear естественно для конкретного прошлого момента."
+  },
+  {
+    "prompt": "When I was sixteen, I ___ stay out until eleven.",
+    "answers": [
+      "could",
+      "managed to",
+      "can",
+      "was able"
+    ],
+    "correct": "could",
+    "explanation": "Could может обозначать общее разрешение в прошлом: мне разрешали возвращаться поздно."
+  },
+  {
+    "prompt": "Исправь просьбу: Could you to help me?",
+    "answers": [
+      "Could you help me?",
+      "Could you to help me?",
+      "Do you could help me?",
+      "Could you helping me?"
+    ],
+    "correct": "Could you help me?",
+    "explanation": "В просьбе после could используется базовая форма без to."
+  },
+  {
+    "prompt": "Исправь ошибку: I haven't able to sleep lately.",
+    "answers": [
+      "I haven't been able to sleep lately.",
+      "I haven't able to sleep lately.",
+      "I didn't been able to sleep lately.",
+      "I haven't could sleep lately."
+    ],
+    "correct": "I haven't been able to sleep lately.",
+    "explanation": "Форма Present Perfect: have/has + been able to + V."
+  },
+  {
+    "prompt": "Исправь положительный результат: Finally, we could persuade him.",
+    "answers": [
+      "Finally, we were able to persuade him.",
+      "Finally, we could persuade him.",
+      "Finally, we were able persuade him.",
+      "Finally, we did could persuade him."
+    ],
+    "correct": "Finally, we were able to persuade him.",
+    "explanation": "Для единичного положительного результата употребляем was/were able to или managed to. Could обычно описывает общую способность."
+  }
+];
+
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -4136,6 +4360,22 @@ function renderAuxiliaryGuide() {
 
       <aside class="principle-box"><strong>Быстрый выбор:</strong> сейчас — <em>can</em>; вообще умел раньше — <em>could</em>; один раз смог — <em>was/were able to</em>; после have, will, might, should или want — нужная форма <em>be able to</em>.</aside>
 
+      <h2 class="guide-heading">Тонкости: просьбы, косвенная речь и результат</h2>
+      <div class="modal-structure-grid">
+        <section class="modal-structure-card"><span>Просьба / разрешение</span><strong>Can/Could + subject + V?</strong><p>Can you help me?<br>Could I leave early?</p><p><b>Could</b> здесь не прошлое — оно просто вежливее.</p></section>
+        <section class="modal-structure-card"><span>Present Perfect</span><strong>have/has been able to + V</strong><p>I haven’t been able to sleep lately.</p><p>У can нет формы Present Perfect.</p></section>
+        <section class="modal-structure-card"><span>Косвенная речь</span><strong>says → can · said → could</strong><p>She says she can swim.<br>She said she could swim.</p></section>
+        <section class="modal-structure-card"><span>Один случай в прошлом</span><strong>плюс и минус ведут себя по-разному</strong><p>We were able to stop it.<br>We couldn’t stop it.</p></section>
+      </div>
+
+      <div class="aux-chain-list">
+        <div><strong>Положительный конкретный результат</strong><span><em>was/were able to</em> или <em>managed to</em>: <em>Finally, we were able to persuade him</em>.</span></div>
+        <div><strong>Отрицательный конкретный результат</strong><span>Можно <em>couldn’t</em> или <em>wasn’t/weren’t able to</em>: <em>We tried, but we couldn’t stop the fire</em>.</span></div>
+        <div><strong>Исключение: восприятие</strong><span>С <em>see, hear, feel, understand</em> форма <em>could</em> возможна и в одном конкретном случае: <em>I could hear her clearly</em>.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Не определяй could только по слову «мог»:</strong> сначала спроси, это вежливая просьба, общая способность, косвенная речь или конкретный результат. В последнем случае проверь, положительное предложение или отрицательное.</aside>
+
       <h2 class="guide-heading">Managed to: когда всё-таки удалось</h2>
       <div class="modal-structure-grid">
         <section class="modal-structure-card"><span>Успех несмотря на трудность</span><strong>managed to + V</strong><p>We finally managed to fix it.<br>She managed to stay calm.</p></section>
@@ -4309,7 +4549,10 @@ function modalQuestionFor(item) {
 function startAuxiliarySession() {
   const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 4).map(auxiliaryQuestionFor);
   const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 4).map(modalQuestionFor);
-  const abilityQuestions = shuffle(ABILITY_ITEMS).slice(0, 4).map(modalQuestionFor);
+  const abilityQuestions = shuffle([
+    ...shuffle(ABILITY_ITEMS).slice(0, 2),
+    ...shuffle(ABILITY_NUANCE_ITEMS).slice(0, 2),
+  ]).map(modalQuestionFor);
   const managedQuestions = shuffle(MANAGED_TO_ITEMS).slice(0, 4).map(modalQuestionFor);
   startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions, ...abilityQuestions, ...managedQuestions]));
 }
