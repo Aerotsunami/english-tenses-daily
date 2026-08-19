@@ -3726,7 +3726,7 @@ function renderPhraseGuide() {
       </div>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-phrases">Начать 15 заданий</button>
+        <button class="primary-button" type="button" data-action="start-phrases">Начать 14 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
       </div>
     </article>
@@ -3878,7 +3878,7 @@ function renderAuxiliaryGuide() {
       <aside class="principle-box"><strong>Главная проверка:</strong> после must, should, can, could, do, does и did всегда базовая форма без лишнего to и без -s: <em>She should go</em>, <em>He can drive</em>, <em>Does he have to work?</em>.</aside>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 14 заданий</button>
+        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 15 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К каталогу</button>
       </div>
     </article>
