@@ -3994,6 +3994,406 @@ const ABILITY_FORM_ITEMS = [
 ];
 
 
+const ADJECTIVE_ENDING_ITEMS = [
+  {
+    "text": "It was ___ to start a new job in a different city.",
+    "answers": [
+      "exciting",
+      "excited",
+      "excite",
+      "excitement"
+    ],
+    "correct": "exciting",
+    "explanation": "Начало работы вызывает эмоцию, поэтому описываем ситуацию формой exciting."
+  },
+  {
+    "text": "I was ___ about starting my new job.",
+    "answers": [
+      "excited",
+      "exciting",
+      "excite",
+      "excitement"
+    ],
+    "correct": "excited",
+    "explanation": "I испытывает чувство: excited about something."
+  },
+  {
+    "text": "The architecture of the old cathedral was ___.",
+    "answers": [
+      "amazing",
+      "amazed",
+      "amaze",
+      "amazement"
+    ],
+    "correct": "amazing",
+    "explanation": "Архитектура производит впечатление: amazing."
+  },
+  {
+    "text": "She was ___ by the beautiful architecture.",
+    "answers": [
+      "amazed",
+      "amazing",
+      "amaze",
+      "amazement"
+    ],
+    "correct": "amazed",
+    "explanation": "She испытывает удивление: amazed by something."
+  },
+  {
+    "text": "Packing and moving all day was very ___.",
+    "answers": [
+      "tiring",
+      "tired",
+      "tire",
+      "tiredness"
+    ],
+    "correct": "tiring",
+    "explanation": "Действие утомляет, поэтому оно tiring."
+  },
+  {
+    "text": "After packing all day, I felt completely ___.",
+    "answers": [
+      "tired",
+      "tiring",
+      "tire",
+      "tiredness"
+    ],
+    "correct": "tired",
+    "explanation": "I чувствую усталость: tired."
+  },
+  {
+    "text": "The grey weather was rather ___.",
+    "answers": [
+      "depressing",
+      "depressed",
+      "depress",
+      "depression"
+    ],
+    "correct": "depressing",
+    "explanation": "Погода вызывает подавленность: depressing."
+  },
+  {
+    "text": "She felt ___ after saying goodbye to her friends.",
+    "answers": [
+      "depressed",
+      "depressing",
+      "depress",
+      "depression"
+    ],
+    "correct": "depressed",
+    "explanation": "She испытывает чувство: depressed."
+  },
+  {
+    "text": "Forgetting her boss's name was an ___ mistake.",
+    "answers": [
+      "embarrassing",
+      "embarrassed",
+      "embarrass",
+      "embarrassment"
+    ],
+    "correct": "embarrassing",
+    "explanation": "Ошибка вызывает неловкость: embarrassing."
+  },
+  {
+    "text": "He was ___ about forgetting her name.",
+    "answers": [
+      "embarrassed",
+      "embarrassing",
+      "embarrass",
+      "embarrassment"
+    ],
+    "correct": "embarrassed",
+    "explanation": "He испытывает неловкость: embarrassed about something."
+  },
+  {
+    "text": "The long wait at the airport was ___.",
+    "answers": [
+      "boring",
+      "bored",
+      "bore",
+      "boredom"
+    ],
+    "correct": "boring",
+    "explanation": "Ожидание вызывает скуку: boring."
+  },
+  {
+    "text": "I got ___ during the long wait.",
+    "answers": [
+      "bored",
+      "boring",
+      "bore",
+      "boredom"
+    ],
+    "correct": "bored",
+    "explanation": "I испытываю скуку: bored."
+  },
+  {
+    "text": "The constant announcements were really ___.",
+    "answers": [
+      "annoying",
+      "annoyed",
+      "annoy",
+      "annoyance"
+    ],
+    "correct": "annoying",
+    "explanation": "Объявления раздражают: annoying."
+  },
+  {
+    "text": "I was ___ by the constant noise.",
+    "answers": [
+      "annoyed",
+      "annoying",
+      "annoy",
+      "annoyance"
+    ],
+    "correct": "annoyed",
+    "explanation": "I испытываю раздражение: annoyed by something."
+  },
+  {
+    "text": "Putting the furniture together was very ___.",
+    "answers": [
+      "frustrating",
+      "frustrated",
+      "frustrate",
+      "frustration"
+    ],
+    "correct": "frustrating",
+    "explanation": "Задача вызывает раздражение и бессилие: frustrating."
+  },
+  {
+    "text": "We felt ___ because the instructions were unclear.",
+    "answers": [
+      "frustrated",
+      "frustrating",
+      "frustrate",
+      "frustration"
+    ],
+    "correct": "frustrated",
+    "explanation": "We испытываем чувство: frustrated."
+  },
+  {
+    "text": "Going bungee jumping looks ___.",
+    "answers": [
+      "frightening",
+      "frightened",
+      "frighten",
+      "fright"
+    ],
+    "correct": "frightening",
+    "explanation": "Прыжок вызывает страх: frightening."
+  },
+  {
+    "text": "She was too ___ to look down.",
+    "answers": [
+      "frightened",
+      "frightening",
+      "frighten",
+      "fright"
+    ],
+    "correct": "frightened",
+    "explanation": "She испытывает страх: frightened."
+  },
+  {
+    "text": "The flat he found was dark and ___.",
+    "answers": [
+      "disappointing",
+      "disappointed",
+      "disappoint",
+      "disappointment"
+    ],
+    "correct": "disappointing",
+    "explanation": "Квартира не оправдала ожиданий: disappointing."
+  },
+  {
+    "text": "He was ___ with the flat he viewed.",
+    "answers": [
+      "disappointed",
+      "disappointing",
+      "disappoint",
+      "disappointment"
+    ],
+    "correct": "disappointed",
+    "explanation": "He испытывает разочарование: disappointed with something."
+  },
+  {
+    "text": "The documentary was surprisingly ___.",
+    "answers": [
+      "interesting",
+      "interested",
+      "interest",
+      "interestingly"
+    ],
+    "correct": "interesting",
+    "explanation": "Документальный фильм вызывает интерес: interesting."
+  },
+  {
+    "text": "I'm really ___ in local history.",
+    "answers": [
+      "interested",
+      "interesting",
+      "interest",
+      "interestingly"
+    ],
+    "correct": "interested",
+    "explanation": "Человек испытывает интерес: interested in something."
+  },
+  {
+    "text": "The final result was ___.",
+    "answers": [
+      "surprising",
+      "surprised",
+      "surprise",
+      "surprisingly"
+    ],
+    "correct": "surprising",
+    "explanation": "Результат вызывает удивление: surprising."
+  },
+  {
+    "text": "Everyone was ___ by the final result.",
+    "answers": [
+      "surprised",
+      "surprising",
+      "surprise",
+      "surprisingly"
+    ],
+    "correct": "surprised",
+    "explanation": "Everyone испытывает удивление: surprised by something."
+  },
+  {
+    "text": "The new instructions are rather ___.",
+    "answers": [
+      "confusing",
+      "confused",
+      "confuse",
+      "confusion"
+    ],
+    "correct": "confusing",
+    "explanation": "Инструкции вызывают непонимание: confusing."
+  },
+  {
+    "text": "I was ___ by the new instructions.",
+    "answers": [
+      "confused",
+      "confusing",
+      "confuse",
+      "confusion"
+    ],
+    "correct": "confused",
+    "explanation": "I испытываю непонимание: confused by something."
+  },
+  {
+    "text": "The delay is becoming ___.",
+    "answers": [
+      "worrying",
+      "worried",
+      "worry",
+      "worryingly"
+    ],
+    "correct": "worrying",
+    "explanation": "Задержка вызывает беспокойство: worrying."
+  },
+  {
+    "text": "She is ___ about the delay.",
+    "answers": [
+      "worried",
+      "worrying",
+      "worry",
+      "worryingly"
+    ],
+    "correct": "worried",
+    "explanation": "She испытывает беспокойство: worried about something."
+  },
+  {
+    "text": "Completing the project was extremely ___.",
+    "answers": [
+      "satisfying",
+      "satisfied",
+      "satisfy",
+      "satisfaction"
+    ],
+    "correct": "satisfying",
+    "explanation": "Завершение проекта приносит удовлетворение: satisfying."
+  },
+  {
+    "text": "The client was ___ with the final result.",
+    "answers": [
+      "satisfied",
+      "satisfying",
+      "satisfy",
+      "satisfaction"
+    ],
+    "correct": "satisfied",
+    "explanation": "Client испытывает удовлетворение: satisfied with something."
+  },
+  {
+    "text": "The sound of the waves is very ___.",
+    "answers": [
+      "relaxing",
+      "relaxed",
+      "relax",
+      "relaxation"
+    ],
+    "correct": "relaxing",
+    "explanation": "Звук помогает расслабиться: relaxing."
+  },
+  {
+    "text": "I felt completely ___ after the massage.",
+    "answers": [
+      "relaxed",
+      "relaxing",
+      "relax",
+      "relaxation"
+    ],
+    "correct": "relaxed",
+    "explanation": "I нахожусь в расслабленном состоянии: relaxed."
+  },
+  {
+    "text": "The twelve-hour journey was ___.",
+    "answers": [
+      "exhausting",
+      "exhausted",
+      "exhaust",
+      "exhaustion"
+    ],
+    "correct": "exhausting",
+    "explanation": "Путешествие вызывает сильную усталость: exhausting."
+  },
+  {
+    "text": "The travellers looked ___.",
+    "answers": [
+      "exhausted",
+      "exhausting",
+      "exhaust",
+      "exhaustion"
+    ],
+    "correct": "exhausted",
+    "explanation": "Путешественники чувствуют сильную усталость: exhausted."
+  },
+  {
+    "text": "The news was absolutely ___.",
+    "answers": [
+      "shocking",
+      "shocked",
+      "shock",
+      "shockingly"
+    ],
+    "correct": "shocking",
+    "explanation": "Новость вызывает шок: shocking."
+  },
+  {
+    "text": "We were ___ by the news.",
+    "answers": [
+      "shocked",
+      "shocking",
+      "shock",
+      "shockingly"
+    ],
+    "correct": "shocked",
+    "explanation": "We испытываем шок: shocked by something."
+  }
+];
+
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -4167,10 +4567,10 @@ function renderDashboard() {
         </article>
         <article class="mode-card mode-blue">
           <span class="mode-kicker">Форма глагола</span>
-          <h3>Gerund или infinitive</h3>
-          <p>Working, to work или work; включая try, remember и stop.</p>
+          <h3>Формы глагола и -ed/-ing</h3>
+          <p>${GERUND_INFINITIVE_ITEMS.length + ADJECTIVE_ENDING_ITEMS.length} примеров: working/to work и прилагательные bored/boring.</p>
           <div class="mode-card-meta">${gerundStatText}</div>
-          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-gerund-guide">Правила</button><button class="primary-button" type="button" data-action="start-gerund">12 заданий</button></div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-gerund-guide">Правила</button><button class="primary-button" type="button" data-action="start-gerund">16 заданий</button></div>
         </article>
         <article class="mode-card mode-coral">
           <span class="mode-kicker">Лексика + времена</span>
@@ -4357,9 +4757,9 @@ function renderGerundGuide() {
   guide.innerHTML = `
     <button class="back-button" type="button" data-action="home">← К тренировке</button>
     <article class="lesson-card guide-page gerund-guide">
-      <span class="lesson-tag">Gerund or infinitive</span>
-      <h1>Что ставить после глагола</h1>
-      <p class="subtitle">Смотри не только на перевод, а на слово перед вторым глаголом. Оно чаще всего и определяет форму.</p>
+      <span class="lesson-tag">Verb forms & -ed/-ing adjectives</span>
+      <h1>Формы глагола и прилагательные чувств</h1>
+      <p class="subtitle">Сначала реши, выбираешь ли ты форму действия или описываешь эмоцию. Для эмоции спроси: кто чувствует и что вызывает это чувство?</p>
 
       <div class="gerund-rule-grid">
         <section class="gerund-rule-card gerund-card">
@@ -4391,6 +4791,34 @@ function renderGerundGuide() {
         </section>
       </div>
 
+      <h2 class="guide-heading">Прилагательные на -ed и -ing</h2>
+      <div class="gerund-rule-grid">
+        <section class="gerund-rule-card infinitive-card">
+          <span class="rule-form">-ing = причина</span>
+          <h2>Что вызывает чувство?</h2>
+          <ul class="rule-list"><li><strong>The film was boring.</strong> Фильм вызывал скуку.</li><li><strong>The journey was exhausting.</strong> Поездка утомляла.</li><li>Предметом может быть событие, человек или ситуация.</li></ul>
+        </section>
+        <section class="gerund-rule-card gerund-card">
+          <span class="rule-form">-ed = чувство</span>
+          <h2>Кто это чувствует?</h2>
+          <ul class="rule-list"><li><strong>I was bored.</strong> Мне было скучно.</li><li><strong>We felt exhausted.</strong> Мы чувствовали усталость.</li><li>Обычно это человек или животное.</li></ul>
+        </section>
+        <section class="gerund-rule-card bare-card">
+          <span class="rule-form">Сравни смысл</span>
+          <h2>He is boring ≠ He is bored</h2>
+          <ul class="rule-list"><li><strong>He is boring.</strong> Он скучный для других.</li><li><strong>He is bored.</strong> Ему самому скучно.</li><li>Смотри на роль существительного, а не только на animate/inanimate.</li></ul>
+        </section>
+      </div>
+
+      <div class="aux-chain-list">
+        <div><strong>interested in · excited about</strong><span>I’m interested in history. She’s excited about the trip.</span></div>
+        <div><strong>annoyed with/by/about</strong><span>Annoyed with a person, by a sound, about a situation.</span></div>
+        <div><strong>surprised/amazed/shocked by</strong><span>We were surprised by the result.</span></div>
+        <div><strong>tired of/from · disappointed with/by</strong><span>Tired of repetition, tired from work; disappointed with the result.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Быстрая проверка:</strong> если существительное производит эффект — <em>-ing</em>. Если оно получает этот эффект и испытывает чувство — <em>-ed</em>: <em>The task was frustrating, so I felt frustrated</em>.</aside>
+
       <h2 class="guide-heading">Форма меняет смысл</h2>
       <div class="meaning-pairs">
         <div class="meaning-pair"><strong>Try calling him.</strong><span>Попробуй как метод — вдруг сработает.</span><strong>Try to call him.</strong><span>Попытайся дозвониться, приложи усилие.</span></div>
@@ -4401,7 +4829,7 @@ function renderGerundGuide() {
       <aside class="principle-box"><strong>Отрицание:</strong> ставь not перед нужной формой — <em>try not to be late</em>, но <em>recommend not worrying</em>.</aside>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-gerund">Начать 12 заданий</button>
+        <button class="primary-button" type="button" data-action="start-gerund">Начать 16 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
       </div>
     </article>
@@ -4681,10 +5109,9 @@ function startIdentifyForTense(key) {
 }
 
 function startGerundSession() {
-  const questions = shuffle(GERUND_INFINITIVE_ITEMS)
-    .slice(0, 12)
-    .map(gerundQuestionFor);
-  startSession("gerund-infinitive", "Gerund или infinitive", questions);
+  const gerundQuestions = shuffle(GERUND_INFINITIVE_ITEMS).slice(0, 8).map(gerundQuestionFor);
+  const adjectiveQuestions = shuffle(ADJECTIVE_ENDING_ITEMS).slice(0, 8).map(adjectiveQuestionFor);
+  startSession("gerund-infinitive", "Формы глагола и -ed/-ing", shuffle([...gerundQuestions, ...adjectiveQuestions]));
 }
 
 function phraseComplete(item) {
@@ -4839,6 +5266,20 @@ function gerundQuestionFor(item) {
   };
 }
 
+
+function adjectiveQuestionFor(item) {
+  const options = shuffle(item.answers);
+  return {
+    type: "adjective-ending",
+    topicKey: "gerundInfinitive",
+    text: item.text,
+    answers: options,
+    correct: options.indexOf(item.correct),
+    example: item.text.replace("___", item.correct),
+    explanation: `<span class="aux-explanation">${item.explanation}</span>`,
+  };
+}
+
 function startSession(type, title, questions) {
   session = { type, title, questions, index: 0, correct: 0, answered: false, completed: false };
   renderQuiz();
@@ -4851,6 +5292,7 @@ function renderQuiz() {
   const question = session.questions[session.index];
   const isIdentify = question.type === "identify";
   const isGerund = question.type === "gerund";
+  const isAdjectiveEnding = question.type === "adjective-ending";
   const isPhrase = question.type === "phrase";
   const isPhraseTense = question.type === "phrase-tense";
   const isArticle = question.type === "article";
@@ -4860,7 +5302,9 @@ function renderQuiz() {
     ? "Какое время используется в предложении?"
     : isGerund
       ? "Выбери форму второго глагола"
-      : isPhrase
+      : isAdjectiveEnding
+        ? "Выбери прилагательное на -ed или -ing"
+        : isPhrase
         ? "Выбери оборот в форме, подходящей контексту"
         : isPhraseTense
           ? "Определи время готового предложения"
@@ -4875,14 +5319,16 @@ function renderQuiz() {
     ? "Определи время"
     : isGerund
       ? "Gerund or infinitive"
-      : isPhrase || isPhraseTense
+      : isAdjectiveEnding
+        ? "-ed / -ing adjectives"
+        : isPhrase || isPhraseTense
         ? "Речевые обороты"
         : isArticle
           ? "Articles"
           : isAuxiliary || isModalBuild
             ? "Auxiliary & modal verbs"
             : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
+  const modeClass = isIdentify ? "identify-mode" : isGerund || isAdjectiveEnding ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -4995,10 +5441,10 @@ function renderResult() {
         : "Открой библиотеку и повтори примеры по одной категории. В следующем подходе проговаривай вслух базовую форму, готовое предложение и правило времени."
     : session.type === "gerund-infinitive"
     ? score >= 85
-      ? "Отлично: ты уверенно различаешь gerund, infinitive и форму без to. Повтори режим через пару дней для закрепления."
+      ? "Отлично: ты уверенно различаешь gerund, infinitive, форму без to и прилагательные на -ed/-ing."
       : score >= 55
-        ? "Хорошая база. Обрати внимание на глагол или предлог перед пропуском — именно он чаще всего определяет форму."
-        : "Вернись к памятке и пройди ещё один подход: сначала закрепи три базовых правила, затем смысловые пары try, remember и stop."
+        ? "Хорошая база. Для глагола смотри на предыдущее слово; для прилагательного решай, кто испытывает чувство и что его вызывает."
+        : "Вернись к памятке: повтори формы глагола, затем правило «-ing вызывает, -ed чувствует» и пройди ещё один подход."
     : score >= 85
       ? "Отлично. Завтра тренажёр вернёт вопросы чуть позже — закрепим, а не будем гонять их подряд."
       : score >= 55
