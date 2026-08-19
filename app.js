@@ -3726,7 +3726,7 @@ function renderPhraseGuide() {
       </div>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-phrases">Начать 14 заданий</button>
+        <button class="primary-button" type="button" data-action="start-phrases">Начать 15 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
       </div>
     </article>
