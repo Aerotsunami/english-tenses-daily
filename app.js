@@ -3278,6 +3278,274 @@ const ABILITY_ITEMS = [
 ];
 
 
+const MANAGED_TO_ITEMS = [
+  {
+    "prompt": "The server kept crashing, but we finally ___ restart it.",
+    "answers": [
+      "managed to",
+      "could",
+      "managed",
+      "were manage to"
+    ],
+    "correct": "managed to",
+    "explanation": "Managed to подчёркивает трудность и успешный результат: всё-таки сумели перезапустить."
+  },
+  {
+    "prompt": "I ran to the station, but I ___ catch the last train.",
+    "answers": [
+      "didn't manage to",
+      "didn't managed to",
+      "could to not",
+      "wasn't manage to"
+    ],
+    "correct": "didn't manage to",
+    "explanation": "Не получилось выполнить конкретное действие: didn’t manage to + базовая форма."
+  },
+  {
+    "prompt": "___ send the report before the deadline?",
+    "answers": [
+      "Did you manage to",
+      "Did you managed to",
+      "Could you to",
+      "Were you manage to"
+    ],
+    "correct": "Did you manage to",
+    "explanation": "Вопрос в Past Simple: Did + subject + manage to + V? После did форма manage не меняется."
+  },
+  {
+    "prompt": "Even on busy days, she ___ practise English for twenty minutes.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "manages",
+      "is manage to"
+    ],
+    "correct": "manages to",
+    "explanation": "Регулярный успешный результат; с she в Present Simple: manages to + V."
+  },
+  {
+    "prompt": "The team has ___ reduce loading time by 40%.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "been manage to",
+      "managed"
+    ],
+    "correct": "managed to",
+    "explanation": "Present Perfect: has managed to + V."
+  },
+  {
+    "prompt": "I'm sure we ___ finish before Friday.",
+    "answers": [
+      "will manage to",
+      "will managed to",
+      "will can to",
+      "manage will to"
+    ],
+    "correct": "will manage to",
+    "explanation": "Будущий результат: will manage to + базовая форма."
+  },
+  {
+    "prompt": "If we leave now, we might ___ find a table.",
+    "answers": [
+      "manage to",
+      "managed to",
+      "manages to",
+      "to manage"
+    ],
+    "correct": "manage to",
+    "explanation": "После might ставим базовую форму manage: might manage to find."
+  },
+  {
+    "prompt": "I hope ___ speak to the manager today.",
+    "answers": [
+      "to manage to",
+      "manage to",
+      "to managed to",
+      "to manage"
+    ],
+    "correct": "to manage to",
+    "explanation": "После hope: hope to manage to + V — надеюсь, что удастся."
+  },
+  {
+    "prompt": "We managed ___ wake the baby.",
+    "answers": [
+      "not to",
+      "to not",
+      "don't to",
+      "not"
+    ],
+    "correct": "not to",
+    "explanation": "Отрицание относится к действию: managed not to wake — удалось не разбудить."
+  },
+  {
+    "prompt": "Because of the noise, he rarely ___ sleep before midnight.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "managed to",
+      "does manages to"
+    ],
+    "correct": "manages to",
+    "explanation": "He + Present Simple: manages to. Наречие rarely показывает регулярность."
+  },
+  {
+    "prompt": "How ___ solve such a difficult problem?",
+    "answers": [
+      "did you manage to",
+      "did you managed to",
+      "you did manage to",
+      "were you manage to"
+    ],
+    "correct": "did you manage to",
+    "explanation": "How did you manage to…? — «Как тебе удалось…?» После did используем manage."
+  },
+  {
+    "prompt": "Исправь ошибку: Did she managed to call you?",
+    "answers": [
+      "Did she manage to call you?",
+      "Did she managed to call you?",
+      "Did she manage call you?",
+      "Managed she to call you?"
+    ],
+    "correct": "Did she manage to call you?",
+    "explanation": "После did глагол возвращается в базовую форму: manage to call."
+  },
+  {
+    "prompt": "Исправь ошибку: We didn't managed to book a room.",
+    "answers": [
+      "We didn't manage to book a room.",
+      "We didn't managed to book a room.",
+      "We don't managed to book a room.",
+      "We didn't manage booking a room."
+    ],
+    "correct": "We didn't manage to book a room.",
+    "explanation": "После didn’t: manage to + V, без окончания -ed."
+  },
+  {
+    "prompt": "Исправь ошибку: He managed fixing the printer.",
+    "answers": [
+      "He managed to fix the printer.",
+      "He managed fixing the printer.",
+      "He did managed to fix the printer.",
+      "He managed fix the printer."
+    ],
+    "correct": "He managed to fix the printer.",
+    "explanation": "После manage требуется инфинитив с to: manage to fix."
+  },
+  {
+    "prompt": "The key was bent, but after several attempts I ___ open the door.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "managed opening"
+    ],
+    "correct": "managed to",
+    "explanation": "Несколько попыток и конкретный успех — типичный контекст managed to."
+  },
+  {
+    "prompt": "When Anna was a child, she ___ read very quickly.",
+    "answers": [
+      "could",
+      "managed to",
+      "was manage to",
+      "has managed to"
+    ],
+    "correct": "could",
+    "explanation": "Это общая способность в прошлом, поэтому could, а не managed to."
+  },
+  {
+    "prompt": "After six unanswered calls, I finally ___ contact the client.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "manage"
+    ],
+    "correct": "managed to",
+    "explanation": "Finally и несколько попыток подчёркивают трудный конкретный успех: managed to."
+  },
+  {
+    "prompt": "The road was flooded, but the ambulance ___ reach the village.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "manages to"
+    ],
+    "correct": "managed to",
+    "explanation": "Несмотря на препятствие действие завершилось успешно: managed to reach."
+  },
+  {
+    "prompt": "She was exhausted, but she ___ stay awake until the end.",
+    "answers": [
+      "managed to",
+      "could",
+      "has manage to",
+      "did managed to"
+    ],
+    "correct": "managed to",
+    "explanation": "But показывает трудность, а результат достигнут: managed to stay."
+  },
+  {
+    "prompt": "I tried three passwords but ___ log in.",
+    "answers": [
+      "didn't manage to",
+      "didn't managed to",
+      "couldn't to",
+      "not managed to"
+    ],
+    "correct": "didn't manage to",
+    "explanation": "Несколько попыток закончились неудачей: didn’t manage to log in."
+  },
+  {
+    "prompt": "This month he has ___ attend every lesson.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "been managed to",
+      "manages to"
+    ],
+    "correct": "managed to",
+    "explanation": "Has managed to — результат за ещё продолжающийся период this month."
+  },
+  {
+    "prompt": "Do you think you'll ___ complete the course on time?",
+    "answers": [
+      "manage to",
+      "managed to",
+      "be manage to",
+      "manages to"
+    ],
+    "correct": "manage to",
+    "explanation": "После will используем базовую форму: will manage to complete."
+  },
+  {
+    "prompt": "She almost ___ win the competition.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "manages to",
+      "did managed to"
+    ],
+    "correct": "managed to",
+    "explanation": "Almost managed to значит «почти удалось», но конечный результат не был достигнут."
+  },
+  {
+    "prompt": "He never ___ arrive on time, even when he leaves early.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "managed to",
+      "does manage to"
+    ],
+    "correct": "manages to",
+    "explanation": "С he в Present Simple: never manages to arrive."
+  }
+];
+
+
 const STORAGE_KEY = "tense-day-progress-v1";
 const DAY = 24 * 60 * 60 * 1000;
 let state = loadState();
@@ -3474,9 +3742,9 @@ function renderDashboard() {
         <article class="mode-card mode-green">
           <span class="mode-kicker">Глаголы-помощники</span>
           <h3>Помощники и модальные</h3>
-          <p>Have had, must, should, have to, can, could и be able to — плюс порядок слов.</p>
+          <p>Have had, must, should, can, could, be able to и managed to — плюс порядок слов.</p>
           <div class="mode-card-meta">${auxiliaryStatText}</div>
-          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">15 заданий</button></div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">16 заданий</button></div>
         </article>
       </div>
     </section>
@@ -3868,6 +4136,22 @@ function renderAuxiliaryGuide() {
 
       <aside class="principle-box"><strong>Быстрый выбор:</strong> сейчас — <em>can</em>; вообще умел раньше — <em>could</em>; один раз смог — <em>was/were able to</em>; после have, will, might, should или want — нужная форма <em>be able to</em>.</aside>
 
+      <h2 class="guide-heading">Managed to: когда всё-таки удалось</h2>
+      <div class="modal-structure-grid">
+        <section class="modal-structure-card"><span>Успех несмотря на трудность</span><strong>managed to + V</strong><p>We finally managed to fix it.<br>She managed to stay calm.</p></section>
+        <section class="modal-structure-card"><span>Не получилось</span><strong>didn’t manage to + V</strong><p>I didn’t manage to call him.<br>They didn’t manage to escape.</p></section>
+        <section class="modal-structure-card"><span>Вопрос</span><strong>Did + subject + manage to + V?</strong><p>Did you manage to finish?<br>How did she manage to win?</p></section>
+        <section class="modal-structure-card"><span>Другие времена</span><strong>manage меняется по времени</strong><p>She manages to practise.<br>We’ll manage to finish.<br>He has managed to recover.</p></section>
+      </div>
+
+      <div class="modal-contrast">
+        <section><strong>He could swim at five.</strong><span>Умел вообще — общая способность в прошлом.</span></section>
+        <section><strong>He was able to reach the shore.</strong><span>Смог в конкретной ситуации — нейтральный результат.</span></section>
+        <section><strong>He managed to reach the shore.</strong><span>Всё-таки добрался — подчёркиваем трудность или усилие.</span></section>
+      </div>
+
+      <aside class="principle-box"><strong>Формула:</strong> после manage всегда <em>to + V</em>. В вопросе и отрицании прошедшего времени: <em>Did you manage to…?</em> и <em>didn’t manage to…</em> — не <em>managed</em> после did.</aside>
+
       <h2 class="guide-heading">Почему два had подряд — это нормально</h2>
       <div class="aux-chain-list">
         <div><strong>I have had this phone for three years.</strong><span><b>have</b> — помощник Present Perfect; <b>had</b> — V3 глагола have.</span></div>
@@ -3878,7 +4162,7 @@ function renderAuxiliaryGuide() {
       <aside class="principle-box"><strong>Главная проверка:</strong> после must, should, can, could, do, does и did всегда базовая форма без лишнего to и без -s: <em>She should go</em>, <em>He can drive</em>, <em>Does he have to work?</em>.</aside>
 
       <div class="lesson-actions">
-        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 15 заданий</button>
+        <button class="primary-button" type="button" data-action="start-auxiliaries">Начать 16 заданий</button>
         <button class="secondary-button" type="button" data-action="home">К каталогу</button>
       </div>
     </article>
@@ -4023,10 +4307,11 @@ function modalQuestionFor(item) {
 }
 
 function startAuxiliarySession() {
-  const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 5).map(auxiliaryQuestionFor);
-  const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 5).map(modalQuestionFor);
-  const abilityQuestions = shuffle(ABILITY_ITEMS).slice(0, 5).map(modalQuestionFor);
-  startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions, ...abilityQuestions]));
+  const helperQuestions = shuffle(AUXILIARY_ITEMS).slice(0, 4).map(auxiliaryQuestionFor);
+  const modalQuestions = shuffle(MODAL_ITEMS).slice(0, 4).map(modalQuestionFor);
+  const abilityQuestions = shuffle(ABILITY_ITEMS).slice(0, 4).map(modalQuestionFor);
+  const managedQuestions = shuffle(MANAGED_TO_ITEMS).slice(0, 4).map(modalQuestionFor);
+  startSession("auxiliaries", "Помощники и модальные", shuffle([...helperQuestions, ...modalQuestions, ...abilityQuestions, ...managedQuestions]));
 }
 
 function startFocusSession(key) {
@@ -4208,10 +4493,10 @@ function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
   const message = session.type === "auxiliaries"
     ? score >= 85
-      ? "Отлично: ты уверенно строишь предложения с помощниками и модальными глаголами, включая can, could и be able to."
+      ? "Отлично: ты уверенно строишь предложения с помощниками и модальными глаголами, включая can, could, be able to и managed to."
       : score >= 55
-        ? "Хорошая база. Сначала определяй время и смысл: способность вообще, конкретный результат, совет, обязанность или запрет."
-        : "Вернись к памятке и повтори формулы: modal + V, have to + V и be able to + V. Затем пройди ещё один смешанный подход."
+        ? "Хорошая база. Сначала определяй время и смысл: способность вообще, конкретный результат, трудный успех, совет, обязанность или запрет."
+        : "Вернись к памятке и повтори формулы: modal + V, have to + V, be able to + V и manage to + V. Затем пройди ещё один смешанный подход."
     : session.type === "articles"
     ? score >= 85
       ? "Отлично: ты уверенно различаешь новый предмет, конкретный предмет и общее понятие. Повтори тему через пару дней."
