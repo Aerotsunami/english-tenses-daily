@@ -14,11 +14,11 @@ function boot() {
 }
 const app=boot();
 const json=code=>JSON.parse(app.run(`JSON.stringify(${code})`));
-assert.equal(app.run('REPORTED_ITEMS.length'),32);
-assert.equal(app.run('new Set(REPORTED_ITEMS.map(x=>x.id)).size'),32);
-for (const group of ['tense','modal','reference','structure']) assert.equal(app.run(`REPORTED_ITEMS.filter(x=>x.group==='${group}').length`),8);
+assert.equal(app.run('REPORTED_ITEMS.length'),96);
+assert.equal(app.run('new Set(REPORTED_ITEMS.map(x=>x.id)).size'),96);
+for (const group of ['tense','modal','reference','structure']) assert.equal(app.run(`REPORTED_ITEMS.filter(x=>x.group==='${group}').length`),24);
 assert.equal(app.run('REPORTED_ITEMS.every(x=>x.answers.length===4 && new Set(x.answers).size===4 && x.changes.length>=2 && x.context && x.instruction)'),true);
-for (const mode of [false,true]) for(let i=0;i<32;i++) {
+for (const mode of [false,true]) for(let i=0;i<96;i++) {
   const q=json(`reportedQuestionFor(REPORTED_ITEMS[${i}],${mode})`);
   const item=json(`REPORTED_ITEMS[${i}]`);
   assert.equal(q.answers.length,4); assert.equal(new Set(q.answers).size,4);
@@ -40,6 +40,7 @@ for(let n=0;n<200;n++) {
   assert.equal(qs.filter(x=>x.type==='reported').length,8);
   assert.equal(qs.filter(x=>x.type==='reported-rule').length,4);
   for(const group of ['tense','modal','reference','structure']) assert.equal(qs.filter(x=>x.id.startsWith(group+'-')).length,3);
+  for(const question of qs.filter(x=>x.type==='reported-rule')) assert.equal(new Set(question.answers).size,4);
 }
 // Full correct session, double-answer guard, save/reload and old modes.
 for(let i=0;i<12;i++) {app.run('answerQuestion(session.questions[session.index].correct)');app.run('answerQuestion(0)');app.run('nextQuestion()');}
@@ -52,6 +53,6 @@ assert.equal(reloaded.run('state.grammarStats.auxiliaries.total'),21);
 for (const [fn,count] of [['startIdentifySession',10],['startGerundSession',16],['startAuxiliarySession',16],['startArticleSession',12],['startPhraseSession',14]]) { app.run(`${fn}()`);assert.equal(app.run('session.questions.length'),count);app.run('answerQuestion(session.questions[0].correct)'); }
 assert.equal(app.run('rsEscape(`<img src=x onerror=x>`).includes("<img")'),false);
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
-assert.ok(index.indexOf('reported-speech.js?v=18')<index.indexOf('app.js?v=18'));
-assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./reported-speech.js?v=18'));
-console.log('PASS: 32 examples, 200 balanced sessions, all answer mappings, migration, persistence, duplicate-answer guard, 5 existing modes and v18 cache.');
+assert.ok(index.indexOf('reported-speech.js?v=19')<index.indexOf('app.js?v=19'));
+assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./reported-speech.js?v=19'));
+console.log('PASS: 96 examples, 200 balanced sessions, all answer mappings, migration, persistence, duplicate-answer guard, 5 existing modes and v19 cache.');\n

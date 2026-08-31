@@ -1,5 +1,5 @@
-const CACHE = "tense-day-v18";
-const ASSETS = ["./", "./index.html", "./styles.css?v=18", "./reported-speech.js?v=18", "./app.js?v=18", "./manifest.webmanifest", "./icon.svg"];
+const CACHE = "tense-day-v19";
+const ASSETS = ["./", "./index.html", "./styles.css?v=19", "./reported-speech.js?v=19", "./app.js?v=19", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
@@ -16,4 +16,4 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
-});
+});\n
