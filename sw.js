@@ -1,5 +1,5 @@
-const CACHE = "tense-day-v17";
-const ASSETS = ["./", "./index.html", "./styles.css?v=17", "./app.js?v=17", "./manifest.webmanifest", "./icon.svg"];
+const CACHE = "tense-day-v18";
+const ASSETS = ["./", "./index.html", "./styles.css?v=18", "./reported-speech.js?v=18", "./app.js?v=18", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));

@@ -4412,6 +4412,8 @@ document.addEventListener("click", (event) => {
   if (action === "home") renderDashboard();
   if (action === "start-daily") startDailySession();
   if (action === "start-identify") startIdentifySession();
+  if (action === "start-reported") startReportedSession();
+  if (action === "open-reported") renderReportedGuide();
   if (action === "start-gerund") startGerundSession();
   if (action === "start-phrases") startPhraseSession();
   if (action === "start-articles") startArticleSession();
@@ -4443,6 +4445,7 @@ function defaultState() {
       speechPatterns: { total: 0, correct: 0 },
       articles: { total: 0, correct: 0 },
       auxiliaries: { total: 0, correct: 0 },
+      reportedSpeech: { total: 0, correct: 0 },
     },
   };
 }
@@ -4523,6 +4526,8 @@ function renderDashboard() {
   const articleStatText = articleStat.total ? `${accuracy(articleStat)}% · ${articleStat.total} ответов` : "Ещё не тренировались";
   const auxiliaryStat = state.grammarStats.auxiliaries;
   const auxiliaryStatText = auxiliaryStat.total ? `${accuracy(auxiliaryStat)}% · ${auxiliaryStat.total} ответов` : "Ещё не тренировались";
+  const reportedStat = state.grammarStats.reportedSpeech;
+  const reportedStatText = reportedStat.total ? `${accuracy(reportedStat)}% · ${reportedStat.total} ответов` : "Ещё не тренировались";
 
   dashboard.innerHTML = `
     <section class="hero">
@@ -4561,9 +4566,10 @@ function renderDashboard() {
         </article>
         <article class="mode-card mode-forest">
           <span class="mode-kicker">Контекст</span>
-          <h3>Определи время</h3>
-          <p>Готовые предложения без пропусков: найди форму и признак времени.</p>
-          <div class="mode-card-footer"><small>36 примеров</small><button class="primary-button" type="button" data-action="start-identify">10 заданий</button></div>
+          <h3>Времена и косвенная речь</h3>
+          <p>Распознавай время в тексте и учись передавать чужие слова.</p>
+          <div class="mode-card-footer"><small>Определи время · 36 примеров</small><button class="secondary-button" type="button" data-action="start-identify">10 заданий</button></div>
+          <div class="reported-card-section"><strong>Косвенная речь · ${REPORTED_ITEMS.length} примера</strong><div class="mode-card-meta">${reportedStatText}</div><div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-reported">Правила</button><button class="primary-button" type="button" data-action="start-reported">12 заданий</button></div></div>
         </article>
         <article class="mode-card mode-blue">
           <span class="mode-kicker">Форма глагола</span>
@@ -5298,7 +5304,10 @@ function renderQuiz() {
   const isArticle = question.type === "article";
   const isAuxiliary = question.type === "auxiliary";
   const isModalBuild = question.type === "modal-build";
-  const taskText = isIdentify
+  const isReported = question.type === "reported" || question.type === "reported-rule";
+  const taskText = isReported
+    ? question.type === "reported-rule" ? "Определи правило изменения" : "Выбери правильный пересказ"
+    : isIdentify
     ? "Какое время используется в предложении?"
     : isGerund
       ? "Выбери форму второго глагола"
@@ -5315,7 +5324,9 @@ function renderQuiz() {
               : isAuxiliary
                 ? "Выбери подходящий глагол-помощник"
                 : "Выбери правильную форму";
-  const modeText = isIdentify
+  const modeText = isReported
+    ? "Reported speech"
+    : isIdentify
     ? "Определи время"
     : isGerund
       ? "Gerund or infinitive"
@@ -5328,7 +5339,7 @@ function renderQuiz() {
           : isAuxiliary || isModalBuild
             ? "Auxiliary & modal verbs"
             : question.tense.name;
-  const modeClass = isIdentify ? "identify-mode" : isGerund || isAdjectiveEnding ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
+  const modeClass = isReported ? "reported-mode" : isIdentify ? "identify-mode" : isGerund || isAdjectiveEnding ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -5348,6 +5359,7 @@ function renderQuiz() {
       <article class="quiz-card" style="margin-top: 14px">
         <span class="question-tense ${modeClass}">${modeText}</span>
         <p class="question-task">${taskText}</p>
+        ${isReported ? `<p class="reported-context">${rsEscape(question.context)}</p>` : ""}
         <h2 class="question">${question.text}</h2>
         <div class="answers">${answerButtons}</div>
         ${feedback}
@@ -5421,7 +5433,11 @@ function finishSession() {
 
 function renderResult() {
   const score = Math.round((session.correct / session.questions.length) * 100);
-  const message = session.type === "auxiliaries"
+  const message = session.type === "reported-speech"
+    ? score >= 85
+      ? "Уверенный пересказ! Ты замечаешь смену времён, участников и контекста. Повтори тему через пару дней."
+      : "Проверь четыре вещи: время, модальный глагол, участники разговора и место/день. Разбор каждого ответа показывает, что именно изменилось."
+    : session.type === "auxiliaries"
     ? score >= 85
       ? "Отлично: ты уверенно строишь предложения с помощниками и модальными глаголами, включая can, could, be able to и managed to."
       : score >= 55
