@@ -53,6 +53,7 @@ assert.equal(reloaded.run('state.grammarStats.auxiliaries.total'),21);
 for (const [fn,count] of [['startIdentifySession',10],['startGerundSession',16],['startAuxiliarySession',16],['startArticleSession',12],['startPhraseSession',14]]) { app.run(`${fn}()`);assert.equal(app.run('session.questions.length'),count);app.run('answerQuestion(session.questions[0].correct)'); }
 assert.equal(app.run('rsEscape(`<img src=x onerror=x>`).includes("<img")'),false);
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
-assert.ok(index.indexOf('reported-speech.js?v=19')<index.indexOf('app.js?v=19'));
-assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./reported-speech.js?v=19'));
-console.log('PASS: 96 examples, 200 balanced sessions, all answer mappings, migration, persistence, duplicate-answer guard, 5 existing modes and v19 cache.');
+assert.ok(index.indexOf('reported-speech.js?v=20')<index.indexOf('app.js?v=20'));
+assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./reported-speech.js?v=20'));
+console.log('PASS: 96 examples, 200 balanced sessions, all answer mappings, migration, persistence, duplicate-answer guard, 5 existing modes and v20 cache.');
+
