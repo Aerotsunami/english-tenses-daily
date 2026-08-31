@@ -38,4 +38,4 @@
 
 ## Технологии
 
-Статический HTML/CSS/JavaScript, manifest и service worker. Публикуется через GitHub Pages.\n
+Статический HTML/CSS/JavaScript, manifest и service worker. Публикуется через GitHub Pages.

@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 57064)
-Total output lines: 5523
-
 const TENSES = [
   {
     key: "present-simple",
@@ -506,7 +503,4332 @@ const IDENTIFY_DISTRACTORS = {
 };
 
 const GERUND_INFINITIVE_ITEMS = [
-  gi("I enjoy ___ from home.", ["working", "to work", "work", "worked"], 0, "I enjoy working from home.", "После enjoy используем герундий: enjoy doing something.…37064 tokens truncated… помню уже произошедшее действие.</span></div>
+  gi("I enjoy ___ from home.", ["working", "to work", "work", "worked"], 0, "I enjoy working from home.", "После enjoy используем герундий: enjoy doing something."),
+  gi("Try to avoid ___ your email every five minutes.", ["checking", "to check", "check", "checked"], 0, "Try to avoid checking your email every five minutes.", "После avoid ставим verb + ing."),
+  gi("She is very good at ___ complex ideas.", ["explaining", "to explain", "explain", "explained"], 0, "She is very good at explaining complex ideas.", "После предлога at нужен герундий: good at doing."),
+  gi("Read the message again before ___ it.", ["sending", "to send", "send", "sent"], 0, "Read the message again before sending it.", "После предлога before используется verb + ing."),
+  gi("He is interested in ___ more about AI.", ["learning", "to learn", "learn", "learned"], 0, "He is interested in learning more about AI.", "In — предлог, поэтому после него ставим герундий."),
+  gi("___ from home saves me a lot of time.", ["Working", "To working", "Work", "Worked"], 0, "Working from home saves me a lot of time.", "Когда действие является подлежащим предложения, обычно используем герундий."),
+  gi("She suggested ___ the experiment for another week.", ["running", "to run", "run", "ran"], 0, "She suggested running the experiment for another week.", "После suggest используем verb + ing, а не to + verb."),
+  gi("Would you mind ___ the window?", ["opening", "to open", "open", "opened"], 0, "Would you mind opening the window?", "После mind нужен герундий: mind doing."),
+  gi("We finished ___ the presentation at midnight.", ["preparing", "to prepare", "prepare", "prepared"], 0, "We finished preparing the presentation at midnight.", "После finish ставим verb + ing."),
+  gi("Keep ___ — your English is getting better.", ["practising", "to practise", "practise", "practised"], 0, "Keep practising — your English is getting better.", "После keep используем герундий: keep doing."),
+  gi("I want ___ my spoken English.", ["to improve", "improving", "improve", "improved"], 0, "I want to improve my spoken English.", "После want нужен инфинитив с to."),
+  gi("We decided ___ the launch until Monday.", ["to postpone", "postponing", "postpone", "postponed"], 0, "We decided to postpone the launch until Monday.", "После decide используем to + verb."),
+  gi("I need ___ this report today.", ["to finish", "finishing", "finish", "finished"], 0, "I need to finish this report today.", "После need обычно ставим инфинитив с to."),
+  gi("I'm happy ___ you with the analysis.", ["to help", "helping", "help", "helped"], 0, "I'm happy to help you with the analysis.", "После прилагательных, например happy, часто используется to + verb."),
+  gi("I opened the dashboard ___ the latest numbers.", ["to check", "checking", "check", "checked"], 0, "I opened the dashboard to check the latest numbers.", "Инфинитив выражает цель: открыл зачем? Чтобы проверить."),
+  gi("She promised ___ the file by Friday.", ["to send", "sending", "send", "sent"], 0, "She promised to send the file by Friday.", "После promise используем to + verb."),
+  gi("They refused ___ the scope.", ["to change", "changing", "change", "changed"], 0, "They refused to change the scope.", "После refuse нужен инфинитив с to."),
+  gi("I hope ___ Bilbao again next year.", ["to visit", "visiting", "visit", "visited"], 0, "I hope to visit Bilbao again next year.", "После hope используем to + verb."),
+  gi("You can't ___ here.", ["park", "to park", "parking", "parked"], 0, "You can't park here.", "После модального can используется инфинитив без to."),
+  gi("Let me ___ when you're ready.", ["know", "to know", "knowing", "knew"], 0, "Let me know when you're ready.", "После let ставим инфинитив без to."),
+  gi("The feedback made me ___ the whole proposal.", ["rewrite", "to rewrite", "rewriting", "rewrote"], 0, "The feedback made me rewrite the whole proposal.", "После make + object используется инфинитив без to."),
+  gi("Если хочешь проверить, поможет ли звонок: Try ___ him.", ["calling", "to call", "call", "called"], 0, "Try calling him — he may help you.", "Try doing = поэкспериментировать с методом и посмотреть, сработает ли он."),
+  gi("Если поднять тяжёлый чемодан будет трудно: Don't try ___ it alone.", ["to lift", "lifting", "lift", "lifted"], 0, "Don't try to lift it alone.", "Try to do = попытаться сделать что-то трудное, приложить усилие."),
+  gi("Не забудь оставить документ на столе: Remember ___ it there.", ["to leave", "leaving", "leave", "left"], 0, "Remember to leave the document on the table.", "Remember to do = не забыть выполнить действие в будущем."),
+  gi("Я помню нашу первую встречу: I remember ___ you on my first working day.", ["meeting", "to meet", "meet", "met"], 0, "I remember meeting you on my first working day.", "Remember doing = иметь воспоминание о действии, которое уже произошло."),
+  gi("Он бросил курить: He stopped ___.", ["smoking", "to smoke", "smoke", "smoked"], 0, "He stopped smoking.", "Stop doing = перестать выполнять действие."),
+  gi("Он остановился, чтобы ответить на звонок: He stopped ___ the call.", ["to answer", "answering", "answer", "answered"], 0, "He stopped to answer the call.", "Stop to do = остановить другое действие ради новой цели."),
+  gi("Try ___ late for the meeting.", ["not to be", "to not being", "not being", "not be"], 0, "Try not to be late for the meeting.", "Отрицание ставим перед инфинитивом: not to + verb."),
+  gi("I recommend ___ too much about one bad result.", ["not worrying", "not to worry", "to not worry", "not worry"], 0, "I recommend not worrying too much about one bad result.", "После recommend нужен герундий; not ставится перед ним: not doing."),
+  gi("She offered ___ the meeting notes.", ["to write", "writing", "write", "wrote"], 0, "She offered to write the meeting notes.", "После offer используем инфинитив с to."),
+];
+
+function gi(text, answers, correct, example, explanation) {
+  return { text, answers, correct, example, explanation };
+}
+
+const PHRASE_ITEMS = [
+  {
+    "category": "Быт",
+    "base": "wake up",
+    "meaning": "просыпаться",
+    "text": "I usually ___ at seven on weekdays.",
+    "form": "wake up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "get up",
+    "meaning": "вставать с кровати",
+    "text": "We ___ late yesterday.",
+    "form": "got up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "turn on",
+    "meaning": "включать",
+    "text": "She always ___ the lights before sunset.",
+    "form": "turns on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "turn off",
+    "meaning": "выключать",
+    "text": "I ___ the oven before I left home.",
+    "form": "turned off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "clean up",
+    "meaning": "убираться, приводить в порядок",
+    "text": "We ___ the kitchen right now.",
+    "form": "are cleaning up",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "run out of",
+    "meaning": "исчерпать запас, остаться без",
+    "text": "We ___ gas on the motorway.",
+    "form": "ran out of",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "pick up",
+    "meaning": "забрать, подобрать",
+    "text": "I ___ from the airport when you arrive.",
+    "form": "will pick you up",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "drop off",
+    "meaning": "подвезти и высадить",
+    "text": "He usually ___ the children at school.",
+    "form": "drops off",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "look after",
+    "meaning": "присматривать за",
+    "text": "Marta ___ my cat this week.",
+    "form": "is looking after",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "find out",
+    "meaning": "выяснить, узнать",
+    "text": "We ___ why the app was crashing.",
+    "form": "have found out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "give up",
+    "meaning": "сдаться, бросить занятие",
+    "text": "She ___ on the course yet.",
+    "form": "hasn't given up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "calm down",
+    "meaning": "успокоиться",
+    "text": "He ___ after we explained the problem.",
+    "form": "calmed down",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "put on",
+    "meaning": "надевать",
+    "text": "I ___ my coat when the phone rang.",
+    "form": "was putting on",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Быт",
+    "base": "take off",
+    "meaning": "снимать одежду",
+    "text": "He always ___ his shoes at the door.",
+    "form": "takes off",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Быт",
+    "base": "try on",
+    "meaning": "примерять",
+    "text": "She ___ three jackets so far.",
+    "form": "has tried on",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Быт",
+    "base": "throw away",
+    "meaning": "выбрасывать",
+    "text": "I ___ these old papers tomorrow.",
+    "form": "will throw away",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "set off",
+    "meaning": "отправиться в путь",
+    "text": "They ___ early in the morning.",
+    "form": "set off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "check in",
+    "meaning": "регистрироваться в отеле или аэропорту",
+    "text": "We ___ at the hotel right now.",
+    "form": "are checking in",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "check out",
+    "meaning": "выписаться из отеля",
+    "text": "We ___ before eleven tomorrow.",
+    "form": "will check out",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get in",
+    "meaning": "сесть в машину или такси",
+    "text": "She ___ the taxi and gave the driver the address.",
+    "form": "got in",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get on",
+    "meaning": "сесть в автобус, поезд или самолёт",
+    "text": "We ___ the wrong bus yesterday.",
+    "form": "got on",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "get off",
+    "meaning": "выйти из транспорта",
+    "text": "I ___ at the next stop.",
+    "form": "will get off",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "board",
+    "meaning": "сесть на борт",
+    "text": "The passengers ___ the plane on time.",
+    "form": "boarded",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "take off",
+    "meaning": "взлетать",
+    "text": "The plane ___ when the storm began.",
+    "form": "was taking off",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "land",
+    "meaning": "приземляться",
+    "text": "Our flight ___ in Bilbao at six.",
+    "form": "will land",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "reach",
+    "meaning": "достичь места",
+    "text": "We ___ our destination at last.",
+    "form": "have reached",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "arrive at",
+    "meaning": "прибыть в конкретное место",
+    "text": "They ___ the hotel before the rain started.",
+    "form": "had arrived at",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "head for",
+    "meaning": "направляться к",
+    "text": "We ___ the city centre now.",
+    "form": "are heading for",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "stop over",
+    "meaning": "сделать промежуточную остановку",
+    "text": "This time tomorrow, we ___ in Lisbon.",
+    "form": "will be stopping over",
+    "tenseKey": "future-continuous"
+  },
+  {
+    "category": "Путешествия",
+    "base": "see someone off",
+    "meaning": "проводить уезжающего",
+    "text": "We ___ our friends at the station.",
+    "form": "saw off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Путешествия",
+    "base": "break down",
+    "meaning": "сломаться",
+    "text": "The bus ___ before the replacement arrived.",
+    "form": "had broken down",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Путешествия",
+    "base": "miss",
+    "meaning": "опоздать на транспорт, пропустить",
+    "text": "I ___ the last train.",
+    "form": "have missed",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "carry out",
+    "meaning": "проводить, выполнять",
+    "text": "We ___ a user study this week.",
+    "form": "are carrying out",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "come up with",
+    "meaning": "придумать",
+    "text": "She ___ a much simpler solution.",
+    "form": "has come up with",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "figure out",
+    "meaning": "разобраться, найти решение",
+    "text": "I finally ___ what caused the error.",
+    "form": "figured out",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "follow up on",
+    "meaning": "вернуться к вопросу, проверить продолжение",
+    "text": "I ___ the open tasks tomorrow.",
+    "form": "will follow up on",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "look into",
+    "meaning": "изучить проблему",
+    "text": "The analyst ___ the drop in conversion now.",
+    "form": "is looking into",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "point out",
+    "meaning": "указать, обратить внимание",
+    "text": "He ___ a risk we had missed.",
+    "form": "pointed out",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "set up",
+    "meaning": "настроить, организовать",
+    "text": "We ___ a new dashboard for the team.",
+    "form": "have set up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "take over",
+    "meaning": "принять ответственность, руководство",
+    "text": "Marta ___ the project next month.",
+    "form": "will take over",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "hand in",
+    "meaning": "сдать работу или документ",
+    "text": "I ___ the report yesterday.",
+    "form": "handed in",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "go over",
+    "meaning": "просмотреть, разобрать",
+    "text": "We ___ the latest results at the moment.",
+    "form": "are going over",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "deal with",
+    "meaning": "заниматься проблемой",
+    "text": "Our support team ___ these requests every day.",
+    "form": "deals with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "work out",
+    "meaning": "разработать решение, получиться",
+    "text": "The team ___ a realistic plan.",
+    "form": "has worked out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "put off",
+    "meaning": "отложить",
+    "text": "They ___ the launch before the new issue appeared.",
+    "form": "had put off",
+    "tenseKey": "past-perfect"
+  },
+  {
+    "category": "Работа",
+    "base": "bring up",
+    "meaning": "поднять тему",
+    "text": "She ___ the budget during the meeting.",
+    "form": "brought up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Работа",
+    "base": "wrap up",
+    "meaning": "заканчивать",
+    "text": "At six, we ___ the workshop.",
+    "form": "will be wrapping up",
+    "tenseKey": "future-continuous"
+  },
+  {
+    "category": "Работа",
+    "base": "fall behind",
+    "meaning": "отставать от плана",
+    "text": "The project ___ for several weeks.",
+    "form": "has been falling behind",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "get back to",
+    "meaning": "ответить позже, вернуться с ответом",
+    "text": "I ___ you after I check the numbers.",
+    "form": "will get back to",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "reach out to",
+    "meaning": "связаться по собственной инициативе",
+    "text": "We ___ three potential partners.",
+    "form": "have reached out to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "speak up",
+    "meaning": "говорить громче или открыто высказаться",
+    "text": "She ___ when nobody else challenged the decision.",
+    "form": "spoke up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "cut off",
+    "meaning": "оборвать связь или перебить",
+    "text": "The connection ___ during the call.",
+    "form": "cut us off",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "go on",
+    "meaning": "происходить, продолжаться",
+    "text": "What ___ in the next room?",
+    "form": "is going on",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "get a point across",
+    "meaning": "донести мысль",
+    "text": "She finally ___ during the presentation.",
+    "form": "got her point across",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "fill someone in",
+    "meaning": "ввести в курс дела",
+    "text": "He always ___ after the weekly meeting.",
+    "form": "fills me in",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "talk over",
+    "meaning": "подробно обсудить",
+    "text": "We ___ the options tonight.",
+    "form": "will talk over",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "call back",
+    "meaning": "перезвонить",
+    "text": "The client ___ already.",
+    "form": "has called back",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "hear from",
+    "meaning": "получить известие от",
+    "text": "I ___ them since Monday.",
+    "form": "haven't heard from",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "keep in touch",
+    "meaning": "поддерживать связь",
+    "text": "We still ___ after all these years.",
+    "form": "keep in touch",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "catch up with",
+    "meaning": "пообщаться после перерыва",
+    "text": "I ___ an old colleague over lunch today.",
+    "form": "am catching up with",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Общение",
+    "base": "hang up",
+    "meaning": "положить трубку",
+    "text": "He ___ before I could answer.",
+    "form": "hung up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "get through to",
+    "meaning": "дозвониться, связаться",
+    "text": "I finally ___ support.",
+    "form": "have got through to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Общение",
+    "base": "put someone through",
+    "meaning": "соединить по телефону",
+    "text": "The receptionist ___ to the manager.",
+    "form": "put me through",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Общение",
+    "base": "sum up",
+    "meaning": "подвести итог",
+    "text": "She always ___ the main decisions at the end.",
+    "form": "sums up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "plan ahead",
+    "meaning": "планировать заранее",
+    "text": "He always ___ before a busy week.",
+    "form": "plans ahead",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "set aside",
+    "meaning": "отложить время или деньги",
+    "text": "I ___ two hours for deep work.",
+    "form": "have set aside",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "make time for",
+    "meaning": "находить время для",
+    "text": "I ___ English practice tomorrow.",
+    "form": "will make time for",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "run late",
+    "meaning": "опаздывать",
+    "text": "The meeting ___, so I'll be home later.",
+    "form": "is running late",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "be about to",
+    "meaning": "собираться сделать прямо сейчас",
+    "text": "The train ___ leave.",
+    "form": "is about to",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "be supposed to",
+    "meaning": "должен по договорённости или правилу",
+    "text": "We ___ send the draft today.",
+    "form": "are supposed to",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "end up",
+    "meaning": "в итоге оказаться или сделать",
+    "text": "We ___ taking a taxi instead of the bus.",
+    "form": "ended up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "get around to",
+    "meaning": "наконец найти время сделать",
+    "text": "I ___ reading that report yet.",
+    "form": "haven't got around to",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "keep up with",
+    "meaning": "успевать за темпом",
+    "text": "I ___ all the new releases this month.",
+    "form": "am keeping up with",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "catch up on",
+    "meaning": "наверстать накопившееся",
+    "text": "By Friday, I ___ all my emails.",
+    "form": "will have caught up on",
+    "tenseKey": "future-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "look forward to",
+    "meaning": "с нетерпением ждать",
+    "text": "I ___ seeing you next week.",
+    "form": "am looking forward to",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "put together",
+    "meaning": "собрать, подготовить из частей",
+    "text": "She ___ a clear action plan.",
+    "form": "has put together",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "sort out",
+    "meaning": "разобраться, уладить",
+    "text": "By tomorrow, we ___ the access problem.",
+    "form": "will have sorted out",
+    "tenseKey": "future-perfect"
+  },
+  {
+    "category": "Планы и время",
+    "base": "stick to",
+    "meaning": "придерживаться",
+    "text": "He ___ his study plan for a month.",
+    "form": "has been sticking to",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Планы и время",
+    "base": "go ahead",
+    "meaning": "продолжить, дать ход",
+    "text": "We ___ with the test next week.",
+    "form": "will go ahead",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Планы и время",
+    "base": "come up",
+    "meaning": "возникать",
+    "text": "This issue often ___ in customer interviews.",
+    "form": "comes up",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "get along with",
+    "meaning": "ладить с",
+    "text": "She ___ everyone on the team.",
+    "form": "gets along with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "fall out with",
+    "meaning": "поссориться с",
+    "text": "I ___ my neighbour last week.",
+    "form": "fell out with",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "make up",
+    "meaning": "помириться",
+    "text": "They ___ after the argument.",
+    "form": "have made up",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "count on",
+    "meaning": "рассчитывать на",
+    "text": "I always ___ her in difficult situations.",
+    "form": "count on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "care about",
+    "meaning": "заботиться, считать важным",
+    "text": "He really ___ the quality of his work.",
+    "form": "cares about",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "cheer someone up",
+    "meaning": "взбодриться или подбодрить",
+    "text": "The good news ___ everyone.",
+    "form": "cheered up",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "let someone down",
+    "meaning": "подвести",
+    "text": "She ___.",
+    "form": "has never let me down",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "stand by",
+    "meaning": "поддержать в трудной ситуации",
+    "text": "I ___ you whatever happens.",
+    "form": "will stand by",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "look up to",
+    "meaning": "уважать, брать пример",
+    "text": "I ___ my first manager.",
+    "form": "looked up to",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "put up with",
+    "meaning": "терпеть",
+    "text": "We ___ this noise for months.",
+    "form": "have been putting up with",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "open up",
+    "meaning": "начать говорить откровенно",
+    "text": "He ___ more these days.",
+    "form": "is opening up",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "grow apart",
+    "meaning": "постепенно отдаляться",
+    "text": "They ___ for years before they separated.",
+    "form": "had been growing apart",
+    "tenseKey": "past-perfect-continuous"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "settle down",
+    "meaning": "остепениться, устроиться",
+    "text": "They ___ after they move to Bilbao.",
+    "form": "will settle down",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "turn down",
+    "meaning": "отклонить предложение",
+    "text": "She ___ the job offer.",
+    "form": "turned down",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "get over",
+    "meaning": "оправиться, пережить",
+    "text": "He ___ the disappointment at last.",
+    "form": "has got over",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Люди и эмоции",
+    "base": "take after",
+    "meaning": "быть похожим на родственника",
+    "text": "Marta ___ her mother.",
+    "form": "takes after",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pay someone back",
+    "meaning": "вернуть долг",
+    "text": "I ___ on Friday.",
+    "form": "will pay you back",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "save up",
+    "meaning": "копить",
+    "text": "We ___ for a new laptop since January.",
+    "form": "have been saving up",
+    "tenseKey": "present-perfect-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "cut back on",
+    "meaning": "сокращать расходы или потребление",
+    "text": "We ___ unnecessary subscriptions this month.",
+    "form": "are cutting back on",
+    "tenseKey": "present-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "shop around",
+    "meaning": "сравнивать предложения",
+    "text": "We ___ when we found a better deal.",
+    "form": "were shopping around",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "sell out",
+    "meaning": "полностью распродаться",
+    "text": "The cheaper model ___ already.",
+    "form": "has sold out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "cost a fortune",
+    "meaning": "стоить целое состояние",
+    "text": "That last-minute flight ___.",
+    "form": "cost a fortune",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "be worth",
+    "meaning": "стоить своих денег или усилий",
+    "text": "This course ___ the price.",
+    "form": "is worth",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "take back",
+    "meaning": "вернуть товар в магазин",
+    "text": "I ___ these shoes tomorrow.",
+    "form": "will take back",
+    "tenseKey": "future-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "ask for",
+    "meaning": "просить, запрашивать",
+    "text": "She ___ a refund when the manager arrived.",
+    "form": "was asking for",
+    "tenseKey": "past-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pick out",
+    "meaning": "выбрать из нескольких",
+    "text": "We ___ a gift for Marta.",
+    "form": "have picked out",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "go with",
+    "meaning": "подходить, сочетаться",
+    "text": "This jacket ___ your shoes.",
+    "form": "goes with",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "come to",
+    "meaning": "составить сумму",
+    "text": "The final bill ___ eighty euros.",
+    "form": "came to",
+    "tenseKey": "past-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "pay for",
+    "meaning": "заплатить за",
+    "text": "We ___ the hotel already.",
+    "form": "have paid for",
+    "tenseKey": "present-perfect"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "waste money on",
+    "meaning": "тратить деньги впустую на",
+    "text": "He often ___ apps he never uses.",
+    "form": "wastes money on",
+    "tenseKey": "present-simple"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "live on",
+    "meaning": "жить на определённую сумму",
+    "text": "They ___ a very small budget before the move.",
+    "form": "had been living on",
+    "tenseKey": "past-perfect-continuous"
+  },
+  {
+    "category": "Деньги и покупки",
+    "base": "get by",
+    "meaning": "справляться с имеющимися деньгами",
+    "text": "We ___ without a car for now.",
+    "form": "are getting by",
+    "tenseKey": "present-continuous"
+  }
+];
+
+const PHRASE_TENSE_CLUES = {
+  "present-simple": "регулярность, привычка, факт или устойчивое состояние; форма V / V-s",
+  "present-continuous": "действие идёт сейчас или является временной ситуацией; am/is/are + V-ing",
+  "present-perfect": "есть результат или связь с настоящим, а точное законченное время не названо; have/has + V3",
+  "present-perfect-continuous": "важна длительность процесса до настоящего; have/has been + V-ing",
+  "past-simple": "завершённое событие в прошлом; V2 или форма с -ed",
+  "past-continuous": "действие было в процессе в конкретный прошлый момент; was/were + V-ing",
+  "past-perfect": "одно действие завершилось раньше другого прошлого события; had + V3",
+  "past-perfect-continuous": "процесс длился до другого момента в прошлом; had been + V-ing",
+  "future-simple": "решение, обещание или нейтральное будущее; will + V",
+  "future-continuous": "действие будет в процессе в определённый будущий момент; will be + V-ing",
+  "future-perfect": "результат будет готов к будущему сроку; will have + V3",
+  "future-perfect-continuous": "длительность накопится к будущему моменту; will have been + V-ing"
+};
+
+const ARTICLE_ITEMS = [
+  {
+    "text": "She works as ___ engineer.",
+    "answer": "an",
+    "ruleKey": "job",
+    "explanation": "После профессии ставим a/an; engineer начинается с гласного звука."
+  },
+  {
+    "text": "He wants to buy ___ new laptop.",
+    "answer": "a",
+    "ruleKey": "first",
+    "explanation": "Предмет упоминается впервые и является одним из многих."
+  },
+  {
+    "text": "What ___ useful idea!",
+    "answer": "a",
+    "ruleKey": "exclamation",
+    "explanation": "В конструкции What a... нужен неопределённый артикль; useful начинается со звука /j/."
+  },
+  {
+    "text": "I practise English twice ___ week.",
+    "answer": "a",
+    "ruleKey": "frequency",
+    "explanation": "В выражениях частоты используем a: once a day, twice a week."
+  },
+  {
+    "text": "We waited for ___ hour.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "Hour начинается с гласного звука: буква h не произносится."
+  },
+  {
+    "text": "She studies at ___ university in Madrid.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "University начинается с согласного звука /j/, поэтому a, а не an."
+  },
+  {
+    "text": "He gave me ___ honest answer.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "В honest буква h не произносится, поэтому первый звук гласный."
+  },
+  {
+    "text": "Take ___ umbrella; it's raining.",
+    "answer": "an",
+    "ruleKey": "first",
+    "explanation": "Umbrella — исчисляемый предмет в единственном числе, упоминается впервые."
+  },
+  {
+    "text": "They adopted ___ cat from a shelter.",
+    "answer": "a",
+    "ruleKey": "first",
+    "explanation": "Один неопределённый кот упоминается впервые."
+  },
+  {
+    "text": "She works as ___ UX designer.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "UX произносится с начальным звуком /j/: a UX designer."
+  },
+  {
+    "text": "We watched ___ European film.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "European начинается со звука /j/, поэтому используем a."
+  },
+  {
+    "text": "He ate ___ apple after lunch.",
+    "answer": "an",
+    "ruleKey": "first",
+    "explanation": "Apple начинается с гласного звука и упоминается впервые."
+  },
+  {
+    "text": "It was ___ one-time offer.",
+    "answer": "a",
+    "ruleKey": "sound",
+    "explanation": "One начинается со звука /w/, поэтому a one-time offer."
+  },
+  {
+    "text": "I had ___ unusual experience yesterday.",
+    "answer": "an",
+    "ruleKey": "sound",
+    "explanation": "Unusual начинается с гласного звука."
+  },
+  {
+    "text": "My brother is ___ doctor.",
+    "answer": "a",
+    "ruleKey": "job",
+    "explanation": "С профессией в единственном числе используем a/an."
+  },
+  {
+    "text": "I bought a book yesterday. ___ book is already on my desk.",
+    "answer": "the",
+    "ruleKey": "mentioned",
+    "explanation": "Book уже упоминалась, поэтому при повторе используем the."
+  },
+  {
+    "text": "Please close ___ door.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Из ситуации понятно, о какой двери идёт речь."
+  },
+  {
+    "text": "___ sun is shining today.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "С уникальными объектами используем the."
+  },
+  {
+    "text": "This is ___ best restaurant in the area.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед превосходной степенью нужен the."
+  },
+  {
+    "text": "It was ___ first time I had visited London.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед порядковыми числительными используем the."
+  },
+  {
+    "text": "We went to ___ cinema last night.",
+    "answer": "the",
+    "ruleKey": "place",
+    "explanation": "Cinema, theatre и подобные городские места часто используются с the."
+  },
+  {
+    "text": "I'll meet you at ___ airport.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Речь о конкретном аэропорте, понятном из контекста."
+  },
+  {
+    "text": "They arrived on ___ same day.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "В устойчивом сочетании the same всегда нужен the."
+  },
+  {
+    "text": "She is ___ only person who knows the password.",
+    "answer": "the",
+    "ruleKey": "only",
+    "explanation": "Перед only, когда выделяем единственный объект, ставим the."
+  },
+  {
+    "text": "I found the answer on ___ internet.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "Устойчивое выражение: on the internet."
+  },
+  {
+    "text": "___ moon looks bright tonight.",
+    "answer": "the",
+    "ruleKey": "unique",
+    "explanation": "Луна рассматривается как уникальный объект."
+  },
+  {
+    "text": "They moved to ___ Netherlands.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Названия стран во множественном числе употребляются с the."
+  },
+  {
+    "text": "He has never been to ___ United States.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Названия государств со словами States, Kingdom, Republic требуют the."
+  },
+  {
+    "text": "They sailed across ___ Pacific Ocean.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед океанами и морями ставим the."
+  },
+  {
+    "text": "We went skiing in ___ Alps.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед горными цепями во множественном числе ставим the."
+  },
+  {
+    "text": "London stands on ___ Thames.",
+    "answer": "the",
+    "ruleKey": "geography",
+    "explanation": "Перед названиями рек используем the."
+  },
+  {
+    "text": "She can play ___ piano.",
+    "answer": "the",
+    "ruleKey": "instrument",
+    "explanation": "Перед музыкальными инструментами после play обычно ставим the."
+  },
+  {
+    "text": "The policy will affect ___ elderly.",
+    "answer": "the",
+    "ruleKey": "groups",
+    "explanation": "The + adjective может обозначать группу людей."
+  },
+  {
+    "text": "I usually exercise in ___ morning.",
+    "answer": "the",
+    "ruleKey": "timePhrase",
+    "explanation": "Устойчивые выражения: in the morning, in the afternoon, in the evening."
+  },
+  {
+    "text": "Read ___ last page carefully.",
+    "answer": "the",
+    "ruleKey": "superlative",
+    "explanation": "Перед last и first в последовательности обычно ставим the."
+  },
+  {
+    "text": "___ Water is essential for life.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Неисчисляемое существительное используется в общем смысле."
+  },
+  {
+    "text": "___ Dogs need daily exercise.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Множественное число в общем смысле употребляется без артикля."
+  },
+  {
+    "text": "I usually go to ___ work by bus.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Home, work, school и church без артикля, когда речь об их обычной функции."
+  },
+  {
+    "text": "She is at ___ home today.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Устойчивое выражение at home используется без артикля."
+  },
+  {
+    "text": "The children go to ___ school at eight.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Без артикля, когда дети идут в школу учиться."
+  },
+  {
+    "text": "We had ___ breakfast at seven.",
+    "answer": "Без артикля",
+    "ruleKey": "meal",
+    "explanation": "Названия приёмов пищи обычно употребляются без артикля."
+  },
+  {
+    "text": "She speaks ___ English fluently.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед названиями языков артикль не нужен."
+  },
+  {
+    "text": "They play ___ football every Sunday.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед видами спорта артикль не нужен."
+  },
+  {
+    "text": "He studied ___ history at university.",
+    "answer": "Без артикля",
+    "ruleKey": "languageSportSubject",
+    "explanation": "Перед учебными дисциплинами артикль обычно не ставится."
+  },
+  {
+    "text": "We live in ___ Spain.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Большинство стран и городов употребляются без артикля."
+  },
+  {
+    "text": "I moved to ___ Bilbao last year.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед названиями городов артикль обычно не ставится."
+  },
+  {
+    "text": "They climbed ___ Mount Etna.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед отдельными горами с Mount артикль не нужен."
+  },
+  {
+    "text": "We stayed near ___ Lake Como.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед озёрами со словом Lake артикль не нужен."
+  },
+  {
+    "text": "The shop is on ___ Oxford Street.",
+    "answer": "Без артикля",
+    "ruleKey": "names",
+    "explanation": "Перед названиями улиц артикль обычно не ставится."
+  },
+  {
+    "text": "We travelled there by ___ bus.",
+    "answer": "Без артикля",
+    "ruleKey": "transport",
+    "explanation": "В конструкции by + транспорт артикль не используется."
+  },
+  {
+    "text": "The children are in ___ bed.",
+    "answer": "Без артикля",
+    "ruleKey": "fixed",
+    "explanation": "Устойчивое выражение in bed используется без артикля."
+  },
+  {
+    "text": "They go to ___ church every Sunday.",
+    "answer": "Без артикля",
+    "ruleKey": "institution",
+    "explanation": "Без артикля, когда речь о посещении церкви по назначению."
+  },
+  {
+    "text": "___ Money doesn't grow on trees.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Money — неисчисляемое существительное в общем смысле."
+  },
+  {
+    "text": "___ Life can be unpredictable.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Абстрактное существительное life используется в общем смысле."
+  },
+  {
+    "text": "___ Children need enough sleep.",
+    "answer": "Без артикля",
+    "ruleKey": "general",
+    "explanation": "Множественное число в общем значении не требует артикля."
+  },
+  {
+    "text": "I went to ___ school to speak to my son's teacher.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Здесь school — конкретное здание, а не обычная функция ученика."
+  },
+  {
+    "text": "She plays ___ guitar in a band.",
+    "answer": "the",
+    "ruleKey": "instrument",
+    "explanation": "Перед музыкальным инструментом после play используем the."
+  },
+  {
+    "text": "I left my laptop at ___ office.",
+    "answer": "the",
+    "ruleKey": "specific",
+    "explanation": "Речь о конкретном офисе говорящего."
+  },
+  {
+    "text": "They elected her ___ president.",
+    "answer": "Без артикля",
+    "ruleKey": "title",
+    "explanation": "После elect, appoint и make перед должностью артикль часто не ставится."
+  },
+  {
+    "text": "Let's meet ___ next Monday.",
+    "answer": "Без артикля",
+    "ruleKey": "nextLast",
+    "explanation": "Перед next/last + день или период артикль не используется."
+  }
+];
+
+const AUXILIARY_ITEMS = [
+  {
+    "text": "I ___ two brothers.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "С I, you, we, they в настоящем времени используем have."
+  },
+  {
+    "text": "She ___ a new laptop.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "С he, she, it в настоящем времени используем has."
+  },
+  {
+    "text": "They ___ enough time.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "are"
+    ],
+    "correct": "have",
+    "explanation": "They требует форму have."
+  },
+  {
+    "text": "The app ___ a dark mode.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "The app = it, поэтому has."
+  },
+  {
+    "text": "Do you ___ any questions?",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После do смысловой глагол всегда возвращается в базовую форму have."
+  },
+  {
+    "text": "He doesn't ___ access to this report.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После doesn't ставим базовую форму: doesn't have, не doesn't has."
+  },
+  {
+    "text": "We ___ an old car when we lived in Madrid.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Had выражает наличие в прошлом для любого подлежащего."
+  },
+  {
+    "text": "She ___ no idea what had happened.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Состояние относится к прошлому, поэтому had."
+  },
+  {
+    "text": "Did they ___ enough money for the tickets?",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "Прошлое уже выражено did; после него нужна базовая форма have."
+  },
+  {
+    "text": "I didn't ___ time to call you.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "having"
+    ],
+    "correct": "have",
+    "explanation": "После didn't используем have, а не had."
+  },
+  {
+    "text": "I ___ finished the report.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "Present Perfect: I + have + V3 finished."
+  },
+  {
+    "text": "She ___ sent the email.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "Present Perfect: she + has + V3 sent."
+  },
+  {
+    "text": "They ___ never seen this film.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "are"
+    ],
+    "correct": "have",
+    "explanation": "They + have + V3; never стоит между помощником и V3."
+  },
+  {
+    "text": "He ___ just arrived.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "He + has + V3; just показывает недавний результат."
+  },
+  {
+    "text": "___ you ever tried surfing?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Do"
+    ],
+    "correct": "Have",
+    "explanation": "Вопрос Present Perfect: Have + subject + V3."
+  },
+  {
+    "text": "___ she completed the task yet?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Does"
+    ],
+    "correct": "Has",
+    "explanation": "Вопрос Present Perfect с she начинается с Has."
+  },
+  {
+    "text": "We ___ not decided yet.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "do"
+    ],
+    "correct": "have",
+    "explanation": "Отрицание Present Perfect: have not + V3."
+  },
+  {
+    "text": "It ___ stopped raining.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "It требует has; stopped — третья форма глагола."
+  },
+  {
+    "text": "I ___ finished dinner before she called.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Past Perfect: более раннее прошлое действие выражается had + V3."
+  },
+  {
+    "text": "They ___ left by the time we arrived.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Сначала они ушли, потом мы приехали: had left."
+  },
+  {
+    "text": "___ she seen the place before that trip?",
+    "answers": [
+      "Have",
+      "Has",
+      "Had",
+      "Did"
+    ],
+    "correct": "Had",
+    "explanation": "Вопрос Past Perfect: Had + subject + V3."
+  },
+  {
+    "text": "He ___ noticed the mistake before the launch.",
+    "answers": [
+      "hasn't",
+      "hadn't",
+      "didn't",
+      "wasn't"
+    ],
+    "correct": "hadn't",
+    "explanation": "Отрицание Past Perfect: had not + V3."
+  },
+  {
+    "text": "We ___ never met before that evening.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "were"
+    ],
+    "correct": "had",
+    "explanation": "Оба события в прошлом; более раннее — had met."
+  },
+  {
+    "text": "By noon, the team ___ completed the migration.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "was"
+    ],
+    "correct": "had",
+    "explanation": "Результат был готов к прошлому сроку by noon: had + V3."
+  },
+  {
+    "text": "I ___ this phone for three years.",
+    "answers": [
+      "have",
+      "have had",
+      "had",
+      "am having"
+    ],
+    "correct": "have had",
+    "explanation": "Have had — Present Perfect глагола have: I + have-помощник + had-V3."
+  },
+  {
+    "text": "She ___ a very busy week.",
+    "answers": [
+      "has",
+      "has had",
+      "had",
+      "is having"
+    ],
+    "correct": "has had",
+    "explanation": "Has had: has — помощник для she, had — третья форма смыслового have."
+  },
+  {
+    "text": "We ___ three meetings today.",
+    "answers": [
+      "have",
+      "have had",
+      "had",
+      "are having"
+    ],
+    "correct": "have had",
+    "explanation": "День ещё не закончен, важен накопленный результат: have had."
+  },
+  {
+    "text": "He ___ a headache since morning.",
+    "answers": [
+      "has",
+      "has had",
+      "had",
+      "is having"
+    ],
+    "correct": "has had",
+    "explanation": "Since morning связывает прошлое с настоящим: he has had."
+  },
+  {
+    "text": "I ___ breakfast before the call started.",
+    "answers": [
+      "have had",
+      "has had",
+      "had",
+      "had had"
+    ],
+    "correct": "had had",
+    "explanation": "Had had — Past Perfect глагола have: первое had — помощник, второе had — V3."
+  },
+  {
+    "text": "By then, they ___ two major delays.",
+    "answers": [
+      "have had",
+      "has had",
+      "had",
+      "had had"
+    ],
+    "correct": "had had",
+    "explanation": "К прошлому моменту уже было два события: had had."
+  },
+  {
+    "text": "___ you work from home?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Are"
+    ],
+    "correct": "Do",
+    "explanation": "Вопрос Present Simple с you: Do + subject + V."
+  },
+  {
+    "text": "___ she speak Spanish?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Is"
+    ],
+    "correct": "Does",
+    "explanation": "Вопрос Present Simple с she: Does + subject + V."
+  },
+  {
+    "text": "Where ___ they live?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "are"
+    ],
+    "correct": "do",
+    "explanation": "They в Present Simple требует do."
+  },
+  {
+    "text": "Why ___ he need access?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "is"
+    ],
+    "correct": "does",
+    "explanation": "He в Present Simple требует does; need остаётся в базовой форме."
+  },
+  {
+    "text": "___ you call him yesterday?",
+    "answers": [
+      "Do",
+      "Does",
+      "Did",
+      "Have"
+    ],
+    "correct": "Did",
+    "explanation": "Yesterday указывает на Past Simple: Did + subject + V."
+  },
+  {
+    "text": "When ___ she arrive?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "has"
+    ],
+    "correct": "did",
+    "explanation": "Вопрос о завершённом прошлом: did + arrive."
+  },
+  {
+    "text": "I ___ not understand this rule.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "am"
+    ],
+    "correct": "do",
+    "explanation": "Отрицание Present Simple с I: do not + V."
+  },
+  {
+    "text": "He ___ not like coffee.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "is"
+    ],
+    "correct": "does",
+    "explanation": "He в Present Simple: does not + like."
+  },
+  {
+    "text": "They ___ not finish the task yesterday.",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "were"
+    ],
+    "correct": "did",
+    "explanation": "Past Simple отрицание: did not + finish."
+  },
+  {
+    "text": "What ___ happen after the meeting?",
+    "answers": [
+      "do",
+      "does",
+      "did",
+      "was"
+    ],
+    "correct": "did",
+    "explanation": "Вопрос о прошлом: did + базовая форма happen."
+  },
+  {
+    "text": "I ___ ready.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "am",
+    "explanation": "Форма be для I в настоящем времени — am."
+  },
+  {
+    "text": "She ___ at home.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "has"
+    ],
+    "correct": "is",
+    "explanation": "Форма be для he, she, it — is."
+  },
+  {
+    "text": "They ___ busy today.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "Форма be для you, we, they — are."
+  },
+  {
+    "text": "We ___ tired yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "are",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "В прошлом с we/you/they используем were."
+  },
+  {
+    "text": "He ___ late yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "is",
+      "had"
+    ],
+    "correct": "was",
+    "explanation": "В прошлом с I/he/she/it используем was."
+  },
+  {
+    "text": "___ you okay?",
+    "answers": [
+      "Am",
+      "Is",
+      "Are",
+      "Do"
+    ],
+    "correct": "Are",
+    "explanation": "Вопрос с be строится без do: Are you okay?"
+  },
+  {
+    "text": "___ she at the meeting yesterday?",
+    "answers": [
+      "Was",
+      "Were",
+      "Did",
+      "Has"
+    ],
+    "correct": "Was",
+    "explanation": "Состояние she в прошлом: Was she...?"
+  },
+  {
+    "text": "There ___ many reasons to wait.",
+    "answers": [
+      "is",
+      "are",
+      "has",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "После there форма be согласуется с reasons во множественном числе."
+  },
+  {
+    "text": "I ___ working right now.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "am",
+    "explanation": "Present Continuous: I am + V-ing."
+  },
+  {
+    "text": "She ___ reading the report.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "has"
+    ],
+    "correct": "is",
+    "explanation": "Present Continuous: she is + V-ing."
+  },
+  {
+    "text": "They ___ waiting outside.",
+    "answers": [
+      "am",
+      "is",
+      "are",
+      "have"
+    ],
+    "correct": "are",
+    "explanation": "Present Continuous: they are + V-ing."
+  },
+  {
+    "text": "We ___ driving at eight yesterday.",
+    "answers": [
+      "was",
+      "were",
+      "are",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "Past Continuous: we were + V-ing."
+  },
+  {
+    "text": "He ___ sleeping when I called.",
+    "answers": [
+      "was",
+      "were",
+      "is",
+      "had"
+    ],
+    "correct": "was",
+    "explanation": "Past Continuous: he was + V-ing."
+  },
+  {
+    "text": "What ___ you doing when it happened?",
+    "answers": [
+      "was",
+      "were",
+      "did",
+      "had"
+    ],
+    "correct": "were",
+    "explanation": "Вопрос Past Continuous: What were you doing...?"
+  },
+  {
+    "text": "I ___ call you tomorrow.",
+    "answers": [
+      "will",
+      "do",
+      "have",
+      "am"
+    ],
+    "correct": "will",
+    "explanation": "Future Simple: will + базовая форма call."
+  },
+  {
+    "text": "___ you help me with this?",
+    "answers": [
+      "Will",
+      "Do",
+      "Have",
+      "Are"
+    ],
+    "correct": "Will",
+    "explanation": "Will перед подлежащим образует вопрос о будущем или просьбу."
+  },
+  {
+    "text": "I think it ___ be useful.",
+    "answers": [
+      "will",
+      "does",
+      "has",
+      "is"
+    ],
+    "correct": "will",
+    "explanation": "Прогноз с I think: will + be."
+  },
+  {
+    "text": "I ___ to leave now.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "am"
+    ],
+    "correct": "have",
+    "explanation": "Have to в настоящем времени с I/you/we/they выражает необходимость."
+  },
+  {
+    "text": "She ___ to leave early every Friday.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "is"
+    ],
+    "correct": "has",
+    "explanation": "Has to с she выражает регулярную необходимость."
+  },
+  {
+    "text": "We ___ to cancel the meeting yesterday.",
+    "answers": [
+      "have",
+      "has",
+      "had",
+      "did"
+    ],
+    "correct": "had",
+    "explanation": "Had to выражает необходимость в прошлом для любого подлежащего."
+  }
+];
+
+const MODAL_ITEMS = [
+  {
+    "prompt": "Исправь ошибку: You should to eat more vegetables.",
+    "answers": [
+      "You should eat more vegetables.",
+      "You should to eat more vegetables.",
+      "You should eats more vegetables.",
+      "You do should eat more vegetables."
+    ],
+    "correct": "You should eat more vegetables.",
+    "explanation": "После should ставим базовую форму без to и без окончания -s."
+  },
+  {
+    "prompt": "Исправь ошибку: He musts arrive early.",
+    "answers": [
+      "He must arrive early.",
+      "He musts arrive early.",
+      "He must to arrive early.",
+      "He does must arrive early."
+    ],
+    "correct": "He must arrive early.",
+    "explanation": "Must не изменяется после he/she/it; после него сразу идёт базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: He have to goes to the store.",
+    "answers": [
+      "He has to go to the store.",
+      "He have to goes to the store.",
+      "He has go to the store.",
+      "He musts go to the store."
+    ],
+    "correct": "He has to go to the store.",
+    "explanation": "С he используем has to, а после to — базовую форму go."
+  },
+  {
+    "prompt": "Как правильно сказать: «Тебе нужно отправить отчёт до полудня»?",
+    "answers": [
+      "You have to send your report by noon.",
+      "You have send your report by noon.",
+      "You must to send your report by noon.",
+      "You has to send your report by noon."
+    ],
+    "correct": "You have to send your report by noon.",
+    "explanation": "Have to + V выражает необходимость; с you используем have to."
+  },
+  {
+    "prompt": "Исправь ошибку: Elizabeth musts answer immediately.",
+    "answers": [
+      "Elizabeth must answer immediately.",
+      "Elizabeth musts answer immediately.",
+      "Elizabeth must to answer immediately.",
+      "Elizabeth has answer immediately."
+    ],
+    "correct": "Elizabeth must answer immediately.",
+    "explanation": "После must всегда базовая форма; окончания -s у must не бывает."
+  },
+  {
+    "prompt": "Исправь ошибку: Kevin shoulds arrive at ten.",
+    "answers": [
+      "Kevin should arrive at ten.",
+      "Kevin shoulds arrive at ten.",
+      "Kevin should to arrive at ten.",
+      "Kevin does should arrive at ten."
+    ],
+    "correct": "Kevin should arrive at ten.",
+    "explanation": "Should одинаков для всех лиц и требует базовую форму."
+  },
+  {
+    "prompt": "Исправь ошибку: Mark have to come tomorrow.",
+    "answers": [
+      "Mark has to come tomorrow.",
+      "Mark have to come tomorrow.",
+      "Mark has to comes tomorrow.",
+      "Mark musts come tomorrow."
+    ],
+    "correct": "Mark has to come tomorrow.",
+    "explanation": "Mark = he, поэтому has to; после to ставим come."
+  },
+  {
+    "prompt": "Исправь ошибку: I should to buy a new phone.",
+    "answers": [
+      "I should buy a new phone.",
+      "I should to buy a new phone.",
+      "I should buying a new phone.",
+      "I do should buy a new phone."
+    ],
+    "correct": "I should buy a new phone.",
+    "explanation": "Should + базовая форма buy, без to."
+  },
+  {
+    "prompt": "Как правильно сказать о прошлой необходимости?",
+    "answers": [
+      "I had to leave early yesterday.",
+      "I have to leave early yesterday.",
+      "I musted leave early yesterday.",
+      "I had leave early yesterday."
+    ],
+    "correct": "I had to leave early yesterday.",
+    "explanation": "В прошлом have to превращается в had to для всех лиц; формы musted не существует."
+  },
+  {
+    "prompt": "Как правильно сказать о будущей необходимости?",
+    "answers": [
+      "We will have to work tomorrow.",
+      "We will must work tomorrow.",
+      "We have to worked tomorrow.",
+      "We will have work tomorrow."
+    ],
+    "correct": "We will have to work tomorrow.",
+    "explanation": "Будущее необходимости: will have to + базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: She doesn't should be so rude.",
+    "answers": [
+      "She shouldn't be so rude.",
+      "She doesn't should be so rude.",
+      "She shouldn't to be so rude.",
+      "She not should be so rude."
+    ],
+    "correct": "She shouldn't be so rude.",
+    "explanation": "Отрицание should строится без do: should not / shouldn't + V."
+  },
+  {
+    "prompt": "Как правильно выразить запрет?",
+    "answers": [
+      "They mustn't enter this room.",
+      "They don't have to enter this room.",
+      "They shouldn't to enter this room.",
+      "They mustn't to enter this room."
+    ],
+    "correct": "They mustn't enter this room.",
+    "explanation": "Mustn't означает строгий запрет: нельзя входить."
+  },
+  {
+    "prompt": "Исправь ошибку: She don't have to study tonight.",
+    "answers": [
+      "She doesn't have to study tonight.",
+      "She don't have to study tonight.",
+      "She hasn't to study tonight.",
+      "She doesn't has to study tonight."
+    ],
+    "correct": "She doesn't have to study tonight.",
+    "explanation": "С she используем doesn't; после него базовая форма have."
+  },
+  {
+    "prompt": "Как сказать, что приходить необязательно?",
+    "answers": [
+      "You don't have to come tomorrow.",
+      "You mustn't come tomorrow.",
+      "You shouldn't to come tomorrow.",
+      "You haven't to come tomorrow."
+    ],
+    "correct": "You don't have to come tomorrow.",
+    "explanation": "Don't have to означает отсутствие необходимости: можно не приходить."
+  },
+  {
+    "prompt": "Исправь ошибку: I hadn't to cook because we ordered pizza.",
+    "answers": [
+      "I didn't have to cook because we ordered pizza.",
+      "I hadn't to cook because we ordered pizza.",
+      "I mustn't cook because we ordered pizza.",
+      "I didn't had to cook because we ordered pizza."
+    ],
+    "correct": "I didn't have to cook because we ordered pizza.",
+    "explanation": "Прошлое отсутствие необходимости: didn't have to + V."
+  },
+  {
+    "prompt": "На табличке написано No swimming. Что сказать?",
+    "answers": [
+      "People mustn't swim here.",
+      "People don't have to swim here.",
+      "People shouldn't to swim here.",
+      "People mustn't to swim here."
+    ],
+    "correct": "People mustn't swim here.",
+    "explanation": "Это запрет, поэтому mustn't, а не don't have to."
+  },
+  {
+    "prompt": "Исправь ошибку: You don't should drive so fast.",
+    "answers": [
+      "You shouldn't drive so fast.",
+      "You don't should drive so fast.",
+      "You shouldn't to drive so fast.",
+      "You doesn't should drive so fast."
+    ],
+    "correct": "You shouldn't drive so fast.",
+    "explanation": "Совет в отрицании: shouldn't + базовая форма."
+  },
+  {
+    "prompt": "Как сказать, что платить в будущем не придётся?",
+    "answers": [
+      "We won't have to pay next time.",
+      "We won't must pay next time.",
+      "We don't have to paid next time.",
+      "We will haven't to pay next time."
+    ],
+    "correct": "We won't have to pay next time.",
+    "explanation": "Будущее отсутствие необходимости: won't have to + V."
+  },
+  {
+    "prompt": "Исправь ошибку: He don't have to work today.",
+    "answers": [
+      "He doesn't have to work today.",
+      "He don't have to work today.",
+      "He hasn't to work today.",
+      "He doesn't has to work today."
+    ],
+    "correct": "He doesn't have to work today.",
+    "explanation": "He требует doesn't; после doesn't — have."
+  },
+  {
+    "prompt": "Как правильно выразить строгий запрет трогать оборудование?",
+    "answers": [
+      "You must not touch the equipment.",
+      "You do not must touch the equipment.",
+      "You must not to touch the equipment.",
+      "You don't have to touch the equipment."
+    ],
+    "correct": "You must not touch the equipment.",
+    "explanation": "Must not + V выражает запрет; do не используется."
+  },
+  {
+    "prompt": "Исправь вопрос: Should he goes to the beach?",
+    "answers": [
+      "Should he go to the beach?",
+      "Should he goes to the beach?",
+      "Does he should go to the beach?",
+      "Should he to go to the beach?"
+    ],
+    "correct": "Should he go to the beach?",
+    "explanation": "Вопрос с should: Should + subject + базовая форма?"
+  },
+  {
+    "prompt": "Исправь вопрос: Does he must finish today?",
+    "answers": [
+      "Must he finish today?",
+      "Does he must finish today?",
+      "Must he finishes today?",
+      "Does he must to finish today?"
+    ],
+    "correct": "Must he finish today?",
+    "explanation": "Must сам выходит перед подлежащим; does не нужен."
+  },
+  {
+    "prompt": "Исправь вопрос: Have they to pay now?",
+    "answers": [
+      "Do they have to pay now?",
+      "Have they to pay now?",
+      "Do they has to pay now?",
+      "Must they to pay now?"
+    ],
+    "correct": "Do they have to pay now?",
+    "explanation": "Вопрос с have to в Present Simple строится через do."
+  },
+  {
+    "prompt": "Исправь вопрос: Has she to leave early?",
+    "answers": [
+      "Does she have to leave early?",
+      "Has she to leave early?",
+      "Does she has to leave early?",
+      "Is she have to leave early?"
+    ],
+    "correct": "Does she have to leave early?",
+    "explanation": "С she: Does + subject + have to + V."
+  },
+  {
+    "prompt": "Как спросить о прошлой необходимости?",
+    "answers": [
+      "Did you have to wait long?",
+      "Had you to wait long?",
+      "Did you had to wait long?",
+      "Were you have to wait long?"
+    ],
+    "correct": "Did you have to wait long?",
+    "explanation": "Вопрос в прошлом: Did + subject + have to + V."
+  },
+  {
+    "prompt": "Как попросить совет: «Мне позвонить ему?»",
+    "answers": [
+      "Should I call him?",
+      "Do I should call him?",
+      "Should I to call him?",
+      "Must I calling him?"
+    ],
+    "correct": "Should I call him?",
+    "explanation": "Should I...? используется, когда спрашиваем совет."
+  },
+  {
+    "prompt": "Исправь вопрос: Do we must wear a uniform?",
+    "answers": [
+      "Must we wear a uniform?",
+      "Do we must wear a uniform?",
+      "Must we to wear a uniform?",
+      "Must we wears a uniform?"
+    ],
+    "correct": "Must we wear a uniform?",
+    "explanation": "Вопрос с must строится без do и без to."
+  },
+  {
+    "prompt": "Как спросить о будущей необходимости?",
+    "answers": [
+      "Will he have to travel next week?",
+      "Will he must travel next week?",
+      "Does he will have to travel next week?",
+      "Will he has to travel next week?"
+    ],
+    "correct": "Will he have to travel next week?",
+    "explanation": "Будущий вопрос: Will + subject + have to + V?"
+  },
+  {
+    "prompt": "Исправь вопрос: Why she has to leave?",
+    "answers": [
+      "Why does she have to leave?",
+      "Why she has to leave?",
+      "Why does she has to leave?",
+      "Why has she to leave?"
+    ],
+    "correct": "Why does she have to leave?",
+    "explanation": "Present Simple: Why + does + subject + have to + V?"
+  },
+  {
+    "prompt": "Исправь вопрос: When did they had to leave?",
+    "answers": [
+      "When did they have to leave?",
+      "When did they had to leave?",
+      "When had they to leave?",
+      "When did they have leave?"
+    ],
+    "correct": "When did they have to leave?",
+    "explanation": "После did используем базовую форму have, не had."
+  },
+  {
+    "prompt": "Галстук необязателен. Как сказать?",
+    "answers": [
+      "You don't have to wear a tie.",
+      "You mustn't wear a tie.",
+      "You shouldn't wear a tie.",
+      "You must wear a tie."
+    ],
+    "correct": "You don't have to wear a tie.",
+    "explanation": "Don't have to = нет необходимости, но можно сделать."
+  },
+  {
+    "prompt": "Парковка запрещена. Как сказать?",
+    "answers": [
+      "You mustn't park here.",
+      "You don't have to park here.",
+      "You shouldn't to park here.",
+      "You haven't to park here."
+    ],
+    "correct": "You mustn't park here.",
+    "explanation": "Mustn't = нельзя, строгий запрет."
+  },
+  {
+    "prompt": "Вчера пришлось вызвать врача. Как сказать?",
+    "answers": [
+      "I had to call a doctor yesterday.",
+      "I must call a doctor yesterday.",
+      "I have to called a doctor yesterday.",
+      "I did have to called a doctor yesterday."
+    ],
+    "correct": "I had to call a doctor yesterday.",
+    "explanation": "Прошлая необходимость выражается had to + V."
+  },
+  {
+    "prompt": "Это моё сильное личное решение: не забыть. Как сказать?",
+    "answers": [
+      "I must remember this.",
+      "I have remember this.",
+      "I must to remember this.",
+      "I shoulds remember this."
+    ],
+    "correct": "I must remember this.",
+    "explanation": "Must часто выражает сильную необходимость, которую ощущает сам говорящий."
+  },
+  {
+    "prompt": "Это совет обратиться к врачу. Как сказать?",
+    "answers": [
+      "You should see a doctor.",
+      "You must to see a doctor.",
+      "You should to see a doctor.",
+      "You have see a doctor."
+    ],
+    "correct": "You should see a doctor.",
+    "explanation": "Should выражает совет, а не строгую обязанность."
+  },
+  {
+    "prompt": "Как уточнить внешнее требование про паспорт?",
+    "answers": [
+      "Do I have to bring my passport?",
+      "Must I to bring my passport?",
+      "Have I to bring my passport?",
+      "Do I has to bring my passport?"
+    ],
+    "correct": "Do I have to bring my passport?",
+    "explanation": "Have to удобно использовать для правил и внешних требований; вопрос строится через do."
+  }
+];
+
+const ABILITY_ITEMS = [
+  {
+    "prompt": "Can you read this for me? I ___ see without my glasses.",
+    "answers": [
+      "can't",
+      "haven't been able to",
+      "couldn't",
+      "am not able"
+    ],
+    "correct": "can't",
+    "explanation": "Речь о способности сейчас: can’t + базовая форма see."
+  },
+  {
+    "prompt": "I've never ___ speak Spanish as well as my brother.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "После have/has нужна форма been able to: у can нет Present Perfect."
+  },
+  {
+    "prompt": "After two years in China, I ___ speak quite fluently now.",
+    "answers": [
+      "can",
+      "could",
+      "have able to",
+      "am can"
+    ],
+    "correct": "can",
+    "explanation": "Now и способность в настоящем: can + speak."
+  },
+  {
+    "prompt": "I haven't ___ understand my French neighbours yet.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "able to"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: haven’t been able to + V."
+  },
+  {
+    "prompt": "When he was 10, he ___ speak three languages.",
+    "answers": [
+      "could",
+      "was able",
+      "can",
+      "has been able to"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом: could + базовая форма."
+  },
+  {
+    "prompt": "The door was locked, but we ___ open it in the end.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "have been able"
+    ],
+    "correct": "were able to",
+    "explanation": "Один конкретный успешный результат в прошлом: were able to."
+  },
+  {
+    "prompt": "When I was five, I ___ swim.",
+    "answers": [
+      "couldn't",
+      "wasn't can",
+      "haven't been able to",
+      "can't"
+    ],
+    "correct": "couldn't",
+    "explanation": "Общая неспособность в прошлом: couldn’t + V."
+  },
+  {
+    "prompt": "After the course, you ___ use the new system.",
+    "answers": [
+      "will be able to",
+      "will can",
+      "can will",
+      "will able to"
+    ],
+    "correct": "will be able to",
+    "explanation": "У can нет будущей формы с will: will be able to + V."
+  },
+  {
+    "prompt": "I ___ join the meeting tomorrow because I'll be travelling.",
+    "answers": [
+      "won't be able to",
+      "won't can",
+      "couldn't",
+      "don't can"
+    ],
+    "correct": "won't be able to",
+    "explanation": "Будущая неспособность: won’t be able to + V."
+  },
+  {
+    "prompt": "Marta ___ help us later, but she isn't sure yet.",
+    "answers": [
+      "might be able to",
+      "might can",
+      "can might",
+      "might able to"
+    ],
+    "correct": "might be able to",
+    "explanation": "После might используем be able to: два модальных подряд ставить нельзя."
+  },
+  {
+    "prompt": "I want ___ speak confidently at work.",
+    "answers": [
+      "to be able to",
+      "to can",
+      "being can",
+      "can to"
+    ],
+    "correct": "to be able to",
+    "explanation": "После want нужен инфинитив: want to be able to + V."
+  },
+  {
+    "prompt": "You need ___ explain the problem clearly.",
+    "answers": [
+      "to be able to",
+      "can to",
+      "to can",
+      "being able"
+    ],
+    "correct": "to be able to",
+    "explanation": "После need используем to be able to; форма to can невозможна."
+  },
+  {
+    "prompt": "___ you see the screen from there?",
+    "answers": [
+      "Can",
+      "Are able",
+      "Do can",
+      "Could to"
+    ],
+    "correct": "Can",
+    "explanation": "Вопрос о способности сейчас: Can + subject + V?"
+  },
+  {
+    "prompt": "___ she able to finish the report yesterday?",
+    "answers": [
+      "Was",
+      "Could",
+      "Did",
+      "Has"
+    ],
+    "correct": "Was",
+    "explanation": "С able to используется глагол be: Was she able to…?"
+  },
+  {
+    "prompt": "___ you help me with this bag, please?",
+    "answers": [
+      "Could",
+      "Do could",
+      "Are able",
+      "Could to"
+    ],
+    "correct": "Could",
+    "explanation": "Could + V — вежливая просьба; to после could не ставится."
+  },
+  {
+    "prompt": "Too much stress ___ affect your sleep.",
+    "answers": [
+      "can",
+      "can to",
+      "is able",
+      "cans"
+    ],
+    "correct": "can",
+    "explanation": "Can также выражает общую возможность: такое иногда может происходить."
+  },
+  {
+    "prompt": "Take an umbrella — it ___ rain later.",
+    "answers": [
+      "could",
+      "is able to",
+      "could to",
+      "cans"
+    ],
+    "correct": "could",
+    "explanation": "Could выражает возможное, но не уверенное событие."
+  },
+  {
+    "prompt": "That ___ be true — I saw him in Bilbao today.",
+    "answers": [
+      "can't",
+      "isn't able to",
+      "doesn't can",
+      "couldn't to"
+    ],
+    "correct": "can't",
+    "explanation": "Can’t be выражает уверенность, что это невозможно."
+  },
+  {
+    "prompt": "Since the operation, she hasn't ___ walk without help.",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "Since + период до настоящего: hasn’t been able to."
+  },
+  {
+    "prompt": "By next month, we'll ___ work without supervision.",
+    "answers": [
+      "be able to",
+      "can",
+      "able to",
+      "been able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После will ставим be able to, а затем базовый глагол."
+  },
+  {
+    "prompt": "___ you able to fix the server last night?",
+    "answers": [
+      "Were",
+      "Could",
+      "Did",
+      "Have"
+    ],
+    "correct": "Were",
+    "explanation": "Спрашиваем о результате конкретной попытки: Were you able to…?"
+  },
+  {
+    "prompt": "When you were younger, ___ you run ten kilometres?",
+    "answers": [
+      "could",
+      "were able",
+      "did can",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом: Could you + V?"
+  },
+  {
+    "prompt": "Despite the smoke, the firefighters ___ rescue everyone.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "had can"
+    ],
+    "correct": "were able to",
+    "explanation": "Конкретное успешное действие: were able to rescue."
+  },
+  {
+    "prompt": "I looked everywhere but I ___ find my keys.",
+    "answers": [
+      "couldn't",
+      "wasn't can",
+      "haven't able to",
+      "don't could"
+    ],
+    "correct": "couldn't",
+    "explanation": "Couldn’t нормально описывает неудавшееся действие в прошлом."
+  },
+  {
+    "prompt": "She ___ solve complex problems without help.",
+    "answers": [
+      "is able to",
+      "is can",
+      "can to",
+      "does able to"
+    ],
+    "correct": "is able to",
+    "explanation": "Be able to согласуется с подлежащим: she is able to + V."
+  },
+  {
+    "prompt": "___ he drive at night without glasses?",
+    "answers": [
+      "Can",
+      "Does can",
+      "Is can",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Can сам строит вопрос и не требует do: Can he drive?"
+  },
+  {
+    "prompt": "At school, ___ he understand spoken English?",
+    "answers": [
+      "could",
+      "did could",
+      "was can",
+      "could to"
+    ],
+    "correct": "could",
+    "explanation": "Вопрос об общей способности в прошлом: Could he understand…?"
+  },
+  {
+    "prompt": "___ she been able to contact the client?",
+    "answers": [
+      "Has",
+      "Can",
+      "Did",
+      "Was"
+    ],
+    "correct": "Has",
+    "explanation": "Present Perfect: Has she been able to + V?"
+  },
+  {
+    "prompt": "Before the battery died, we ___ send our location.",
+    "answers": [
+      "had been able to",
+      "had could",
+      "could have to",
+      "were can"
+    ],
+    "correct": "had been able to",
+    "explanation": "Результат был достигнут до другого прошлого события: had been able to."
+  },
+  {
+    "prompt": "With more practice, you ___ do this much faster.",
+    "answers": [
+      "should be able to",
+      "should can",
+      "can should",
+      "should able to"
+    ],
+    "correct": "should be able to",
+    "explanation": "После should нельзя ставить can; используем should be able to."
+  },
+  {
+    "prompt": "A pilot must ___ react quickly in an emergency.",
+    "answers": [
+      "be able to",
+      "can",
+      "to be able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После must нужна базовая форма be: must be able to + V."
+  },
+  {
+    "prompt": "With a better laptop, I ___ edit these videos at home.",
+    "answers": [
+      "would be able to",
+      "would can",
+      "could to",
+      "would able to"
+    ],
+    "correct": "would be able to",
+    "explanation": "В условной ситуации используем would be able to."
+  },
+  {
+    "prompt": "Исправь ошибку: He cans speak Japanese.",
+    "answers": [
+      "He can speak Japanese.",
+      "He cans speak Japanese.",
+      "He can to speak Japanese.",
+      "He does can speak Japanese."
+    ],
+    "correct": "He can speak Japanese.",
+    "explanation": "Can не получает окончание -s; после него идёт базовая форма."
+  },
+  {
+    "prompt": "Исправь ошибку: I will can call you tomorrow.",
+    "answers": [
+      "I will be able to call you tomorrow.",
+      "I will can call you tomorrow.",
+      "I can will call you tomorrow.",
+      "I will able call you tomorrow."
+    ],
+    "correct": "I will be able to call you tomorrow.",
+    "explanation": "Форма will can невозможна: будущее строится как will be able to."
+  },
+  {
+    "prompt": "I was ill, so I ___ attend yesterday's workshop.",
+    "answers": [
+      "wasn't able to",
+      "won't be able to",
+      "can't",
+      "am not able to"
+    ],
+    "correct": "wasn't able to",
+    "explanation": "Конкретная невозможность в прошлом: wasn’t able to attend."
+  },
+  {
+    "prompt": "How long have you ___ work without an interpreter?",
+    "answers": [
+      "been able to",
+      "could",
+      "can",
+      "be able"
+    ],
+    "correct": "been able to",
+    "explanation": "После have в вопросе используем been able to: How long have you been able to…?"
+  }
+];
+
+
+const MANAGED_TO_ITEMS = [
+  {
+    "prompt": "The server kept crashing, but we finally ___ restart it.",
+    "answers": [
+      "managed to",
+      "could",
+      "managed",
+      "were manage to"
+    ],
+    "correct": "managed to",
+    "explanation": "Managed to подчёркивает трудность и успешный результат: всё-таки сумели перезапустить."
+  },
+  {
+    "prompt": "I ran to the station, but I ___ catch the last train.",
+    "answers": [
+      "didn't manage to",
+      "didn't managed to",
+      "could to not",
+      "wasn't manage to"
+    ],
+    "correct": "didn't manage to",
+    "explanation": "Не получилось выполнить конкретное действие: didn’t manage to + базовая форма."
+  },
+  {
+    "prompt": "___ send the report before the deadline?",
+    "answers": [
+      "Did you manage to",
+      "Did you managed to",
+      "Could you to",
+      "Were you manage to"
+    ],
+    "correct": "Did you manage to",
+    "explanation": "Вопрос в Past Simple: Did + subject + manage to + V? После did форма manage не меняется."
+  },
+  {
+    "prompt": "Even on busy days, she ___ practise English for twenty minutes.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "manages",
+      "is manage to"
+    ],
+    "correct": "manages to",
+    "explanation": "Регулярный успешный результат; с she в Present Simple: manages to + V."
+  },
+  {
+    "prompt": "The team has ___ reduce loading time by 40%.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "been manage to",
+      "managed"
+    ],
+    "correct": "managed to",
+    "explanation": "Present Perfect: has managed to + V."
+  },
+  {
+    "prompt": "I'm sure we ___ finish before Friday.",
+    "answers": [
+      "will manage to",
+      "will managed to",
+      "will can to",
+      "manage will to"
+    ],
+    "correct": "will manage to",
+    "explanation": "Будущий результат: will manage to + базовая форма."
+  },
+  {
+    "prompt": "If we leave now, we might ___ find a table.",
+    "answers": [
+      "manage to",
+      "managed to",
+      "manages to",
+      "to manage"
+    ],
+    "correct": "manage to",
+    "explanation": "После might ставим базовую форму manage: might manage to find."
+  },
+  {
+    "prompt": "I hope ___ speak to the manager today.",
+    "answers": [
+      "to manage to",
+      "manage to",
+      "to managed to",
+      "to manage"
+    ],
+    "correct": "to manage to",
+    "explanation": "После hope: hope to manage to + V — надеюсь, что удастся."
+  },
+  {
+    "prompt": "We managed ___ wake the baby.",
+    "answers": [
+      "not to",
+      "to not",
+      "don't to",
+      "not"
+    ],
+    "correct": "not to",
+    "explanation": "Отрицание относится к действию: managed not to wake — удалось не разбудить."
+  },
+  {
+    "prompt": "Because of the noise, he rarely ___ sleep before midnight.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "managed to",
+      "does manages to"
+    ],
+    "correct": "manages to",
+    "explanation": "He + Present Simple: manages to. Наречие rarely показывает регулярность."
+  },
+  {
+    "prompt": "How ___ solve such a difficult problem?",
+    "answers": [
+      "did you manage to",
+      "did you managed to",
+      "you did manage to",
+      "were you manage to"
+    ],
+    "correct": "did you manage to",
+    "explanation": "How did you manage to…? — «Как тебе удалось…?» После did используем manage."
+  },
+  {
+    "prompt": "Исправь ошибку: Did she managed to call you?",
+    "answers": [
+      "Did she manage to call you?",
+      "Did she managed to call you?",
+      "Did she manage call you?",
+      "Managed she to call you?"
+    ],
+    "correct": "Did she manage to call you?",
+    "explanation": "После did глагол возвращается в базовую форму: manage to call."
+  },
+  {
+    "prompt": "Исправь ошибку: We didn't managed to book a room.",
+    "answers": [
+      "We didn't manage to book a room.",
+      "We didn't managed to book a room.",
+      "We don't managed to book a room.",
+      "We didn't manage booking a room."
+    ],
+    "correct": "We didn't manage to book a room.",
+    "explanation": "После didn’t: manage to + V, без окончания -ed."
+  },
+  {
+    "prompt": "Исправь ошибку: He managed fixing the printer.",
+    "answers": [
+      "He managed to fix the printer.",
+      "He managed fixing the printer.",
+      "He did managed to fix the printer.",
+      "He managed fix the printer."
+    ],
+    "correct": "He managed to fix the printer.",
+    "explanation": "После manage требуется инфинитив с to: manage to fix."
+  },
+  {
+    "prompt": "The key was bent, but after several attempts I ___ open the door.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "managed opening"
+    ],
+    "correct": "managed to",
+    "explanation": "Несколько попыток и конкретный успех — типичный контекст managed to."
+  },
+  {
+    "prompt": "When Anna was a child, she ___ read very quickly.",
+    "answers": [
+      "could",
+      "managed to",
+      "was manage to",
+      "has managed to"
+    ],
+    "correct": "could",
+    "explanation": "Это общая способность в прошлом, поэтому could, а не managed to."
+  },
+  {
+    "prompt": "After six unanswered calls, I finally ___ contact the client.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "manage"
+    ],
+    "correct": "managed to",
+    "explanation": "Finally и несколько попыток подчёркивают трудный конкретный успех: managed to."
+  },
+  {
+    "prompt": "The road was flooded, but the ambulance ___ reach the village.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "manages to"
+    ],
+    "correct": "managed to",
+    "explanation": "Несмотря на препятствие действие завершилось успешно: managed to reach."
+  },
+  {
+    "prompt": "She was exhausted, but she ___ stay awake until the end.",
+    "answers": [
+      "managed to",
+      "could",
+      "has manage to",
+      "did managed to"
+    ],
+    "correct": "managed to",
+    "explanation": "But показывает трудность, а результат достигнут: managed to stay."
+  },
+  {
+    "prompt": "I tried three passwords but ___ log in.",
+    "answers": [
+      "didn't manage to",
+      "didn't managed to",
+      "couldn't to",
+      "not managed to"
+    ],
+    "correct": "didn't manage to",
+    "explanation": "Несколько попыток закончились неудачей: didn’t manage to log in."
+  },
+  {
+    "prompt": "This month he has ___ attend every lesson.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "been managed to",
+      "manages to"
+    ],
+    "correct": "managed to",
+    "explanation": "Has managed to — результат за ещё продолжающийся период this month."
+  },
+  {
+    "prompt": "Do you think you'll ___ complete the course on time?",
+    "answers": [
+      "manage to",
+      "managed to",
+      "be manage to",
+      "manages to"
+    ],
+    "correct": "manage to",
+    "explanation": "После will используем базовую форму: will manage to complete."
+  },
+  {
+    "prompt": "She almost ___ win the competition.",
+    "answers": [
+      "managed to",
+      "manage to",
+      "manages to",
+      "did managed to"
+    ],
+    "correct": "managed to",
+    "explanation": "Almost managed to значит «почти удалось», но конечный результат не был достигнут."
+  },
+  {
+    "prompt": "He never ___ arrive on time, even when he leaves early.",
+    "answers": [
+      "manages to",
+      "manage to",
+      "managed to",
+      "does manage to"
+    ],
+    "correct": "manages to",
+    "explanation": "С he в Present Simple: never manages to arrive."
+  }
+];
+
+
+const ABILITY_NUANCE_ITEMS = [
+  {
+    "prompt": "Выбери более вежливую просьбу.",
+    "answers": [
+      "Could you open the window, please?",
+      "Can you to open the window, please?",
+      "Do you could open the window, please?",
+      "Are you able open the window, please?"
+    ],
+    "correct": "Could you open the window, please?",
+    "explanation": "И can, и could употребляются в просьбах, но could звучит мягче и вежливее."
+  },
+  {
+    "prompt": "Как неформально попросить разрешения взять ручку?",
+    "answers": [
+      "Can I borrow your pen?",
+      "Do I can borrow your pen?",
+      "Can I to borrow your pen?",
+      "Am I can borrow your pen?"
+    ],
+    "correct": "Can I borrow your pen?",
+    "explanation": "Can I…? — обычная нейтральная просьба о разрешении. После can сразу идёт базовая форма."
+  },
+  {
+    "prompt": "Как более вежливо попросить разрешения уйти раньше?",
+    "answers": [
+      "Could I leave early?",
+      "Could I to leave early?",
+      "Did I could leave early?",
+      "Am I able leave early?"
+    ],
+    "correct": "Could I leave early?",
+    "explanation": "Could I…? звучит вежливее, чем Can I…? Здесь could не означает прошлое."
+  },
+  {
+    "prompt": "___ you pass me the salt, please?",
+    "answers": [
+      "Can",
+      "Do can",
+      "Are able",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Can you…? может быть обычной просьбой, а не вопросом о физической способности."
+  },
+  {
+    "prompt": "I haven't ___ sleep very well lately.",
+    "answers": [
+      "been able to",
+      "able to",
+      "could",
+      "can"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect требует причастия been: haven’t been able to + V."
+  },
+  {
+    "prompt": "She says that she ___ speak five languages fluently.",
+    "answers": [
+      "can",
+      "could",
+      "has can",
+      "is can"
+    ],
+    "correct": "can",
+    "explanation": "Says стоит в настоящем, и способность актуальна сейчас: she says she can."
+  },
+  {
+    "prompt": "She said that she ___ speak five languages fluently.",
+    "answers": [
+      "could",
+      "can",
+      "was can",
+      "has been able"
+    ],
+    "correct": "could",
+    "explanation": "После said обычно происходит согласование времён: can переходит в could."
+  },
+  {
+    "prompt": "We tried, but we ___ stop the fire.",
+    "answers": [
+      "couldn't",
+      "can't",
+      "weren't able",
+      "didn't could"
+    ],
+    "correct": "couldn't",
+    "explanation": "Для конкретной неудачи в прошлом можно использовать couldn’t. Weren’t able to тоже было бы возможно, но требует to."
+  },
+  {
+    "prompt": "He didn't want to come, but finally we ___ persuade him.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "were able"
+    ],
+    "correct": "were able to",
+    "explanation": "Положительный результат в одной конкретной ситуации: were able to или managed to, обычно не could."
+  },
+  {
+    "prompt": "After an hour of discussion, we finally ___ persuade him.",
+    "answers": [
+      "managed to",
+      "could",
+      "can",
+      "managed"
+    ],
+    "correct": "managed to",
+    "explanation": "Finally и длительное усилие: managed to подчёркивает, что это всё-таки удалось."
+  },
+  {
+    "prompt": "The connection was terrible, so we ___ hear the speaker clearly.",
+    "answers": [
+      "weren't able to",
+      "aren't able to",
+      "could to not",
+      "didn't able to"
+    ],
+    "correct": "weren't able to",
+    "explanation": "Конкретная неспособность в прошлом: weren’t able to. Couldn’t hear также было бы правильно."
+  },
+  {
+    "prompt": "When my grandfather was young, he ___ run twenty kilometres.",
+    "answers": [
+      "could",
+      "was able",
+      "managed to",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Общая способность в прошлом, не отдельный случай: could + V."
+  },
+  {
+    "prompt": "She ___ speak English and Spanish, so she can help us now.",
+    "answers": [
+      "can",
+      "could",
+      "has can",
+      "is can"
+    ],
+    "correct": "can",
+    "explanation": "Актуальная способность сейчас: can. Is able to тоже возможно, но can естественнее и короче."
+  },
+  {
+    "prompt": "The lift broke, but the engineers ___ free everyone.",
+    "answers": [
+      "were able to",
+      "could",
+      "can",
+      "were able"
+    ],
+    "correct": "were able to",
+    "explanation": "Одно завершённое успешное действие в прошлом: were able to free."
+  },
+  {
+    "prompt": "From our hotel room, we ___ see the sea.",
+    "answers": [
+      "could",
+      "managed to",
+      "were able",
+      "can yesterday"
+    ],
+    "correct": "could",
+    "explanation": "С глаголами восприятия see, hear, feel, understand could возможно даже в конкретной прошлой ситуации."
+  },
+  {
+    "prompt": "Although the music was loud, I ___ hear what she said.",
+    "answers": [
+      "could",
+      "managed to hearing",
+      "was able hear",
+      "can"
+    ],
+    "correct": "could",
+    "explanation": "Hear — глагол восприятия, поэтому could hear естественно для конкретного прошлого момента."
+  },
+  {
+    "prompt": "When I was sixteen, I ___ stay out until eleven.",
+    "answers": [
+      "could",
+      "managed to",
+      "can",
+      "was able"
+    ],
+    "correct": "could",
+    "explanation": "Could может обозначать общее разрешение в прошлом: мне разрешали возвращаться поздно."
+  },
+  {
+    "prompt": "Исправь просьбу: Could you to help me?",
+    "answers": [
+      "Could you help me?",
+      "Could you to help me?",
+      "Do you could help me?",
+      "Could you helping me?"
+    ],
+    "correct": "Could you help me?",
+    "explanation": "В просьбе после could используется базовая форма без to."
+  },
+  {
+    "prompt": "Исправь ошибку: I haven't able to sleep lately.",
+    "answers": [
+      "I haven't been able to sleep lately.",
+      "I haven't able to sleep lately.",
+      "I didn't been able to sleep lately.",
+      "I haven't could sleep lately."
+    ],
+    "correct": "I haven't been able to sleep lately.",
+    "explanation": "Форма Present Perfect: have/has + been able to + V."
+  },
+  {
+    "prompt": "Исправь положительный результат: Finally, we could persuade him.",
+    "answers": [
+      "Finally, we were able to persuade him.",
+      "Finally, we could persuade him.",
+      "Finally, we were able persuade him.",
+      "Finally, we did could persuade him."
+    ],
+    "correct": "Finally, we were able to persuade him.",
+    "explanation": "Для единичного положительного результата употребляем was/were able to или managed to. Could обычно описывает общую способность."
+  }
+];
+
+
+const ABILITY_FORM_ITEMS = [
+  {
+    "prompt": "I haven't ___ move house since 2010.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "could",
+      "be able to"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: have/has + been able to + V. Since 2010 связывает прошлое с настоящим."
+  },
+  {
+    "prompt": "She ___ believe how fast time had flown by.",
+    "answers": [
+      "couldn't",
+      "can't",
+      "wasn't able",
+      "hasn't been able to"
+    ],
+    "correct": "couldn't",
+    "explanation": "Couldn’t believe — естественная форма для реакции и понимания в прошлом."
+  },
+  {
+    "prompt": "He was finally ___ finish the project after working on it for weeks.",
+    "answers": [
+      "able to",
+      "been able to",
+      "being able to",
+      "could"
+    ],
+    "correct": "able to",
+    "explanation": "Was уже стоит в предложении, поэтому добавляем able to + V: was finally able to finish."
+  },
+  {
+    "prompt": "If the weather improved, we ___ go for a walk.",
+    "answers": [
+      "could",
+      "can",
+      "will be able to",
+      "were able to"
+    ],
+    "correct": "could",
+    "explanation": "Воображаемая или маловероятная ситуация: If + Past Simple, could + V."
+  },
+  {
+    "prompt": "___ you speak Spanish?",
+    "answers": [
+      "Can",
+      "Are able",
+      "Do can",
+      "Can to"
+    ],
+    "correct": "Can",
+    "explanation": "Вопрос о способности сейчас: Can + subject + базовая форма?"
+  },
+  {
+    "prompt": "He hated not ___ talk to his girlfriend regularly.",
+    "answers": [
+      "being able to",
+      "been able to",
+      "be able to",
+      "could"
+    ],
+    "correct": "being able to",
+    "explanation": "После hate возможно -ing; отрицание: hated not being able to + V."
+  },
+  {
+    "prompt": "We've sent you an invitation. Will you ___ attend the conference?",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После will используем be able to: Will you be able to attend?"
+  },
+  {
+    "prompt": "I enjoy ___ work from different countries.",
+    "answers": [
+      "being able to",
+      "to be able to",
+      "been able to",
+      "can"
+    ],
+    "correct": "being able to",
+    "explanation": "После enjoy нужен gerund: enjoy being able to + V."
+  },
+  {
+    "prompt": "She left without ___ explain what had happened.",
+    "answers": [
+      "being able to",
+      "to be able to",
+      "been able to",
+      "could"
+    ],
+    "correct": "being able to",
+    "explanation": "После предлога without используем -ing: without being able to explain."
+  },
+  {
+    "prompt": "I want ___ understand films without subtitles.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "to can"
+    ],
+    "correct": "to be able to",
+    "explanation": "После want нужен инфинитив: want to be able to + V."
+  },
+  {
+    "prompt": "She would like ___ drive before starting her new job.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "can to"
+    ],
+    "correct": "to be able to",
+    "explanation": "Would like + to-infinitive: would like to be able to drive."
+  },
+  {
+    "prompt": "We hope ___ offer the feature next month.",
+    "answers": [
+      "to be able to",
+      "being able to",
+      "been able to",
+      "can"
+    ],
+    "correct": "to be able to",
+    "explanation": "Hope to + V: hope to be able to offer."
+  },
+  {
+    "prompt": "With a little more time, I may ___ solve the issue.",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "Два модальных подряд нельзя: may be able to, не may can."
+  },
+  {
+    "prompt": "After this lesson, you should ___ explain the difference.",
+    "answers": [
+      "be able to",
+      "can",
+      "been able to",
+      "being able to"
+    ],
+    "correct": "be able to",
+    "explanation": "После should используем базовую форму be: should be able to + V."
+  },
+  {
+    "prompt": "She has ___ work independently for several months.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "be able to",
+      "could"
+    ],
+    "correct": "been able to",
+    "explanation": "Present Perfect: has been able to + V."
+  },
+  {
+    "prompt": "Before the accident, he had ___ walk without pain.",
+    "answers": [
+      "been able to",
+      "being able to",
+      "be able to",
+      "could to"
+    ],
+    "correct": "been able to",
+    "explanation": "Past Perfect: had been able to + V."
+  },
+  {
+    "prompt": "I ___ answer calls during tomorrow's flight.",
+    "answers": [
+      "won't be able to",
+      "won't can",
+      "haven't been able to",
+      "couldn't"
+    ],
+    "correct": "won't be able to",
+    "explanation": "Будущая невозможность: won’t be able to + V."
+  },
+  {
+    "prompt": "With a quieter room, I ___ concentrate much better.",
+    "answers": [
+      "would be able to",
+      "would can",
+      "could to",
+      "was able to"
+    ],
+    "correct": "would be able to",
+    "explanation": "Условный результат: would be able to + V."
+  },
+  {
+    "prompt": "Исправь ошибку: I will can help tomorrow.",
+    "answers": [
+      "I will be able to help tomorrow.",
+      "I will can help tomorrow.",
+      "I will able to help tomorrow.",
+      "I can will help tomorrow."
+    ],
+    "correct": "I will be able to help tomorrow.",
+    "explanation": "У can нет формы с will: используем will be able to."
+  },
+  {
+    "prompt": "Исправь ошибку: He hated not be able to call her.",
+    "answers": [
+      "He hated not being able to call her.",
+      "He hated not be able to call her.",
+      "He hated not been able to call her.",
+      "He hated not could call her."
+    ],
+    "correct": "He hated not being able to call her.",
+    "explanation": "После hate в этом контексте используется gerund: not being able to."
+  }
+];
+
+
+const ADJECTIVE_ENDING_ITEMS = [
+  {
+    "text": "It was ___ to start a new job in a different city.",
+    "answers": [
+      "exciting",
+      "excited",
+      "excite",
+      "excitement"
+    ],
+    "correct": "exciting",
+    "explanation": "Начало работы вызывает эмоцию, поэтому описываем ситуацию формой exciting."
+  },
+  {
+    "text": "I was ___ about starting my new job.",
+    "answers": [
+      "excited",
+      "exciting",
+      "excite",
+      "excitement"
+    ],
+    "correct": "excited",
+    "explanation": "I испытывает чувство: excited about something."
+  },
+  {
+    "text": "The architecture of the old cathedral was ___.",
+    "answers": [
+      "amazing",
+      "amazed",
+      "amaze",
+      "amazement"
+    ],
+    "correct": "amazing",
+    "explanation": "Архитектура производит впечатление: amazing."
+  },
+  {
+    "text": "She was ___ by the beautiful architecture.",
+    "answers": [
+      "amazed",
+      "amazing",
+      "amaze",
+      "amazement"
+    ],
+    "correct": "amazed",
+    "explanation": "She испытывает удивление: amazed by something."
+  },
+  {
+    "text": "Packing and moving all day was very ___.",
+    "answers": [
+      "tiring",
+      "tired",
+      "tire",
+      "tiredness"
+    ],
+    "correct": "tiring",
+    "explanation": "Действие утомляет, поэтому оно tiring."
+  },
+  {
+    "text": "After packing all day, I felt completely ___.",
+    "answers": [
+      "tired",
+      "tiring",
+      "tire",
+      "tiredness"
+    ],
+    "correct": "tired",
+    "explanation": "I чувствую усталость: tired."
+  },
+  {
+    "text": "The grey weather was rather ___.",
+    "answers": [
+      "depressing",
+      "depressed",
+      "depress",
+      "depression"
+    ],
+    "correct": "depressing",
+    "explanation": "Погода вызывает подавленность: depressing."
+  },
+  {
+    "text": "She felt ___ after saying goodbye to her friends.",
+    "answers": [
+      "depressed",
+      "depressing",
+      "depress",
+      "depression"
+    ],
+    "correct": "depressed",
+    "explanation": "She испытывает чувство: depressed."
+  },
+  {
+    "text": "Forgetting her boss's name was an ___ mistake.",
+    "answers": [
+      "embarrassing",
+      "embarrassed",
+      "embarrass",
+      "embarrassment"
+    ],
+    "correct": "embarrassing",
+    "explanation": "Ошибка вызывает неловкость: embarrassing."
+  },
+  {
+    "text": "He was ___ about forgetting her name.",
+    "answers": [
+      "embarrassed",
+      "embarrassing",
+      "embarrass",
+      "embarrassment"
+    ],
+    "correct": "embarrassed",
+    "explanation": "He испытывает неловкость: embarrassed about something."
+  },
+  {
+    "text": "The long wait at the airport was ___.",
+    "answers": [
+      "boring",
+      "bored",
+      "bore",
+      "boredom"
+    ],
+    "correct": "boring",
+    "explanation": "Ожидание вызывает скуку: boring."
+  },
+  {
+    "text": "I got ___ during the long wait.",
+    "answers": [
+      "bored",
+      "boring",
+      "bore",
+      "boredom"
+    ],
+    "correct": "bored",
+    "explanation": "I испытываю скуку: bored."
+  },
+  {
+    "text": "The constant announcements were really ___.",
+    "answers": [
+      "annoying",
+      "annoyed",
+      "annoy",
+      "annoyance"
+    ],
+    "correct": "annoying",
+    "explanation": "Объявления раздражают: annoying."
+  },
+  {
+    "text": "I was ___ by the constant noise.",
+    "answers": [
+      "annoyed",
+      "annoying",
+      "annoy",
+      "annoyance"
+    ],
+    "correct": "annoyed",
+    "explanation": "I испытываю раздражение: annoyed by something."
+  },
+  {
+    "text": "Putting the furniture together was very ___.",
+    "answers": [
+      "frustrating",
+      "frustrated",
+      "frustrate",
+      "frustration"
+    ],
+    "correct": "frustrating",
+    "explanation": "Задача вызывает раздражение и бессилие: frustrating."
+  },
+  {
+    "text": "We felt ___ because the instructions were unclear.",
+    "answers": [
+      "frustrated",
+      "frustrating",
+      "frustrate",
+      "frustration"
+    ],
+    "correct": "frustrated",
+    "explanation": "We испытываем чувство: frustrated."
+  },
+  {
+    "text": "Going bungee jumping looks ___.",
+    "answers": [
+      "frightening",
+      "frightened",
+      "frighten",
+      "fright"
+    ],
+    "correct": "frightening",
+    "explanation": "Прыжок вызывает страх: frightening."
+  },
+  {
+    "text": "She was too ___ to look down.",
+    "answers": [
+      "frightened",
+      "frightening",
+      "frighten",
+      "fright"
+    ],
+    "correct": "frightened",
+    "explanation": "She испытывает страх: frightened."
+  },
+  {
+    "text": "The flat he found was dark and ___.",
+    "answers": [
+      "disappointing",
+      "disappointed",
+      "disappoint",
+      "disappointment"
+    ],
+    "correct": "disappointing",
+    "explanation": "Квартира не оправдала ожиданий: disappointing."
+  },
+  {
+    "text": "He was ___ with the flat he viewed.",
+    "answers": [
+      "disappointed",
+      "disappointing",
+      "disappoint",
+      "disappointment"
+    ],
+    "correct": "disappointed",
+    "explanation": "He испытывает разочарование: disappointed with something."
+  },
+  {
+    "text": "The documentary was surprisingly ___.",
+    "answers": [
+      "interesting",
+      "interested",
+      "interest",
+      "interestingly"
+    ],
+    "correct": "interesting",
+    "explanation": "Документальный фильм вызывает интерес: interesting."
+  },
+  {
+    "text": "I'm really ___ in local history.",
+    "answers": [
+      "interested",
+      "interesting",
+      "interest",
+      "interestingly"
+    ],
+    "correct": "interested",
+    "explanation": "Человек испытывает интерес: interested in something."
+  },
+  {
+    "text": "The final result was ___.",
+    "answers": [
+      "surprising",
+      "surprised",
+      "surprise",
+      "surprisingly"
+    ],
+    "correct": "surprising",
+    "explanation": "Результат вызывает удивление: surprising."
+  },
+  {
+    "text": "Everyone was ___ by the final result.",
+    "answers": [
+      "surprised",
+      "surprising",
+      "surprise",
+      "surprisingly"
+    ],
+    "correct": "surprised",
+    "explanation": "Everyone испытывает удивление: surprised by something."
+  },
+  {
+    "text": "The new instructions are rather ___.",
+    "answers": [
+      "confusing",
+      "confused",
+      "confuse",
+      "confusion"
+    ],
+    "correct": "confusing",
+    "explanation": "Инструкции вызывают непонимание: confusing."
+  },
+  {
+    "text": "I was ___ by the new instructions.",
+    "answers": [
+      "confused",
+      "confusing",
+      "confuse",
+      "confusion"
+    ],
+    "correct": "confused",
+    "explanation": "I испытываю непонимание: confused by something."
+  },
+  {
+    "text": "The delay is becoming ___.",
+    "answers": [
+      "worrying",
+      "worried",
+      "worry",
+      "worryingly"
+    ],
+    "correct": "worrying",
+    "explanation": "Задержка вызывает беспокойство: worrying."
+  },
+  {
+    "text": "She is ___ about the delay.",
+    "answers": [
+      "worried",
+      "worrying",
+      "worry",
+      "worryingly"
+    ],
+    "correct": "worried",
+    "explanation": "She испытывает беспокойство: worried about something."
+  },
+  {
+    "text": "Completing the project was extremely ___.",
+    "answers": [
+      "satisfying",
+      "satisfied",
+      "satisfy",
+      "satisfaction"
+    ],
+    "correct": "satisfying",
+    "explanation": "Завершение проекта приносит удовлетворение: satisfying."
+  },
+  {
+    "text": "The client was ___ with the final result.",
+    "answers": [
+      "satisfied",
+      "satisfying",
+      "satisfy",
+      "satisfaction"
+    ],
+    "correct": "satisfied",
+    "explanation": "Client испытывает удовлетворение: satisfied with something."
+  },
+  {
+    "text": "The sound of the waves is very ___.",
+    "answers": [
+      "relaxing",
+      "relaxed",
+      "relax",
+      "relaxation"
+    ],
+    "correct": "relaxing",
+    "explanation": "Звук помогает расслабиться: relaxing."
+  },
+  {
+    "text": "I felt completely ___ after the massage.",
+    "answers": [
+      "relaxed",
+      "relaxing",
+      "relax",
+      "relaxation"
+    ],
+    "correct": "relaxed",
+    "explanation": "I нахожусь в расслабленном состоянии: relaxed."
+  },
+  {
+    "text": "The twelve-hour journey was ___.",
+    "answers": [
+      "exhausting",
+      "exhausted",
+      "exhaust",
+      "exhaustion"
+    ],
+    "correct": "exhausting",
+    "explanation": "Путешествие вызывает сильную усталость: exhausting."
+  },
+  {
+    "text": "The travellers looked ___.",
+    "answers": [
+      "exhausted",
+      "exhausting",
+      "exhaust",
+      "exhaustion"
+    ],
+    "correct": "exhausted",
+    "explanation": "Путешественники чувствуют сильную усталость: exhausted."
+  },
+  {
+    "text": "The news was absolutely ___.",
+    "answers": [
+      "shocking",
+      "shocked",
+      "shock",
+      "shockingly"
+    ],
+    "correct": "shocking",
+    "explanation": "Новость вызывает шок: shocking."
+  },
+  {
+    "text": "We were ___ by the news.",
+    "answers": [
+      "shocked",
+      "shocking",
+      "shock",
+      "shockingly"
+    ],
+    "correct": "shocked",
+    "explanation": "We испытываем шок: shocked by something."
+  }
+];
+
+
+const STORAGE_KEY = "tense-day-progress-v1";
+const DAY = 24 * 60 * 60 * 1000;
+let state = loadState();
+let session = null;
+
+const dashboard = document.querySelector("#dashboard");
+const lesson = document.querySelector("#lesson");
+const guide = document.querySelector("#guide");
+const quiz = document.querySelector("#quiz");
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-action]");
+  if (!trigger) return;
+  const { action, key, index } = trigger.dataset;
+
+  if (action === "home") renderDashboard();
+  if (action === "start-daily") startDailySession();
+  if (action === "start-identify") startIdentifySession();
+  if (action === "start-reported") startReportedSession();
+  if (action === "open-reported") renderReportedGuide();
+  if (action === "start-gerund") startGerundSession();
+  if (action === "start-phrases") startPhraseSession();
+  if (action === "start-articles") startArticleSession();
+  if (action === "start-auxiliaries") startAuxiliarySession();
+  if (action === "focus-tense") startFocusSession(key);
+  if (action === "identify-tense") startIdentifyForTense(key);
+  if (action === "open-tense") renderLesson(key);
+  if (action === "open-guide") renderGuide();
+  if (action === "open-gerund-guide") renderGerundGuide();
+  if (action === "open-phrases") renderPhraseGuide();
+  if (action === "open-articles") renderArticleGuide();
+  if (action === "open-auxiliaries") renderAuxiliaryGuide();
+  if (action === "answer") answerQuestion(Number(index));
+  if (action === "next") nextQuestion();
+  if (action === "reset") resetProgress();
+});
+
+function defaultState() {
+  return {
+    diagnosed: false,
+    totalAnswered: 0,
+    totalCorrect: 0,
+    sessions: 0,
+    streak: 0,
+    lastStudyDate: null,
+    tenseStats: Object.fromEntries(TENSES.map((tense) => [tense.key, { total: 0, correct: 0, level: 0, dueAt: 0 }])),
+    grammarStats: {
+      gerundInfinitive: { total: 0, correct: 0 },
+      speechPatterns: { total: 0, correct: 0 },
+      articles: { total: 0, correct: 0 },
+      auxiliaries: { total: 0, correct: 0 },
+      reportedSpeech: { total: 0, correct: 0 },
+    },
+  };
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!saved) return defaultState();
+    const fresh = defaultState();
+    return {
+      ...fresh,
+      ...saved,
+      tenseStats: Object.fromEntries(TENSES.map((tense) => [tense.key, { ...fresh.tenseStats[tense.key], ...(saved.tenseStats?.[tense.key] || {}) }])),
+      grammarStats: {
+        ...fresh.grammarStats,
+        ...(saved.grammarStats || {}),
+      },
+    };
+  } catch {
+    return defaultState();
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function showOnly(page) {
+  [dashboard, lesson, guide, quiz].forEach((section) => section.classList.add("hidden"));
+  page.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function accuracy(stat) {
+  return stat.total ? Math.round((stat.correct / stat.total) * 100) : null;
+}
+
+function overallAccuracy() {
+  return state.totalAnswered ? Math.round((state.totalCorrect / state.totalAnswered) * 100) : 0;
+}
+
+function learnedCount() {
+  return Object.values(state.tenseStats).filter((stat) => stat.level >= 2).length;
+}
+
+function getFocusTense() {
+  return TENSES.map((tense) => ({ tense, stat: state.tenseStats[tense.key] }))
+    .sort((a, b) => focusScore(b.stat) - focusScore(a.stat))[0]?.tense;
+}
+
+function focusScore(stat) {
+  const weak = stat.total ? 1 - stat.correct / stat.total : 0.85;
+  const due = !stat.dueAt || stat.dueAt <= Date.now() ? 1 : 0;
+  return weak + due + (stat.level === 0 ? 0.35 : 0);
+}
+
+function levelDot(stat) {
+  const level = Math.min(3, stat.level);
+  return `<span class="level-dot ${level ? `level-${level}` : ""}">${stat.level}</span>`;
+}
+
+function renderDashboard() {
+  session = null;
+  const focus = getFocusTense();
+  const isFirstRun = !state.diagnosed;
+  const planTitle = isFirstRun ? "Сначала — быстрая диагностика" : "Твой короткий урок на сегодня";
+  const planText = isFirstRun
+    ? "12 коротких вопросов: по одному на каждое время. Потом тренажёр сам будет чаще возвращать слабые темы."
+    : `8 вопросов: четыре на форму глагола и четыре на распознавание времени в тексте. В фокусе — ${focus.name}.`;
+  const buttonText = isFirstRun ? "Пройти диагностику · 8 мин" : "Начать 8 вопросов · 6 мин";
+  const accuracyText = state.totalAnswered ? `${overallAccuracy()}%` : "—";
+  const progress = Math.round((learnedCount() / TENSES.length) * 100);
+  const gerundStat = state.grammarStats.gerundInfinitive;
+  const gerundStatText = gerundStat.total ? `${accuracy(gerundStat)}% · ${gerundStat.total} ответов` : "Ещё не тренировались";
+  const phraseStat = state.grammarStats.speechPatterns;
+  const phraseStatText = phraseStat.total ? `${accuracy(phraseStat)}% · ${phraseStat.total} ответов` : "Ещё не тренировались";
+  const articleStat = state.grammarStats.articles;
+  const articleStatText = articleStat.total ? `${accuracy(articleStat)}% · ${articleStat.total} ответов` : "Ещё не тренировались";
+  const auxiliaryStat = state.grammarStats.auxiliaries;
+  const auxiliaryStatText = auxiliaryStat.total ? `${accuracy(auxiliaryStat)}% · ${auxiliaryStat.total} ответов` : "Ещё не тренировались";
+  const reportedStat = state.grammarStats.reportedSpeech;
+  const reportedStatText = reportedStat.total ? `${accuracy(reportedStat)}% · ${reportedStat.total} ответов` : "Ещё не тренировались";
+
+  dashboard.innerHTML = `
+    <section class="hero">
+      <p class="eyebrow">10 минут в день</p>
+      <h1>${planTitle}</h1>
+      <p class="subtitle">${planText}</p>
+      <button class="primary-button" type="button" data-action="start-daily">${buttonText}</button>
+      <span class="hero-orbit" aria-hidden="true"></span><span class="hero-dot" aria-hidden="true"></span>
+    </section>
+
+    <section class="stat-row" aria-label="Твой прогресс">
+      <article class="stat-card"><span class="stat-number">${state.streak}</span><span class="stat-label">дней подряд</span></article>
+      <article class="stat-card"><span class="stat-number">${accuracyText}</span><span class="stat-label">точность ответов</span></article>
+      <article class="stat-card"><span class="stat-number">${learnedCount()}/12</span><span class="stat-label">времён закреплено</span></article>
+    </section>
+
+    <section class="focus-card">
+      <p class="eyebrow">Следующий фокус</p>
+      <div class="focus-line"><span class="focus-swatch"></span><strong>${focus.name}</strong></div>
+      <p class="section-note">${focus.use}</p>
+      <button class="secondary-button" type="button" data-action="focus-tense" data-key="${focus.key}">Потренировать это время</button>
+    </section>
+
+
+    <section class="mode-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Каталог</p><h2>Тренировки по темам</h2></div>
+        <p class="section-note">Выбирай одну тему — прогресс сохраняется отдельно</p>
+      </div>
+      <div class="mode-grid">
+        <article class="mode-card mode-violet">
+          <span class="mode-kicker">Система времён</span>
+          <h3>Конструктор грамматики</h3>
+          <p>Формулы V, V-ing, V2 и V3, вопросы, отрицания и неправильные глаголы.</p>
+          <div class="mode-card-footer"><small>Общая памятка</small><button class="secondary-button" type="button" data-action="open-guide">Открыть</button></div>
+        </article>
+        <article class="mode-card mode-forest">
+          <span class="mode-kicker">Контекст</span>
+          <h3>Времена и косвенная речь</h3>
+          <p>Распознавай время в тексте и учись передавать чужие слова.</p>
+          <div class="mode-card-footer"><small>Определи время · 36 примеров</small><button class="secondary-button" type="button" data-action="start-identify">10 заданий</button></div>
+          <div class="reported-card-section"><strong>Косвенная речь · ${REPORTED_ITEMS.length} примеров</strong><div class="mode-card-meta">${reportedStatText}</div><div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-reported">Правила</button><button class="primary-button" type="button" data-action="start-reported">12 заданий</button></div></div>
+        </article>
+        <article class="mode-card mode-blue">
+          <span class="mode-kicker">Форма глагола</span>
+          <h3>Формы глагола и -ed/-ing</h3>
+          <p>${GERUND_INFINITIVE_ITEMS.length + ADJECTIVE_ENDING_ITEMS.length} примеров: working/to work и прилагательные bored/boring.</p>
+          <div class="mode-card-meta">${gerundStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-gerund-guide">Правила</button><button class="primary-button" type="button" data-action="start-gerund">16 заданий</button></div>
+        </article>
+        <article class="mode-card mode-coral">
+          <span class="mode-kicker">Лексика + времена</span>
+          <h3>Речевые обороты</h3>
+          <p>${PHRASE_ITEMS.length} контекстных примеров по семи жизненным темам.</p>
+          <div class="mode-card-meta">${phraseStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-phrases">Библиотека</button><button class="primary-button" type="button" data-action="start-phrases">14 заданий</button></div>
+        </article>
+        <article class="mode-card mode-yellow">
+          <span class="mode-kicker">Новая тема</span>
+          <h3>Артикли: a, an, the или Ø</h3>
+          <p>Первое упоминание, конкретный предмет, уникальные объекты и случаи без артикля.</p>
+          <div class="mode-card-meta">${articleStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-articles">Правила</button><button class="primary-button" type="button" data-action="start-articles">12 заданий</button></div>
+        </article>
+
+        <article class="mode-card mode-green">
+          <span class="mode-kicker">Глаголы-помощники</span>
+          <h3>Помощники и модальные</h3>
+          <p>Have had, must, should, can, could, be able to и managed to — плюс порядок слов.</p>
+          <div class="mode-card-meta">${auxiliaryStatText}</div>
+          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-auxiliaries">Правила</button><button class="primary-button" type="button" data-action="start-auxiliaries">16 заданий</button></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-heading"><h2>Карта времён</h2><p class="section-note">Уровень 2 — можно редко повторять</p></div>
+    <div class="progress-track" aria-label="Общий прогресс"><div class="progress-fill" style="width: ${progress}%"></div></div>
+    <div class="tense-grid" style="margin-top: 14px">
+      ${TENSES.map((tense) => {
+        const stat = state.tenseStats[tense.key];
+        const statText = stat.total ? `${accuracy(stat)}% · ${stat.total} ответов` : "Ещё не проверяли";
+        return `<button class="tense-card" type="button" data-action="open-tense" data-key="${tense.key}">
+          <span class="tense-card-top"><small>${tense.group}</small>${levelDot(stat)}</span>
+          <strong>${tense.name}</strong>
+          <small>${statText}</small>
+        </button>`;
+      }).join("")}
+    </div>
+  `;
+  showOnly(dashboard);
+}
+
+function renderLesson(key) {
+  const tense = TENSES.find((item) => item.key === key);
+  if (!tense) return;
+  const stat = state.tenseStats[key];
+  lesson.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К карте времён</button>
+    <article class="lesson-card">
+      <span class="lesson-tag">${tense.group} · уровень ${stat.level}</span>
+      <h1>${tense.name}</h1>
+      <p class="subtitle">${tense.use}</p>
+
+      <h3 class="lesson-section-title">Как образуется</h3>
+      <div class="formation-grid">
+        <div class="formation-row"><span class="form-sign plus">+</span><div><small>Утверждение</small><strong>${tense.forms.affirmative}</strong></div></div>
+        <div class="formation-row"><span class="form-sign minus">−</span><div><small>Отрицание</small><strong>${tense.forms.negative}</strong></div></div>
+        <div class="formation-row"><span class="form-sign question-sign">?</span><div><small>Вопрос</small><strong>${tense.forms.question}</strong></div></div>
+      </div>
+
+      <div class="lesson-columns">
+        <section>
+          <h3 class="lesson-section-title">Когда использовать</h3>
+          <ul class="rule-list">${tense.useCases.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </section>
+        <section>
+          <h3 class="lesson-section-title">Слова-подсказки</h3>
+          <div class="marker-chips">${tense.markers.map((item) => `<span>${item}</span>`).join("")}</div>
+        </section>
+      </div>
+
+      <h3 class="lesson-section-title">Примеры</h3>
+      <div class="example-list">
+        ${tense.examples.map(([en, ru]) => `<div class="example-row"><strong>${en}</strong><span>${ru}</span></div>`).join("")}
+      </div>
+
+      <aside class="mistake-box">
+        <p class="eyebrow">Частая ошибка</p>
+        <p><del>${tense.mistake.wrong}</del> <span aria-hidden="true">→</span> <strong>${tense.mistake.right}</strong></p>
+        <small>${tense.mistake.note}</small>
+      </aside>
+      <div class="lesson-actions">
+        <button class="primary-button" type="button" data-action="focus-tense" data-key="${tense.key}">Шесть вопросов по теме</button>
+        <button class="secondary-button" type="button" data-action="identify-tense" data-key="${tense.key}">Распознать в тексте</button>
+        <button class="secondary-button" type="button" data-action="home">К прогрессу</button>
+      </div>
+    </article>
+  `;
+  showOnly(lesson);
+}
+
+function renderGuide() {
+  const verbForms = [
+    ["V", "начальная форма", "work / go", "Present и Future Simple"],
+    ["V-s", "форма для he/she/it", "works / goes", "Present Simple"],
+    ["V-ing", "форма процесса", "working / going", "все Continuous"],
+    ["V2", "прошедшая форма", "worked / went", "Past Simple"],
+    ["V3", "причастие", "worked / gone", "все Perfect"],
+  ];
+  const irregulars = [
+    ["be", "was/were", "been"], ["have", "had", "had"], ["do", "did", "done"], ["go", "went", "gone"],
+    ["get", "got", "got"], ["make", "made", "made"], ["say", "said", "said"], ["see", "saw", "seen"],
+    ["come", "came", "come"], ["take", "took", "taken"], ["know", "knew", "known"], ["give", "gave", "given"],
+    ["find", "found", "found"], ["think", "thought", "thought"], ["tell", "told", "told"], ["buy", "bought", "bought"],
+  ];
+
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page">
+      <span class="lesson-tag">Общая система</span>
+      <h1>Конструктор английских времён</h1>
+      <p class="subtitle">Сначала выбери, когда происходит действие: Past, Present или Future. Затем выбери характер: факт, процесс, результат к моменту или накопленная длительность.</p>
+
+      <div class="idea-grid">
+        <div><span>Simple</span><strong>факт и регулярность</strong></div>
+        <div><span>Continuous</span><strong>процесс в моменте</strong></div>
+        <div><span>Perfect</span><strong>результат к моменту</strong></div>
+        <div><span>Perfect Continuous</span><strong>длится уже N времени</strong></div>
+      </div>
+
+      <h2 class="guide-heading">Пять форм смыслового глагола</h2>
+      <div class="verb-table">
+        ${verbForms.map(([form, meaning, sample, use]) => `<div class="verb-row"><strong>${form}</strong><span>${meaning}</span><code>${sample}</code><small>${use}</small></div>`).join("")}
+      </div>
+
+      <div class="guide-rule-grid">
+        <section class="rule-card">
+          <h3>Как добавить -s</h3>
+          <ul class="rule-list">
+            <li>обычно: work → works</li>
+            <li>-s, -sh, -ch, -x, -o: watch → watches</li>
+            <li>согласная + y: study → studies</li>
+            <li>особая форма: have → has</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Как добавить -ing</h3>
+          <ul class="rule-list">
+            <li>обычно: work → working</li>
+            <li>немая -e отпадает: make → making</li>
+            <li>короткий ударный слог: run → running</li>
+            <li>-ie превращается в -y: lie → lying</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Как добавить -ed</h3>
+          <ul class="rule-list">
+            <li>обычно: work → worked</li>
+            <li>после -e только -d: live → lived</li>
+            <li>согласная + y: study → studied</li>
+            <li>короткий ударный слог: stop → stopped</li>
+          </ul>
+        </section>
+        <section class="rule-card">
+          <h3>Вспомогательные «моторчики»</h3>
+          <ul class="rule-list">
+            <li>do / does / did — Simple</li>
+            <li>am / is / are / was / were — Continuous</li>
+            <li>have / has / had — Perfect</li>
+            <li>will — будущее</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="principle-box"><strong>Главный принцип:</strong> в вопросе вспомогательный глагол выходит перед подлежащим. В отрицании к нему добавляется not. После do, does и did смысловой глагол всегда возвращается в форму V.</aside>
+
+      <h2 class="guide-heading">Нужные неправильные глаголы</h2>
+      <div class="irregular-grid">
+        ${irregulars.map(([v, v2, v3]) => `<div><strong>${v}</strong><span>${v2}</span><span>${v3}</span></div>`).join("")}
+      </div>
+
+      <aside class="mistake-box">
+        <p class="eyebrow">Два важных исключения</p>
+        <p><strong>to be</strong> в Present Simple: I am, he is, we are; вопросы без do: Are you ready?</p>
+        <p><strong>to be</strong> в Past Simple: was/were; отрицание wasn't/weren't; вопрос Was/Were…?</p>
+      </aside>
+    </article>
+  `;
+  showOnly(guide);
+}
+
+function renderGerundGuide() {
+  guide.innerHTML = `
+    <button class="back-button" type="button" data-action="home">← К тренировке</button>
+    <article class="lesson-card guide-page gerund-guide">
+      <span class="lesson-tag">Verb forms & -ed/-ing adjectives</span>
+      <h1>Формы глагола и прилагательные чувств</h1>
+      <p class="subtitle">Сначала реши, выбираешь ли ты форму действия или описываешь эмоцию. Для эмоции спроси: кто чувствует и что вызывает это чувство?</p>
+
+      <div class="gerund-rule-grid">
+        <section class="gerund-rule-card gerund-card">
+          <span class="rule-form">verb + ing</span>
+          <h2>Герундий</h2>
+          <ul class="rule-list">
+            <li>после предлогов: <strong>good at explaining</strong></li>
+            <li>когда действие — подлежащее: <strong>Working helps</strong></li>
+            <li>после enjoy, avoid, mind, finish, keep, suggest, recommend</li>
+          </ul>
+        </section>
+        <section class="gerund-rule-card infinitive-card">
+          <span class="rule-form">to + verb</span>
+          <h2>Инфинитив</h2>
+          <ul class="rule-list">
+            <li>после прилагательных: <strong>happy to help</strong></li>
+            <li>для цели — «зачем?»: <strong>opened it to check</strong></li>
+            <li>после want, decide, hope, need, plan, promise, refuse, offer</li>
+          </ul>
+        </section>
+        <section class="gerund-rule-card bare-card">
+          <span class="rule-form">verb без to</span>
+          <h2>Чистый инфинитив</h2>
+          <ul class="rule-list">
+            <li>после модальных: <strong>can't park</strong></li>
+            <li>после let: <strong>let me know</strong></li>
+            <li>после make: <strong>made me rewrite</strong></li>
+          </ul>
+        </section>
+      </div>
+
+      <h2 class="guide-heading">Прилагательные на -ed и -ing</h2>
+      <div class="gerund-rule-grid">
+        <section class="gerund-rule-card infinitive-card">
+          <span class="rule-form">-ing = причина</span>
+          <h2>Что вызывает чувство?</h2>
+          <ul class="rule-list"><li><strong>The film was boring.</strong> Фильм вызывал скуку.</li><li><strong>The journey was exhausting.</strong> Поездка утомляла.</li><li>Предметом может быть событие, человек или ситуация.</li></ul>
+        </section>
+        <section class="gerund-rule-card gerund-card">
+          <span class="rule-form">-ed = чувство</span>
+          <h2>Кто это чувствует?</h2>
+          <ul class="rule-list"><li><strong>I was bored.</strong> Мне было скучно.</li><li><strong>We felt exhausted.</strong> Мы чувствовали усталость.</li><li>Обычно это человек или животное.</li></ul>
+        </section>
+        <section class="gerund-rule-card bare-card">
+          <span class="rule-form">Сравни смысл</span>
+          <h2>He is boring ≠ He is bored</h2>
+          <ul class="rule-list"><li><strong>He is boring.</strong> Он скучный для других.</li><li><strong>He is bored.</strong> Ему самому скучно.</li><li>Смотри на роль существительного, а не только на animate/inanimate.</li></ul>
+        </section>
+      </div>
+
+      <div class="aux-chain-list">
+        <div><strong>interested in · excited about</strong><span>I’m interested in history. She’s excited about the trip.</span></div>
+        <div><strong>annoyed with/by/about</strong><span>Annoyed with a person, by a sound, about a situation.</span></div>
+        <div><strong>surprised/amazed/shocked by</strong><span>We were surprised by the result.</span></div>
+        <div><strong>tired of/from · disappointed with/by</strong><span>Tired of repetition, tired from work; disappointed with the result.</span></div>
+      </div>
+
+      <aside class="principle-box"><strong>Быстрая проверка:</strong> если существительное производит эффект — <em>-ing</em>. Если оно получает этот эффект и испытывает чувство — <em>-ed</em>: <em>The task was frustrating, so I felt frustrated</em>.</aside>
+
+      <h2 class="guide-heading">Форма меняет смысл</h2>
+      <div class="meaning-pairs">
+        <div class="meaning-pair"><strong>Try calling him.</strong><span>Попробуй как метод — вдруг сработает.</span><strong>Try to call him.</strong><span>Попытайся дозвониться, приложи усилие.</span></div>
+        <div class="meaning-pair"><strong>Remember to leave it.</strong><span>Не забудь сделать это потом.</span><strong>I remember leaving it.</strong><span>Я помню уже произошедшее действие.</span></div>
         <div class="meaning-pair"><strong>He stopped smoking.</strong><span>Он перестал курить.</span><strong>He stopped to smoke.</strong><span>Он остановился, чтобы покурить.</span></div>
       </div>
 
@@ -1198,4 +5520,4 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
 }
 
-renderDashboard();\n
+renderDashboard();

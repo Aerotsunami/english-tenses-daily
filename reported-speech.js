@@ -208,4 +208,4 @@ function renderReportedGuide() {
       <p class="reported-sources">Проверить правила: <a href="https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/reported-speech-statements" target="_blank" rel="noopener noreferrer">British Council</a> · <a href="https://dictionary.cambridge.org/grammar/british-grammar/reported-speech-indirect-speech" target="_blank" rel="noopener noreferrer">Cambridge Grammar</a>.</p>
     </article>`;
   showOnly(guide);
-}\n
+}
