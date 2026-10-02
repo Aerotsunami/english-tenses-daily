@@ -9,7 +9,7 @@ function boot() {
   const nodes = new Map();
   const document = { addEventListener() {}, querySelector(selector) { if (!nodes.has(selector)) nodes.set(selector, {innerHTML:'', classList:{add(){},remove(){}}}); return nodes.get(selector); } };
   const context = vm.createContext({ document, localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)}, window:{scrollTo(){},addEventListener(){}}, navigator:{}, location:{protocol:'https:'}, Date, Math, console, setTimeout(){}, confirm(){return false;} });
-  for (const file of ['reported-speech.js','app.js']) vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
+  for (const file of ['reported-speech.js','quantity.js','app.js']) vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
   return {context, nodes, run: code=>vm.runInContext(code,context)};
 }
 const app=boot();
@@ -29,8 +29,11 @@ assert.equal(app.run('state.totalAnswered'),43);
 assert.deepEqual(json('state.grammarStats.auxiliaries'),original.grammarStats.auxiliaries);
 assert.deepEqual(json('state.tenseStats["present-simple"]'),original.tenseStats['present-simple']);
 assert.deepEqual(json('state.grammarStats.reportedSpeech'),{total:0,correct:0});
+assert.deepEqual(json('state.grammarStats.quantity'),{total:0,correct:0});
 assert.equal((app.nodes.get('#dashboard').innerHTML.match(/<article class="mode-card /g)||[]).length,6);
 assert.ok(app.nodes.get('#dashboard').innerHTML.includes('Времена и косвенная речь'));
+assert.ok(app.nodes.get('#dashboard').innerHTML.includes('Артикли и количество'));
+assert.ok(app.nodes.get('#dashboard').innerHTML.includes('Количество · 40 примеров'));
 app.run('renderReportedGuide()');
 for (const text of ['Present Continuous','Past Perfect Continuous','said to me','must','here','told','Начать 12 заданий']) assert.ok(app.nodes.get('#guide').innerHTML.includes(text),text);
 for(let n=0;n<200;n++) {
@@ -50,10 +53,11 @@ assert.equal(app.run('state.sessions'),4);
 assert.ok(app.nodes.get('#quiz').innerHTML.includes('12 / 12'));
 const reloaded=boot();assert.equal(reloaded.run('state.grammarStats.reportedSpeech.total'),12);
 assert.equal(reloaded.run('state.grammarStats.auxiliaries.total'),21);
-for (const [fn,count] of [['startIdentifySession',10],['startGerundSession',16],['startAuxiliarySession',16],['startArticleSession',12],['startPhraseSession',14]]) { app.run(`${fn}()`);assert.equal(app.run('session.questions.length'),count);app.run('answerQuestion(session.questions[0].correct)'); }
+for (const [fn,count] of [['startIdentifySession',10],['startGerundSession',16],['startAuxiliarySession',16],['startArticleSession',12],['startQuantitySession',12],['startPhraseSession',14]]) { app.run(`${fn}()`);assert.equal(app.run('session.questions.length'),count);app.run('answerQuestion(session.questions[0].correct)'); }
 assert.equal(app.run('rsEscape(`<img src=x onerror=x>`).includes("<img")'),false);
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
-assert.ok(index.indexOf('reported-speech.js?v=20')<index.indexOf('app.js?v=20'));
-assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./reported-speech.js?v=20'));
-console.log('PASS: 96 examples, 200 balanced sessions, all answer mappings, migration, persistence, duplicate-answer guard, 5 existing modes and v20 cache.');
+assert.ok(index.indexOf('reported-speech.js?v=21')<index.indexOf('quantity.js?v=21'));
+assert.ok(index.indexOf('quantity.js?v=21')<index.indexOf('app.js?v=21'));
+assert.ok(fs.readFileSync(path.join(root,'sw.js'),'utf8').includes('./quantity.js?v=21'));
+console.log('PASS: reported speech + quantity, migration, balanced sessions, answer mappings, persistence, existing modes and v21 cache.');
 

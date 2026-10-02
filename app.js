@@ -4417,6 +4417,7 @@ document.addEventListener("click", (event) => {
   if (action === "start-gerund") startGerundSession();
   if (action === "start-phrases") startPhraseSession();
   if (action === "start-articles") startArticleSession();
+  if (action === "start-quantity") startQuantitySession();
   if (action === "start-auxiliaries") startAuxiliarySession();
   if (action === "focus-tense") startFocusSession(key);
   if (action === "identify-tense") startIdentifyForTense(key);
@@ -4425,6 +4426,7 @@ document.addEventListener("click", (event) => {
   if (action === "open-gerund-guide") renderGerundGuide();
   if (action === "open-phrases") renderPhraseGuide();
   if (action === "open-articles") renderArticleGuide();
+  if (action === "open-quantity") renderQuantityGuide();
   if (action === "open-auxiliaries") renderAuxiliaryGuide();
   if (action === "answer") answerQuestion(Number(index));
   if (action === "next") nextQuestion();
@@ -4444,6 +4446,7 @@ function defaultState() {
       gerundInfinitive: { total: 0, correct: 0 },
       speechPatterns: { total: 0, correct: 0 },
       articles: { total: 0, correct: 0 },
+      quantity: { total: 0, correct: 0 },
       auxiliaries: { total: 0, correct: 0 },
       reportedSpeech: { total: 0, correct: 0 },
     },
@@ -4524,6 +4527,8 @@ function renderDashboard() {
   const phraseStatText = phraseStat.total ? `${accuracy(phraseStat)}% · ${phraseStat.total} ответов` : "Ещё не тренировались";
   const articleStat = state.grammarStats.articles;
   const articleStatText = articleStat.total ? `${accuracy(articleStat)}% · ${articleStat.total} ответов` : "Ещё не тренировались";
+  const quantityStat = state.grammarStats.quantity;
+  const quantityStatText = quantityStat.total ? `${accuracy(quantityStat)}% · ${quantityStat.total} ответов` : "Ещё не тренировались";
   const auxiliaryStat = state.grammarStats.auxiliaries;
   const auxiliaryStatText = auxiliaryStat.total ? `${accuracy(auxiliaryStat)}% · ${auxiliaryStat.total} ответов` : "Ещё не тренировались";
   const reportedStat = state.grammarStats.reportedSpeech;
@@ -4586,11 +4591,11 @@ function renderDashboard() {
           <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-phrases">Библиотека</button><button class="primary-button" type="button" data-action="start-phrases">14 заданий</button></div>
         </article>
         <article class="mode-card mode-yellow">
-          <span class="mode-kicker">Новая тема</span>
-          <h3>Артикли: a, an, the или Ø</h3>
-          <p>Первое упоминание, конкретный предмет, уникальные объекты и случаи без артикля.</p>
-          <div class="mode-card-meta">${articleStatText}</div>
-          <div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-articles">Правила</button><button class="primary-button" type="button" data-action="start-articles">12 заданий</button></div>
+          <span class="mode-kicker">Существительные</span>
+          <h3>Артикли и количество</h3>
+          <p>A/an/the/Ø, much/many, few/little, enough и any/no.</p>
+          <div class="mode-card-subsection"><strong>Артикли · ${ARTICLE_ITEMS.length} примеров</strong><div class="mode-card-meta">${articleStatText}</div><div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-articles">Правила</button><button class="primary-button" type="button" data-action="start-articles">12 заданий</button></div></div>
+          <div class="mode-card-subsection"><strong>Количество · ${QUANTITY_ITEMS.length} примеров</strong><div class="mode-card-meta">${quantityStatText}</div><div class="mode-card-actions"><button class="secondary-button" type="button" data-action="open-quantity">Правила</button><button class="primary-button" type="button" data-action="start-quantity">12 заданий</button></div></div>
         </article>
 
         <article class="mode-card mode-green">
@@ -5302,6 +5307,7 @@ function renderQuiz() {
   const isPhrase = question.type === "phrase";
   const isPhraseTense = question.type === "phrase-tense";
   const isArticle = question.type === "article";
+  const isQuantity = question.type === "quantity";
   const isAuxiliary = question.type === "auxiliary";
   const isModalBuild = question.type === "modal-build";
   const isReported = question.type === "reported" || question.type === "reported-rule";
@@ -5317,6 +5323,8 @@ function renderQuiz() {
         ? "Выбери оборот в форме, подходящей контексту"
         : isPhraseTense
           ? "Определи время готового предложения"
+          : isQuantity
+            ? "Выбери выражение количества"
           : isArticle
             ? "Выбери артикль или вариант без него"
             : isModalBuild
@@ -5334,12 +5342,14 @@ function renderQuiz() {
         ? "-ed / -ing adjectives"
         : isPhrase || isPhraseTense
         ? "Речевые обороты"
+        : isQuantity
+          ? "Quantifiers"
         : isArticle
           ? "Articles"
           : isAuxiliary || isModalBuild
             ? "Auxiliary & modal verbs"
             : question.tense.name;
-  const modeClass = isReported ? "reported-mode" : isIdentify ? "identify-mode" : isGerund || isAdjectiveEnding ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
+  const modeClass = isReported ? "reported-mode" : isIdentify ? "identify-mode" : isGerund || isAdjectiveEnding ? "grammar-mode" : isPhrase || isPhraseTense ? "phrase-mode" : isArticle || isQuantity ? "article-mode" : isAuxiliary || isModalBuild ? "auxiliary-mode" : "";
   const answerButtons = question.answers.map((answer, index) => {
     let stateClass = "";
     if (session.answered && index === question.correct) stateClass = "correct";
@@ -5443,6 +5453,12 @@ function renderResult() {
       : score >= 55
         ? "Хорошая база. Сначала определяй время и смысл: способность вообще, конкретный результат, трудный успех, совет, обязанность или запрет."
         : "Вернись к памятке и повтори формулы: modal + V, have to + V, be able to + V и manage to + V. Затем пройди ещё один смешанный подход."
+    : session.type === "quantity"
+    ? score >= 85
+      ? "Отлично: ты уверенно различаешь исчисляемые и неисчисляемые слова, количество и достаточность."
+      : score >= 55
+        ? "Хорошая база. Сначала решай, можно ли посчитать существительное, затем смотри на смысл: достаточно, недостаточно, слишком много или ноль."
+        : "Вернись к алгоритму и повтори четыре пары: many/much, few/little, too many/too much и any/no."
     : session.type === "articles"
     ? score >= 85
       ? "Отлично: ты уверенно различаешь новый предмет, конкретный предмет и общее понятие. Повтори тему через пару дней."
